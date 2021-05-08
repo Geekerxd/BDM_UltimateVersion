@@ -1,0 +1,70 @@
+.Subtitles {
+    font-family: "Roboto", sans-serif;
+    color: #204C73 ;
+    margin-top: 50px;
+  
+    /*
+    border-bottom: solid 1px #275d8c3b;
+      border: solid 2px#0000009a ;
+      */
+    text-align: center;
+  }
+  
+  body {
+    background-color: #ffffff;
+  }
+  
+  .icon {
+    /*
+        object-fit: cover;
+        align-items: center;
+        width: 100px;
+        border: solid 2px#0000009a ;
+        */
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  
+  .container.peque{
+  margin-top: 25px;
+  margin-bottom: 25px;
+  width: 25%;
+  background-color: white;
+  border-style: inset;
+  border-top-color: #275D8C;
+  border-left-color: #275D8C;
+  border-right-color: #F29849;
+  border-bottom-color: #F29849;
+  border-radius: 10px;
+  border-width: 5px;
+  color: black;
+  text-align: justify;
+  font-family: 'Roboto',sans-serif;
+  }
+
+  .container.peque #primerLabel{
+      margin-top: 20px;
+  }
+
+  .container.peque .imgMetodoPago{
+      max-width: 50px;
+      max-height: 25px;
+      margin-right: 10px;
+  }
+
+  .btn.btn-lg.btn-primary.btn-block{
+    margin-top: 20px;
+    background-color: #F29849;
+    border-color: #F29849;
+    color: #275D8C;
+    font-family: 'Roboto',sans-serif;
+  }
+
+  .btn.btn-lg.btn-primary.btn-block:hover{
+    background-color: #275D8C;
+    border-color: #275D8C;
+    color: #F29849;
+  }

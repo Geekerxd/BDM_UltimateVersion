@@ -1,0 +1,62 @@
+body{
+    margin: 5px;
+    background-color: #275d8c3b;
+    font-family: 'Roboto',sans-serif;
+    border-style: inset;
+    border-width: 10px;
+    border-left-color: #204c73;
+    border-top-color: #204c73;
+    border-right-color: #F29849;
+    border-bottom-color: #F29849;
+    border-radius: 10px;
+}
+
+#textHirami{
+    margin-top: 20px;
+}
+
+#imgHirami{
+    width: 200px;
+    height: 200px;
+}
+
+.nombre{
+    width: 500px;
+    border-bottom: #204c73 solid 3px;
+    
+}
+
+.nombre input{
+    width: 500px;
+    text-align: center;
+    background-color: #275d8c3b;
+    border: none;
+}
+
+.curso input{
+    width: 500px;
+    text-align: center;
+    background-color: #275d8c3b;
+    border: none;
+}
+
+.conjunto{
+    display: inline-flex;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.conjunto img{
+    width: 150px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.conjunto input{
+    background-color: #275d8c3b;
+    border: none;
+    width: 250px;
+    margin-top: 125px;
+    border-top: #204c73 solid 3px;
+    text-align: center;
+}

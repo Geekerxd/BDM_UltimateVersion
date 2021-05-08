@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebStudy</title>
+    <!-- Bootstrap CSS 
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+
+    -->
+
+    <!-- Iconos-->
+    <script src="https://kit.fontawesome.com/8a399301fb.js" crossorigin="anonymous"></script>
+    <!-- Fonts de google:-->
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet" />
+
+    <!--bootstrap-->
+    <link rel="stylesheet" href="bootstrap/bootstrap.css" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="perfil.css">
+</head>
+
+<body>
+
+    <!-- Barra de navegacion -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="border-bottom: solid 1px #275d8c7e">
+        <a class="navbar-brand" id="azulado" href="Principal.html" :hover>
+            Hiromi
+            <img class="icon" src="recursos/HiramiSVG_02.svg" alt="error-en-al-capa-8">
+            <!-- 
+          <img class="icon" src=" Assets/KineCineNaranja.png " alt="error-en-al-capa-8" /> 
+      -->
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" style="color: #275d8c">Inicio <span
+                            class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #f29849">
+                        Categorias
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="todosCursos.html">Todos los cursos</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Programación general</a>
+
+                        <a class="dropdown-item" href="#">API</a>
+                        <a class="dropdown-item" href="#">Programación web</a>
+                        <a class="dropdown-item" href="#">Programación de apps</a>
+                        <a class="dropdown-item" href="#">Base de datos</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Clásicos</a>
+                        <a class="dropdown-item" href="#">Accion</a>
+                        <a class="dropdown-item" href="#">Aventura</a>
+                    </div>
+                </li>
+                <!-- 
+<li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            style="color: #f29849"
+          >
+            Reviews
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Reciente Actividad</a>
+            <a class="dropdown-item" href="#">Listas Films</a>
+            <a class="dropdown-item" href="#">Top lo mejor de lo mejor</a>
+            <a class="dropdown-item" href="#">Top lo peor de lo peor</a>
+          </div>
+        </li> 
+-->
+
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Buscar cursos..." aria-label="search" />
+
+                <button class="btn btn-primary uni" type="submit">
+                    <i class="fas fa-search uni"></i>
+                </button>
+            </form>
+
+            <a href="LogIn.jsp" class="LogIn-text " style="color: #F29849; margin-left: 20px; ">
+                Log In
+            </a>
+
+            <button type="button" class="btn btn-primary SignIn" style="margin-left: 15px; ">
+                <a href="SignIn.jsp" style="color: white;">Sign In</a>
+
+            </button>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="container2" style="background-color: #ffffff">
+
+
+
+            <div>
+
+                <img class="card-img-top"
+                    src="https://assets.sensacine.com/skin/img/userprofile-cover-default-43b92a5c13.png"
+                    alt="Card image cap" />
+
+            </div>
+
+
+
+
+            <div>
+
+                <img class="avatar" src="https://github.com/Geekerxd/recursos/blob/main/NoPhoto2.jpg?raw=true"
+                    alt="avatar" />
+
+
+            </div>
+
+            <h2 class="username">
+                José Manuel
+                <!-- si er registrado -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F29849" width="24px" height="24px">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path
+                        d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
+                </svg>
+                <!--          -->
+
+
+
+            </h2>
+
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="inicio-tab" data-toggle="tab" href="#inicio" role="tab"
+                        aria-controls="inicio" aria-selected="true">Inicio</a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" id="noticias-tab" data-toggle="tab" href="#noticias" role="tab"
+                        aria-controls="noticias" aria-selected="false">Mis Cursos</a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" id="noticias-tab" data-toggle="tab" href="#mensajes" role="tab"
+                        aria-controls="Mensajes" aria-selected="false">Mensajes</a>
+                </li>
+
+
+
+                <li class="nav-item">
+                    <a class="nav-link" id="informacion-tab" data-toggle="tab" href="#informacion" role="tab"
+                        aria-controls="informacion" aria-selected="false">Información</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="ajustes-tab" data-toggle="tab" href="#ajustes" role="tab"
+                        aria-controls="ajustes" aria-selected="false">Ajustes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="LogOut-tab" data-toggle="tab" href="#LogOut" role="tab"
+                        aria-controls="LogOut" aria-selected="false">Salir</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="inicio" role="tabpanel" aria-labelledby="inicio-tab">
+
+                    <h3> Historial de cursos:</h3>
+
+                    <a href="historial.html">
+                        <button type="button" class="btn btn-primary" id="gotogestor"
+                            style="margin-right: auto; margin-left: auto">
+                            Ver historial
+                        </button>
+
+
+                    </a>
+
+                </div>
+                <div class="tab-pane fade" id="noticias" role="tabpanel" aria-labelledby="noticias-tab">
+
+
+                    <h3>Los cursos que impartes</h3>
+                    <a href="crearCurso.html">
+                        <button type="button" class="btn btn-primary" id="gotogestor"
+                            style="margin-right: auto; margin-left: auto">
+                            Gestor de Cursos
+                        </button>
+
+
+                    </a>
+
+
+
+
+                </div>
+
+                <div class="tab-pane fade" id="mensajes" role="tabpanel" aria-labelledby="noticias-tab">
+
+
+                    <h3>Tus mensajes</h3>
+                    <a href="chat.html">
+                        <button type="button" class="btn btn-primary" id="gotogestor"
+                            style="margin-right: auto; margin-left: auto">
+                            Ver mensajes
+                        </button>
+
+
+                    </a>
+
+
+
+
+                </div>
+                <div class="tab-pane fade" id="informacion" role="tabpanel" aria-labelledby="informacion-tab">
+
+                    <form action="PerfilImagen" method="POST" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                            <label for="image">Cambiar foto de perfil:</label>
+                            <input type="file" name="image" id="image" class="form-control" required>
+                            <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
+                        </div>
+                        <input type="hidden" name="idUsuario" value="elId">
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Actualizar imagen">
+                            <!--<input type="submit" class="btn btn-primary" data-toggle="modal" data-target="#solicitudenviada" id="solicitar"value="Solicitar">-->
+                        </div>
+                    </form>
+
+                </div>
+                <div class="tab-pane fade" id="ajustes" role="tabpanel" aria-labelledby="ajustes-tab">
+                    <form class="ajustes">
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">ID de Usuario</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="inputEmail3" placeholder="ID" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="inputEmail3" placeholder="Nombre" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Apellido</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="inputEmail3" placeholder="Apellido" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Descripción</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="inputEmail3" placeholder="Descripción" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="colFormLabel" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="colFormLabel" placeholder="Email" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputPassword3" class="col-sm-2 col-form-label">Nueva Contraseña</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="inputPassword3"
+                                    placeholder="Contraseña" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputPassword3" class="col-sm-2 col-form-label">Confirmar Contraseña</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="inputPassword3"
+                                    placeholder="Contraseña" />
+                            </div>
+                        </div>
+                    </form>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+                <div class="tab-pane fade" id="LogOut" role="tabpanel" aria-labelledby="LogOut-tab">
+
+                    <form method="post" action="LogOffController">
+
+                        <input type="submit" action="Cerrar Sesion" value="Log Out" class="btn btn-primary "
+                            style="color:  white; margin-left: 40%; margin-top: 10px; padding-left: 30px;padding-right: 30px">
+
+
+                    </form>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+
+    <script src="jquery/jquery.js"></script>
+    <script src="bootstrap/bootstrap.min.js"></script>
+</body>
+
+</html>
