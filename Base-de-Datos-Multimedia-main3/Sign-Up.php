@@ -1,3 +1,9 @@
+<?php
+session_start();
+require_once "config.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,25 +48,25 @@
       </div>
 
       <div class="form-label-group">
-        <label for="input">Nombre(s)</label>
+        <label for="inputNombre">Nombre(s)</label>
         <input type="text" id="inputNombre" class="form-control" placeholder="tu nombre" required required>
 
       </div>
       <div class="form-label-group">
-        <label for="input">Apellido paterno</label>
+        <label for="inputApellidoP">Apellido paterno</label>
         <input type="text" id="inputApellidoP" class="form-control" placeholder="apellido paterno" required required>
 
       </div>
 
       <div class="form-label-group">
-        <label for="input">Apellido materno</label>
+        <label for="inputApellidoM">Apellido materno</label>
         <input type="text" id="inputApellidoM" class="form-control" placeholder="apellido materno" required required>
 
       </div>
 
 
       <div class="form-label-group">
-        <label for="inputEmail">Correo Electrónico</label>
+        <label for="ElEmail">Correo Electrónico</label>
         <input type="email" id="ElEmail" class="form-control" placeholder="Ingrese aquí su correo" required
           autofocus>
 
@@ -106,6 +112,9 @@
 
   </div>
 
+
+  <button id="botoncool" class="btn btn-lg btn-primary btn-block" >presioname</button>
+  
   <script src="bootstrap/bootstrap.min.js"></script>
 </body>
 

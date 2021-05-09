@@ -91,7 +91,7 @@ $(document).ready(function () {
     }
 
     $("#Registrarse").click(function () {
-        //alert("todo bien");
+      
         var UnError = false
 
 
@@ -231,5 +231,6 @@ $(document).ready(function () {
         
     });
 
+    
 
 });

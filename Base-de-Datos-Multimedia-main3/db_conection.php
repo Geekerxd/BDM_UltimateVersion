@@ -1,7 +1,7 @@
 <?php
 
 Class Connection {
-    private $databasehost = "localhost:3306";
+    private $databasehost = "localhost";
 	private $databasename = "webstudy";
 	private $databaseuser = "root";
 	private $databasepass = "";
