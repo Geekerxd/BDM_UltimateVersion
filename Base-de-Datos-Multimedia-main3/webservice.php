@@ -5,10 +5,10 @@
 		addUsuario();
 
 	function connect() {
-		$databasehost = "localhost";
+		$databasehost = "localhost:3306";
 		$databasename = "webstudy";
 		$databaseuser = "root";
-		$databasepass = "";
+		$databasepass = "root";
 
 		$mysqli = new mysqli($databasehost, $databaseuser, $databasepass, $databasename);
 		if ($mysqli->connect_errno) {

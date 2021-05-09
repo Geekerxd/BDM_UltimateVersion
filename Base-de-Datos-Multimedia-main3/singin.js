@@ -91,7 +91,7 @@ $(document).ready(function () {
     }
 
     $("#Registrarse").click(function () {
-      
+        //alert("todo bien");
         var UnError = false
 
 
@@ -123,7 +123,7 @@ $(document).ready(function () {
                                                                 if(validarTel(tel)){
                                                                     alert("Bien, los datos han sido capturados correctamente")
 
-                                                                    var usuario = new Usuario(tipo_usuario, nombre, apellidoP, apellidoM, contrasena, correo, tel, "2021-04-10 12:05:30");	
+                                                                    var usuario = new Usuario(tipo_usuario, nombre, apellidoP, apellidoM, contrasena, correo, tel);	
 
                                                                     /*if (!usuario.isValid()) {
                                                                         alert("Faltan datos.");
@@ -206,7 +206,6 @@ $(document).ready(function () {
                 contrasena: usuario.contrasena,
                 email: usuario.email,
                 telefono: usuario.telefono,
-                fecha_registro: usuario.fecha_registro
             };
 
             //var objetoEnJSON = JSON.stringify(sendProduct);
@@ -221,7 +220,7 @@ $(document).ready(function () {
                 data: dataToSend,
                 success: function (data){
                     //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                    alert("SI FUNCIONA");
+                    alert(data);
                 },
                 error: function(x,y,z){
                     alert("Error en webservice: " + x + y + z);
@@ -231,6 +230,5 @@ $(document).ready(function () {
         
     });
 
-    
 
 });
