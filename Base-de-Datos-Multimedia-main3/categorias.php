@@ -22,7 +22,7 @@
     <!--bootstrap-->
     <link rel="stylesheet" href="bootstrap/bootstrap.css" />
     <!-- CSS -->
-    <link rel="stylesheet" href="categoria.css">
+    <link rel="stylesheet" href="CSS/categoria.css">
 </head>
 
 <body>

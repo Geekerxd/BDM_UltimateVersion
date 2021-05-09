@@ -13,7 +13,7 @@
 -->
   <link rel="stylesheet" href="bootstrap/bootstrap.css" />
 
-  <link rel="stylesheet" href="crearCurso.css" />
+  <link rel="stylesheet" href="CSS/crearCurso.css" />
 </head>
 
 <body>

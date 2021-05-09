@@ -1,3 +1,10 @@
+<?php
+// Initialize the session
+session_start();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,10 +29,17 @@
     <!--bootstrap-->
     <link rel="stylesheet" href="bootstrap/bootstrap.css" />
     <!-- CSS -->
-    <link rel="stylesheet" href="perfil.css">
+    <link rel="stylesheet" href="CSS/perfil.css">
 </head>
 
 <body>
+
+    <?php
+    if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+        echo "Tipo: " . $_SESSION['rol'] . " Contrasena: " . $_SESSION['contrasena'] . " correo: " . $_SESSION['email'];
+    }
+
+    ?>
 
     <!-- Barra de navegacion -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="border-bottom: solid 1px #275d8c7e">
@@ -36,21 +50,18 @@
           <img class="icon" src=" Assets/KineCineNaranja.png " alt="error-en-al-capa-8" /> 
       -->
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" style="color: #275d8c">Inicio <span
-                            class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#" style="color: #275d8c">Inicio <span class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #f29849">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #f29849">
                         Categorias
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -120,9 +131,7 @@
 
             <div>
 
-                <img class="card-img-top"
-                    src="https://assets.sensacine.com/skin/img/userprofile-cover-default-43b92a5c13.png"
-                    alt="Card image cap" />
+                <img class="card-img-top" src="https://assets.sensacine.com/skin/img/userprofile-cover-default-43b92a5c13.png" alt="Card image cap" />
 
             </div>
 
@@ -131,8 +140,7 @@
 
             <div>
 
-                <img class="avatar" src="https://github.com/Geekerxd/recursos/blob/main/NoPhoto2.jpg?raw=true"
-                    alt="avatar" />
+                <img class="avatar" src="https://github.com/Geekerxd/recursos/blob/main/NoPhoto2.jpg?raw=true" alt="avatar" />
 
 
             </div>
@@ -142,8 +150,7 @@
                 <!-- si er registrado -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F29849" width="24px" height="24px">
                     <path d="M0 0h24v24H0z" fill="none" />
-                    <path
-                        d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
+                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
                 </svg>
                 <!--          -->
 
@@ -153,35 +160,29 @@
 
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="inicio-tab" data-toggle="tab" href="#inicio" role="tab"
-                        aria-controls="inicio" aria-selected="true">Inicio</a>
+                    <a class="nav-link active" id="inicio-tab" data-toggle="tab" href="#inicio" role="tab" aria-controls="inicio" aria-selected="true">Inicio</a>
                 </li>
 
 
                 <li class="nav-item">
-                    <a class="nav-link" id="noticias-tab" data-toggle="tab" href="#noticias" role="tab"
-                        aria-controls="noticias" aria-selected="false">Mis Cursos</a>
+                    <a class="nav-link" id="noticias-tab" data-toggle="tab" href="#noticias" role="tab" aria-controls="noticias" aria-selected="false">Mis Cursos</a>
                 </li>
 
 
                 <li class="nav-item">
-                    <a class="nav-link" id="noticias-tab" data-toggle="tab" href="#mensajes" role="tab"
-                        aria-controls="Mensajes" aria-selected="false">Mensajes</a>
+                    <a class="nav-link" id="noticias-tab" data-toggle="tab" href="#mensajes" role="tab" aria-controls="Mensajes" aria-selected="false">Mensajes</a>
                 </li>
 
 
 
                 <li class="nav-item">
-                    <a class="nav-link" id="informacion-tab" data-toggle="tab" href="#informacion" role="tab"
-                        aria-controls="informacion" aria-selected="false">Información</a>
+                    <a class="nav-link" id="informacion-tab" data-toggle="tab" href="#informacion" role="tab" aria-controls="informacion" aria-selected="false">Información</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="ajustes-tab" data-toggle="tab" href="#ajustes" role="tab"
-                        aria-controls="ajustes" aria-selected="false">Ajustes</a>
+                    <a class="nav-link" id="ajustes-tab" data-toggle="tab" href="#ajustes" role="tab" aria-controls="ajustes" aria-selected="false">Ajustes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="LogOut-tab" data-toggle="tab" href="#LogOut" role="tab"
-                        aria-controls="LogOut" aria-selected="false">Salir</a>
+                    <a class="nav-link" id="LogOut-tab" data-toggle="tab" href="#LogOut" role="tab" aria-controls="LogOut" aria-selected="false">Salir</a>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -190,8 +191,7 @@
                     <h3> Historial de cursos:</h3>
 
                     <a href="historial.php">
-                        <button type="button" class="btn btn-primary" id="gotogestor"
-                            style="margin-right: auto; margin-left: auto">
+                        <button type="button" class="btn btn-primary" id="gotogestor" style="margin-right: auto; margin-left: auto">
                             Ver historial
                         </button>
 
@@ -204,8 +204,7 @@
 
                     <h3>Los cursos que impartes</h3>
                     <a href="crearCurso.php">
-                        <button type="button" class="btn btn-primary" id="gotogestor"
-                            style="margin-right: auto; margin-left: auto">
+                        <button type="button" class="btn btn-primary" id="gotogestor" style="margin-right: auto; margin-left: auto">
                             Gestor de Cursos
                         </button>
 
@@ -222,8 +221,7 @@
 
                     <h3>Tus mensajes</h3>
                     <a href="chat.php">
-                        <button type="button" class="btn btn-primary" id="gotogestor"
-                            style="margin-right: auto; margin-left: auto">
+                        <button type="button" class="btn btn-primary" id="gotogestor" style="margin-right: auto; margin-left: auto">
                             Ver mensajes
                         </button>
 
@@ -287,15 +285,13 @@
                         <div class="form-group row">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Nueva Contraseña</label>
                             <div class="col-sm-10">
-                                <input type="password" class="form-control" id="inputPassword3"
-                                    placeholder="Contraseña" />
+                                <input type="password" class="form-control" id="inputPassword3" placeholder="Contraseña" />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Confirmar Contraseña</label>
                             <div class="col-sm-10">
-                                <input type="password" class="form-control" id="inputPassword3"
-                                    placeholder="Contraseña" />
+                                <input type="password" class="form-control" id="inputPassword3" placeholder="Contraseña" />
                             </div>
                         </div>
                     </form>
@@ -303,13 +299,7 @@
                 </div>
                 <div class="tab-pane fade" id="LogOut" role="tabpanel" aria-labelledby="LogOut-tab">
 
-                    <form method="post" action="LogOffController">
-
-                        <input type="submit" action="Cerrar Sesion" value="Log Out" class="btn btn-primary "
-                            style="color:  white; margin-left: 40%; margin-top: 10px; padding-left: 30px;padding-right: 30px">
-
-
-                    </form>
+                    <a href="logout.php" class="btn btn-danger ml-3">Sign Out of Your Account</a>
 
 
 
@@ -323,9 +313,7 @@
 
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
     <script src="jquery/jquery.js"></script>
     <script src="bootstrap/bootstrap.min.js"></script>

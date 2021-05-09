@@ -15,7 +15,7 @@
     <!--bootstrap-->
     <link rel="stylesheet" href="bootstrap/bootstrap.css" />
     <!-- CSS -->
-    <link rel="stylesheet" href="diploma.css">
+    <link rel="stylesheet" href="CSS/diploma.css">
 </head>
 <body>
     <center>

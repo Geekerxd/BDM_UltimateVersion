@@ -10,14 +10,14 @@
 
   <link rel="stylesheet" href="bootstrap/bootstrap.css" />
 
-  <link rel="stylesheet" href="Sign-Up.css" />
-  
+  <link rel="stylesheet" href="CSS/Sign-Up.css" />
+
   <script type="text/javascript" src="js/usuario.js"></script>
   <script type="text/javascript" src="singin.js"></script>
 
   <link rel="shortcut icon" href="#">
 
-  
+
 </head>
 
 <body>
@@ -63,15 +63,13 @@
 
       <div class="form-label-group">
         <label for="inputEmail">Correo Electrónico</label>
-        <input type="email" id="ElEmail" class="form-control" placeholder="Ingrese aquí su correo" required
-          autofocus>
+        <input type="email" id="ElEmail" class="form-control" placeholder="Ingrese aquí su correo" required autofocus>
 
       </div>
 
       <div class="form-label-group">
         <label for="inputPassword">Contraseña</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Ingrese aquí su contraseña"
-          required>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Ingrese aquí su contraseña" required>
 
       </div>
 
@@ -101,7 +99,7 @@
           <input type="checkbox" value="remember-me"> Acepto los terminos y condiciones.
         </label>
       </div>
-      <button id="Registrarse" class="btn btn-lg btn-primary btn-block" >Registrarse</button>
+      <button id="Registrarse" class="btn btn-lg btn-primary btn-block">Registrarse</button>
 
       <p class="mt-5 mb-3 text-muted text-center">&copy;Hiromi 2017-2021</p>
     </form>

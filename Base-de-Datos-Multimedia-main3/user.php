@@ -52,6 +52,15 @@
             }
             else{
                 // Recorremos los resultados devueltos
+
+                session_start();
+                            
+                // Store data in session variables
+                $_SESSION["loggedin"] = true;
+                $_SESSION["rol"] = $this->tipo_usuario;
+                $_SESSION["contrasena"] = $this->contrasena;
+                $_SESSION["email"] = $this->email; 
+            
 			$rows = array();
 			while( $r = $result->fetch_assoc()) {
 				$rows[] = $r;

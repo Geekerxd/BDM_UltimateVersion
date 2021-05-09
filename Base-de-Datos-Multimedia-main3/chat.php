@@ -22,7 +22,7 @@
     <!--bootstrap-->
     <link rel="stylesheet" href="bootstrap/bootstrap.css" />
     <!-- CSS -->
-    <link rel="stylesheet" href="chat.css">
+    <link rel="stylesheet" href="CSS/chat.css">
 </head>
 
 <body>

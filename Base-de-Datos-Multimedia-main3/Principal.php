@@ -1,3 +1,10 @@
+<?php
+// Initialize the session
+session_start();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,12 +13,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebStudy</title>
-    <!-- Bootstrap CSS 
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-
-
-    -->
 
     <!-- Iconos-->
     <script src="https://kit.fontawesome.com/8a399301fb.js" crossorigin="anonymous"></script>
@@ -22,10 +23,18 @@
     <!--bootstrap-->
     <link rel="stylesheet" href="bootstrap/bootstrap.css" />
     <!-- CSS -->
-    <link rel="stylesheet" href="Principal.css">
+    <link rel="stylesheet" href="CSS/Principal.css">
 </head>
 
 <body>
+
+
+    <?php
+    if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+        echo "Tipo: " . $_SESSION['rol'] . " Contrasena: " . $_SESSION['contrasena'] . " correo: " . $_SESSION['email'];
+    }
+
+    ?>
 
     <!-- Barra de navegacion -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="border-bottom: solid 1px #275d8c7e">
@@ -36,21 +45,18 @@
           <img class="icon" src=" Assets/KineCineNaranja.png " alt="error-en-al-capa-8" /> 
       -->
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" style="color: #275d8c">Inicio <span
-                            class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#" style="color: #275d8c">Inicio <span class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #f29849">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #f29849">
                         Categorias
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -120,8 +126,7 @@
         </div>
 
         <div class="imgDescripcion">
-            <img src="https://www.becasinternacionales.net/webapp/img/courses/4f952c_programacion_w730.jpg"
-                alt="imagen01">
+            <img src="https://www.becasinternacionales.net/webapp/img/courses/4f952c_programacion_w730.jpg" alt="imagen01">
         </div>
         <div class=textDescripcion>
             <h4>Somos tu mejor opcion para estudiar programacion en diversos campos, desde la elaboracion de
@@ -141,8 +146,7 @@
                 <div class="card col-12 col-sm-6 col-md-3 d-none d-sm-block">
                     <span class="badge badge-info etiqueta">Programacion web</span>
                     <a href="curso.php" target="_blank">
-                        <img src="https://seeklogo.com/images/E/ElePHPant_-_Mascot_PHP-logo-4C78D1AC4E-seeklogo.com.jpg"
-                            class="card-img-top" alt="no se pudo cargar esta imagen" />
+                        <img src="https://seeklogo.com/images/E/ElePHPant_-_Mascot_PHP-logo-4C78D1AC4E-seeklogo.com.jpg" class="card-img-top" alt="no se pudo cargar esta imagen" />
                     </a>
                     <div class="Tarjeta-texto">
                         <p style="margin-top: 15px">
@@ -179,8 +183,7 @@
                 <div class="card col-12 col-sm-6 col-md-3 d-none d-sm-block">
                     <span class="badge badge-info etiqueta">Programacion web</span>
                     <a href="UnaNoticia.jsp" target="_blank">
-                        <img src="https://img.flaticon.com/icons/png/512/174/174854.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF"
-                            class="card-img-top" alt="no se pudo cargar esta imagen" />
+                        <img src="https://img.flaticon.com/icons/png/512/174/174854.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF" class="card-img-top" alt="no se pudo cargar esta imagen" />
                     </a>
                     <div class="Tarjeta-texto">
                         <p style="margin-top: 15px">
@@ -211,8 +214,7 @@
                 <div class="card col-12 col-sm-6 col-md-3 d-none d-sm-block">
                     <span class="badge badge-info etiqueta">Base de datos</span>
                     <a href="UnaNoticia.jsp" target="_blank">
-                        <img src="https://i1.wp.com/buconda.com/wp-content/uploads/2019/06/mysql-logo.png?fit=759%2C500&ssl=1"
-                            class="card-img-top" alt="no se pudo cargar esta imagen" />
+                        <img src="https://i1.wp.com/buconda.com/wp-content/uploads/2019/06/mysql-logo.png?fit=759%2C500&ssl=1" class="card-img-top" alt="no se pudo cargar esta imagen" />
                     </a>
                     <div class="Tarjeta-texto">
                         <p style="margin-top: 15px">
@@ -243,8 +245,7 @@
                 <div class="card col-12 col-sm-6 col-md-3 d-none d-sm-block">
                     <span class="badge badge-info etiqueta">Desarrollo de apps</span>
                     <a href="UnaNoticia.jsp" target="_blank">
-                        <img src="https://blog.sosafeapp.com/content/images/2020/04/blog---mi-primera-app-en-Kotlin.png"
-                            class="card-img-top" alt="no se pudo cargar esta imagen" />
+                        <img src="https://blog.sosafeapp.com/content/images/2020/04/blog---mi-primera-app-en-Kotlin.png" class="card-img-top" alt="no se pudo cargar esta imagen" />
                     </a>
                     <div class="Tarjeta-texto">
                         <p style="margin-top: 15px">
@@ -276,8 +277,7 @@
                     <div class="row no-gutters">
                         <div class="col-md-4">
                             <a href="UnaNoticia.jsp" target="_blank">
-                                <img src="https://img.cinemablend.com/filter:scale/quill/4/5/7/3/9/6/4573966e4d7705252c319697471a53bb20b3e1d9.png?mw=600"
-                                    class="card-img" alt="..." />
+                                <img src="https://img.cinemablend.com/filter:scale/quill/4/5/7/3/9/6/4573966e4d7705252c319697471a53bb20b3e1d9.png?mw=600" class="card-img" alt="..." />
                             </a>
                         </div>
                         <div class="col-md-8">
@@ -298,8 +298,7 @@
                     <div class="row no-gutters">
                         <div class="col-md-4">
                             <a href="UnaNoticia.jsp" target="_blank">
-                                <img src="https://img.cinemablend.com/cdn-cgi/image/fit=cover,w=1500,h=1500//quill/2/8/d/5/b/1/28d5b1bea85d197f30133ddbe567c8cb30f3f230.png"
-                                    class="card-img" alt="..." />
+                                <img src="https://img.cinemablend.com/cdn-cgi/image/fit=cover,w=1500,h=1500//quill/2/8/d/5/b/1/28d5b1bea85d197f30133ddbe567c8cb30f3f230.png" class="card-img" alt="..." />
                             </a>
                         </div>
                         <div class="col-md-8">
@@ -328,9 +327,7 @@
 
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
     <script src="jquery/jquery.js"></script>
     <script src="bootstrap/bootstrap.min.js"></script>

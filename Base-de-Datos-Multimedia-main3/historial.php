@@ -22,7 +22,7 @@
     <!--bootstrap-->
     <link rel="stylesheet" href="bootstrap/bootstrap.css" />
     <!-- CSS -->
-    <link rel="stylesheet" href="historial.css">
+    <link rel="stylesheet" href="CSS/historial.css">
 </head>
 
 <body>
@@ -38,21 +38,18 @@
           <img class="icon" src=" Assets/KineCineNaranja.png " alt="error-en-al-capa-8" /> 
       -->
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" style="color: #275d8c">Inicio <span
-                            class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#" style="color: #275d8c">Inicio <span class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #f29849">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #f29849">
                         Categorias
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -134,8 +131,8 @@
                         <a href="diploma.php" class="btn btn-primary">Ver diploma</a>
                     </div>
                     <div class="card-footer">
-                    <div class="categoria">Programacion web</div>
-                    <div class="fecha">10/Oct/2021</div>
+                        <div class="categoria">Programacion web</div>
+                        <div class="fecha">10/Oct/2021</div>
                     </div>
                 </div>
                 <!-- aqui termina el curso -->
@@ -153,8 +150,8 @@
                         <a href="#" class="btn btn-primary">Ver diploma</a>
                     </div>
                     <div class="card-footer">
-                    <div class="categoria">Programacion web</div>
-                    <div class="fecha">28/Ago/2021</div>
+                        <div class="categoria">Programacion web</div>
+                        <div class="fecha">28/Ago/2021</div>
                     </div>
                 </div>
                 <!-- aqui termina el curso -->
@@ -172,8 +169,8 @@
                         <a href="#" class="btn btn-primary">Ver diploma</a>
                     </div>
                     <div class="card-footer">
-                    <div class="categoria">Base de datos</div>
-                    <div class="fecha">01/Jul/2021</div>
+                        <div class="categoria">Base de datos</div>
+                        <div class="fecha">01/Jul/2021</div>
                     </div>
                 </div>
                 <!-- aqui termina el curso -->
@@ -187,9 +184,7 @@
 
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
     <script src="jquery/jquery.js"></script>
     <script src="bootstrap/bootstrap.min.js"></script>

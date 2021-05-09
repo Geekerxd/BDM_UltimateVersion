@@ -12,15 +12,14 @@
     -->
 
     <!--bootstrap-->
-    <link rel="stylesheet" href="bootstrap/bootstrap.css" /> 
+    <link rel="stylesheet" href="bootstrap/bootstrap.css" />
     <!--style css-->
-    <link rel="stylesheet" href="curso.css">
+    <link rel="stylesheet" href="CSS/curso.css">
 
     <!-- Iconos-->
     <script src="https://kit.fontawesome.com/8a399301fb.js" crossorigin="anonymous"></script>
     <!-- Fonts de google:-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -42,21 +41,18 @@
           <img class="icon" src=" Assets/KineCineNaranja.png " alt="error-en-al-capa-8" /> 
       -->
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" style="color: #275d8c">Inicio <span
-                            class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#" style="color: #275d8c">Inicio <span class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #f29849">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #f29849">
                         Categorias
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -117,7 +113,7 @@
             </button>
         </div>
     </nav>
-    
+
     <!--///////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////Contenido de curso////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////-->
@@ -133,15 +129,15 @@
         </div>
         <!--texto de descripcion-->
         <div class="descCurso">
-            <p>PHP es un lenguaje de código abierto muy popular especialmente adecuado para el desarrollo 
-                web y que puede ser incrustado en HTML. En lugar de usar muchos comandos para mostrar HTML 
+            <p>PHP es un lenguaje de código abierto muy popular especialmente adecuado para el desarrollo
+                web y que puede ser incrustado en HTML. En lugar de usar muchos comandos para mostrar HTML
                 (como en C o en Perl), las páginas de PHP contienen HTML con código incrustado que hace "algo".
             </p>
         </div>
         <!--cuadros/botones-->
         <div class="nivelesCurso">
             <div class="nivelCurso">
-              <h3 class="nivelCurso">Niveles</h3>  
+                <h3 class="nivelCurso">Niveles</h3>
             </div>
             <div class="losNiveles">
                 <center>
@@ -154,13 +150,11 @@
                 </center>
             </div>
         </div>
-        
+
         <!--video-->
-        
+
         <center>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/ykGRYEX0n60" frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ykGRYEX0n60" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </center>
 
 
@@ -171,21 +165,19 @@
                     <a href="pagarCurso.php">Inscribirse</a>
                 </button>
             </div>
-        </center> 
+        </center>
 
         <!--///////////////////////////////////////////////////////////////////////////////////////////
             ////////////////////////Niveles del curso/////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////-->
-        
+
         <div class="niveldeCurso">
-            
+
             <h1 id="numNivel">Nivel 1</h1>
             <h1 id="nombreNivel">Introduccion a php</h1>
             <p>En este nivel veremos las bases de php.</p>
             <center>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/ykGRYEX0n60" frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen></iframe><br>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ykGRYEX0n60" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
             </center>
             <a href="https://www.fdi.ucm.es/profesor/jpavon/web/33-PHP.pdf">Contenido del curso</a><br>
             <a href="https://www.fdi.ucm.es/profesor/jpavon/web/33-PHP.pdf">Contenido del curso</a><br>
@@ -195,47 +187,45 @@
             <h1 id="comentCurso">Comentarios</h1>
             <!-- AQUI EMPIEZA EL COMENTARIO -->
             <div id="list-item-1" class="card-comentarios text-left">
-              <div class="card-header">
-                  <img src="https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg" alt="foto">
-                <label for="usuario">Martin Montemayor</label>
-              </div>
-              <div class="card-body">
-                  <input class="card-text" type="text" style="width:100%" value="Esta muy bueno"></input>
-              </div>
-              <div class="card-footer">
-                <label for="fecha-hora" class="fecha-hora">10/10/2020 23:12</label>
-              </div>
-                
+                <div class="card-header">
+                    <img src="https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg" alt="foto">
+                    <label for="usuario">Martin Montemayor</label>
+                </div>
+                <div class="card-body">
+                    <input class="card-text" type="text" style="width:100%" value="Esta muy bueno"></input>
+                </div>
+                <div class="card-footer">
+                    <label for="fecha-hora" class="fecha-hora">10/10/2020 23:12</label>
+                </div>
+
             </div>
 
             <!-- AQUI EMPIEZA EL COMENTARIO -->
             <div id="list-item-1" class="card-comentarios text-left">
                 <div class="card-header">
                     <img src="https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg" alt="foto">
-                  <label for="usuario">Alejandra Quiroz</label>
+                    <label for="usuario">Alejandra Quiroz</label>
                 </div>
                 <div class="card-body">
                     <input class="card-text" type="text" style="width:100%" value="Recomendable"></input>
                 </div>
                 <div class="card-footer">
-                  <label for="fecha-hora" class="fecha-hora">10/10/2020 23:12</label>
+                    <label for="fecha-hora" class="fecha-hora">10/10/2020 23:12</label>
                 </div>
-                  
-              </div>
+
+            </div>
         </div>
 
 
     </div>
 
-   
-    
-    
+
+
+
 
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>
 
 </html>
