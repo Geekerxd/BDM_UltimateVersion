@@ -1,6 +1,7 @@
-var Curso = function(nombre, desc, costo, categoria) {
+var Curso = function(nombre, desc, descCorta, costo, categoria) {
 	this.nombre = nombre;
 	this.desc = desc;
+	this.descCorta = descCorta;
     this.costo = costo;
     this.categoria = categoria;
 	//this.foto = foto;
@@ -9,7 +10,7 @@ var Curso = function(nombre, desc, costo, categoria) {
 
 Curso.prototype = {	
 	isValid: function() {
-		if (!this.nombre || !this.desc || !this.costo || !this.categoria) return false;
+		if (!this.nombre || !this.desc || !this.descCorta || !this.costo || !this.categoria) return false;
 		return true;
 	}
 };

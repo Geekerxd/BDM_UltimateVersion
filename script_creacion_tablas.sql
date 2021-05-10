@@ -7,50 +7,58 @@ CREATE TABLE IF NOT EXISTS usuario (
     nombre VARCHAR(80) NOT NULL,
     apellidoPat VARCHAR(80) NOT NULL,
     apellidoMat VARCHAR(80) NOT NULL,
-    contrasena VARCHAR(8) NOT NULL,
+    contrasena VARCHAR(16) NOT NULL,
     email VARCHAR(100) NOT NULL,
     telefono VARCHAR(10),
     foto BLOB,
-    fecha_registro DATETIME NOT NULL
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 DROP TABLE usuario;
 
-INSERT INTO usuario(rol, nombre, apellidoPat, apellidoMat, contrasena, email, telefono, fecha_registro) VALUES ("escuela", "Javier", "Lopez", "Gonzalez", "123456B_", "javier@gmail.com", "8123432981", "2021-09-12 05:30:23");
+INSERT INTO usuario(rol, nombre, apellidoPat, apellidoMat, contrasena, email, telefono) VALUES ("escuela", "Javier", "Lopez", "Gonzalez", "123456B_", "javier@gmail.com", "8123432981");
 
 SELECT* FROM usuario;
 
 CREATE TABLE IF NOT EXISTS categoria (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(80) NOT NULL,
-    descripcion VARCHAR(300),
-    foto BLOB
+	idCat INT AUTO_INCREMENT PRIMARY KEY,
+    nombreCat VARCHAR(80) NOT NULL,
+    descripcionCat VARCHAR(1000),
+    fotoCat VARCHAR(2000)
 );
 
 DROP TABLE categoria;
 
+SELECT* FROM categoria;
+
 CREATE TABLE IF NOT EXISTS curso (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(80) NOT NULL,
-    descripcion VARCHAR(300),
+	idCurso INT AUTO_INCREMENT PRIMARY KEY,
+    nombreCurso VARCHAR(80) NOT NULL,
+    descripcionCurso VARCHAR(1000),
+    descCortaCurso VARCHAR(200),
     costo FLOAT NOT NULL,
-    video BLOB,
-    foto BLOB,
+    videoCurso VARCHAR(2000),
+    fotoCurso VARCHAR(2000),
+    valoracion FLOAT DEFAULT 0.0,
     idUsuarioCreador INT NOT NULL,
     idCategoria INT NOT NULL,
     FOREIGN KEY (idUsuarioCreador) REFERENCES usuario(id),
-    FOREIGN KEY (idCategoria) REFERENCES categoria (id)
+    FOREIGN KEY (idCategoria) REFERENCES categoria (idCat)
 );
 
 DROP TABLE curso;
 
+DELETE FROM curso WHERE curso.id = 14;
+
+SELECT* FROM curso;
+
 CREATE TABLE IF NOT EXISTS nivel (
 	id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(80) NOT NULL,
-    descripcion VARCHAR(300),
-    foto BLOB,
-    video BLOB NOT NULL,
-    archivo BLOB NOT NULL,
+    descripcion VARCHAR(1000),
+    foto VARCHAR(2000),
+    video VARCHAR(2000) NOT NULL,
+    archivo VARCHAR(2000) NOT NULL,
     idCurso INT NOT NULL,
     FOREIGN KEY (idCurso) REFERENCES curso (id)
 );
@@ -67,9 +75,10 @@ CREATE TABLE IF NOT EXISTS estudiantesCursando (
     PRIMARY KEY(idEstudiante, idCurso),
     nivelCursado INT DEFAULT 1,
     cursoFinalizado BIT DEFAULT 0,
-    fechaInicio DATE,
-    fechaFinal DATE NOT NULL,
-    ultimoNivel BIT DEFAULT 0
+    fechaInicio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fechaFinal TIMESTAMP DEFAULT NULL,
+    ultimoNivel BIT DEFAULT 0,
+    progreso FLOAT DEFAULT 0
 );
 
 DROP TABLE estudiantesCursando;
@@ -80,7 +89,8 @@ CREATE TABLE IF NOT EXISTS comentariosEnCursos (
     FOREIGN KEY (idEstudiante) REFERENCES usuario (id),
     FOREIGN KEY (idCurso) REFERENCES curso (id),
     PRIMARY KEY(idEstudiante, idCurso),
-    comentario VARCHAR(300) NOT NULL
+    comentario VARCHAR(300) NOT NULL,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 DROP TABLE comentariosEnCursos;
@@ -100,9 +110,16 @@ CREATE TABLE IF NOT EXISTS mensajeChat (
     idChat INT NOT NULL,
     FOREIGN KEY (idChat) REFERENCES chat(idChat),
     mensaje VARCHAR(300) NOT NULL,
-    fecha DATETIME
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 DROP TABLE mensajeChat;
 
-CALL `webstudy`.`sp_loginUsuario`("javier@gmail.com", "123456B_");
+CALL `webstudy`.`sp_signupUsuario`("escuela", "Omar", "Alvarado", "Rodriguez", "123456O_", "Omar@gmail.com", "8123432981");
+CALL `webstudy`.`sp_loginUsuario`("estudiante", "dani_g.mazatan@hotmail.com", "123456A_");
+CALL `webstudy`.`sp_createCategory`("base de datos","muchas cosas");
+CALL `webstudy`.`sp_getCategorias`();
+
+CALL `webstudy`.`sp_createCurso`("css", "estilos", "lalalalalallalalalala", "2000", 1, "escuela", "123456B_", "javier@gmail.com");
+
+CALL `webstudy`.`sp_getCursos`();

@@ -7,24 +7,29 @@ $(document).ready(function () {
         if ($("input:radio[name=categoria]:checked").val() != "") {
             if ($("#inputNombre").val() != "") {
                 if ($("#inputDesc").val() != "") {
-                    if ($("#inputCosto").val() != "") {
+                    if ($("#inputDescCorta").val() != "") {
+                        if ($("#inputCosto").val() != "") {
 
-                        var categoria = $("input:radio[name=categoria]:checked").val();
-                        var nombre = $("#inputNombre").val();
-                        var desc = $("#inputDesc").val();
-                        var costo = $("#inputCosto").val();
+                            var categoria = $("input:radio[name=categoria]:checked").val();
+                            var nombre = $("#inputNombre").val();
+                            var desc = $("#inputDesc").val();
+                            var descCorta = $("#inputDescCorta").val();
+                            var costo = $("#inputCosto").val();
                         
-                        if(validarPrecio(costo)){
+                            if(validarPrecio(costo)){
 
-                            var curso = new Curso(nombre, desc, costo, categoria);
+                                var curso = new Curso(nombre, desc, descCorta, costo, categoria);
 
-                            crearCurso(curso);
+                                crearCurso(curso);
 
+                            }
+                            else{
+                                alert ("Debe ingresar solo números y un solo punto decimal.")
+                            }
                         }
                         else{
-                            alert ("Debe ingresar solo números y un solo punto decimal.")
+                            alert ("Debe llenar los campos requeridos.");
                         }
-                
                     }
                     else{
                         alert ("Debe llenar los campos requeridos.");
@@ -96,7 +101,7 @@ $(document).ready(function () {
 
                 for (let index = 0; index < objectLength; index++) {
 
-                    $(".curso-categoria").append("<input type='radio' id= inputCategoria" + Object.values(data[index].id).join("") + " name='categoria' value=" + Object.values(data[index].id).join("") + "><label for= inputCategoria" + Object.values(data[index].id).join("") + ">" + Object.values(data[index].nombre).join("") + "</label><br>");
+                    $(".curso-categoria").append("<input type='radio' id= inputCategoria" + Object.values(data[index].idCat).join("") + " name='categoria' value=" + Object.values(data[index].idCat).join("") + "><label for= inputCategoria" + Object.values(data[index].idCat).join("") + ">" + Object.values(data[index].nombreCat).join("") + "</label><br>");
                 }
             },
             error: function(x, y, z) {
@@ -113,6 +118,7 @@ $(document).ready(function () {
             categoria: curso.categoria,
             nombre: curso.nombre,
             descripcion: curso.desc,
+            descripcionCorta: curso.descCorta,
             costo: curso.costo
         };
 

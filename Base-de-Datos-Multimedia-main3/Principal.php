@@ -24,6 +24,9 @@ session_start();
     <link rel="stylesheet" href="bootstrap/bootstrap.css" />
     <!-- CSS -->
     <link rel="stylesheet" href="CSS/Principal.css">
+
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="principal.js"></script>
 </head>
 
 <body>
@@ -140,137 +143,10 @@ session_start();
     <div class="container" style="margin-top: 50px">
         <div id="main-news">
             <h2 class="Subtitles">Cursos destacados</h2>
-            <div class="row">
+            <div class="noticias-row">
                 <!-- Tamaño PC-->
-                <!-- Aqui empieza una carta de curso-->
-                <div class="card col-12 col-sm-6 col-md-3 d-none d-sm-block">
-                    <span class="badge badge-info etiqueta">Programacion web</span>
-                    <a href="curso.php" target="_blank">
-                        <img src="https://seeklogo.com/images/E/ElePHPant_-_Mascot_PHP-logo-4C78D1AC4E-seeklogo.com.jpg" class="card-img-top" alt="no se pudo cargar esta imagen" />
-                    </a>
-                    <div class="Tarjeta-texto">
-                        <p style="margin-top: 15px">
-                            <strong>
-                                php
-                            </strong>
-                        </p>
-                        <p class="lead" style="font-size: 15px">
-                            Aprende desarrollo web a traves de php.
-                            <a class="linkColor" href="Home.php">Más información</a>
-                        </p>
-                    </div>
-                    <!-- 
                 
-                <div class="card-body">
-                
-                    
-                </div>
-                -->
-                    <div class="row empty"></div>
-                    <div class="container row A-center">
-                        <span class="material-icons md-xx">
-                            thumb_up
-                        </span>
-                        <i class="fas" :hover>80%</i>
-                        <!--<i class="fas fa-hand-point-down" :hover>80%</i>-->
-                        <i class="fas fa-comment" :hover>138</i>
-                        <!--<i class="fas fa-ellipsis-h" :hover></i>-->
-                    </div>
-                </div>
-                <!-- Aqui termina una carta de curso-->
 
-                <!-- Aqui empieza una carta de curso-->
-                <div class="card col-12 col-sm-6 col-md-3 d-none d-sm-block">
-                    <span class="badge badge-info etiqueta">Programacion web</span>
-                    <a href="UnaNoticia.jsp" target="_blank">
-                        <img src="https://img.flaticon.com/icons/png/512/174/174854.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF" class="card-img-top" alt="no se pudo cargar esta imagen" />
-                    </a>
-                    <div class="Tarjeta-texto">
-                        <p style="margin-top: 15px">
-                            <strong>
-                                html
-                            </strong>
-                        </p>
-                        <p class="lead" style="font-size: 15px">
-                            Aprende las bases del desarrollo web con html.
-                            <a class="linkColor" href="Home.php">Más información</a>
-                        </p>
-                    </div>
-
-                    <div class="row empty"></div>
-                    <div class="container row A-center">
-                        <span class="material-icons md-xx">
-                            thumb_up
-                        </span>
-                        <i class="fas" :hover>86%</i>
-                        <!--<i class="fas fa-hand-point-down" :hover>80%</i>-->
-                        <i class="fas fa-comment" :hover>138</i>
-                        <!--<i class="fas fa-ellipsis-h" :hover></i>-->
-                    </div>
-                </div>
-                <!-- Aqui termina una carta de curso-->
-
-                <!-- Aqui empieza una carta de curso-->
-                <div class="card col-12 col-sm-6 col-md-3 d-none d-sm-block">
-                    <span class="badge badge-info etiqueta">Base de datos</span>
-                    <a href="UnaNoticia.jsp" target="_blank">
-                        <img src="https://i1.wp.com/buconda.com/wp-content/uploads/2019/06/mysql-logo.png?fit=759%2C500&ssl=1" class="card-img-top" alt="no se pudo cargar esta imagen" />
-                    </a>
-                    <div class="Tarjeta-texto">
-                        <p style="margin-top: 15px">
-                            <strong>
-                                ORACLE MySQL
-                            </strong>
-                        </p>
-                        <p class="lead" style="font-size: 15px">
-                            Aprende a crear, usar y administrar bases de datos tradicionales.
-                            <a class="linkColor" href="Home.php">Más información</a>
-                        </p>
-                    </div>
-
-                    <div class="row empty"></div>
-                    <div class="container row A-center">
-                        <span class="material-icons md-xx">
-                            thumb_up
-                        </span>
-                        <i class="fas" :hover>70%</i>
-                        <!--<i class="fas fa-hand-point-down" :hover>80%</i>-->
-                        <i class="fas fa-comment" :hover>118</i>
-                        <!--<i class="fas fa-ellipsis-h" :hover></i>-->
-                    </div>
-                </div>
-                <!-- Aqui temrina una carta de curso-->
-
-                <!-- Aqui empieza una carta de curso-->
-                <div class="card col-12 col-sm-6 col-md-3 d-none d-sm-block">
-                    <span class="badge badge-info etiqueta">Desarrollo de apps</span>
-                    <a href="UnaNoticia.jsp" target="_blank">
-                        <img src="https://blog.sosafeapp.com/content/images/2020/04/blog---mi-primera-app-en-Kotlin.png" class="card-img-top" alt="no se pudo cargar esta imagen" />
-                    </a>
-                    <div class="Tarjeta-texto">
-                        <p style="margin-top: 15px">
-                            <strong>
-                                Kotlin
-                            </strong>
-                        </p>
-                        <p class="lead" style="font-size: 15px">
-                            Aprende Kotlin para desarrollo de aplicaciones moviles para Android.
-                            <a class="linkColor" href="Home.php">Más información</a>
-                        </p>
-                    </div>
-
-                    <div class="row empty"></div>
-                    <div class="container row A-center">
-                        <span class="material-icons md-xx">
-                            thumb_up
-                        </span>
-                        <i class="fas" :hover>81%</i>
-                        <!--<i class="fas fa-hand-point-down" :hover>80%</i>-->
-                        <i class="fas fa-comment" :hover>108</i>
-                        <!--<i class="fas fa-ellipsis-h" :hover></i>-->
-                    </div>
-                </div>
-                <!-- Aqui temrina una carta de curso-->
 
                 <!-- Tamaño celular-->
                 <div class="card mb-3 col-12 d-block d-sm-none">

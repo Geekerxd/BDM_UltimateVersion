@@ -45,6 +45,14 @@
         <input type="text" id="inputNombre" class="form-control" placeholder="" required required>
 
       </div>
+
+      <div class="form-label-group">
+        <label for="inputDescCorta">Descripcion corta</label>
+        <input type="text" id="inputDescCorta" class="form-control" placeholder="Resuma en que consiste su curso" required
+          required>
+
+      </div>
+
       <div class="form-label-group">
         <label for="input">Descripcion</label>
         <input type="text" id="inputDesc" class="form-control" placeholder="Detalle en que consiste su curso" required
