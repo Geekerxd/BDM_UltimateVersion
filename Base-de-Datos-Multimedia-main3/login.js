@@ -52,16 +52,6 @@ $(document).ready(function() {
                     //obtenemos el mensaje enviado desde el servidor SIN formato JSON
                     alert(data);
 
-                    console.log(Usuario.values(data));
-                    var objectLength = Usuario.keys(data).length;
-                    for (let index = 0; index < objectLength; index++) {
-                        $(".product-list").append(
-                            "<div class='product'><p>" + Object.values(data[index].p_name).join("") + "</p><p>" +
-                            Usuario.values(data[index].p_detail).join("") + "</p><p>$" +
-                            Usuario.values(data[index].p_price).join("") + "</p><button class='btnEliminar'>Eliminar<p class='ID' style='visibility: hidden; display: none;'>" +
-                            Usuario.values(data[index].id_product).join("") +
-                            "</p></button></div>");
-                    }
                 },
                 error: function(x, y, z) {
                     alert("Error en webservice: " + x + y + z);

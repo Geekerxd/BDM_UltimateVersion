@@ -184,6 +184,10 @@ session_start();
                 <li class="nav-item">
                     <a class="nav-link" id="LogOut-tab" data-toggle="tab" href="#LogOut" role="tab" aria-controls="LogOut" aria-selected="false">Salir</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab" aria-controls="LogOut" aria-selected="false">Categoria</a>
+                </li>
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="inicio" role="tabpanel" aria-labelledby="inicio-tab">
@@ -199,6 +203,7 @@ session_start();
                     </a>
 
                 </div>
+
                 <div class="tab-pane fade" id="noticias" role="tabpanel" aria-labelledby="noticias-tab">
 
 
@@ -297,6 +302,7 @@ session_start();
                     </form>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
+
                 <div class="tab-pane fade" id="LogOut" role="tabpanel" aria-labelledby="LogOut-tab">
 
                     <a href="logout.php" class="btn btn-danger ml-3">Sign Out of Your Account</a>
@@ -304,6 +310,16 @@ session_start();
 
 
 
+                </div>
+
+                <div class="tab-pane fade" id="categoria" role="tabpanel" aria-labelledby="categoria-tab">
+
+                    <a href="crearCategoria.php">
+                        <button type="button" class="btn btn-primary" id="gotogestor2" style="margin-right: auto; margin-left: auto">
+                            Gestor de Categorias
+                        </button>
+
+                    </a>
                 </div>
             </div>
         </div>
