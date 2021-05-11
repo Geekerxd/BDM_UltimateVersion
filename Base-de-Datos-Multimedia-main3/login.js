@@ -30,6 +30,9 @@ $(document).ready(function() {
         }
 
         function loginUsuario(usuariologin) {
+
+            var tipoUsuarioLogin;
+
             // Objeto en formato JSON el cual le enviaremos al webservice (PHP)
             var dataToSend = {
                 action: "getUser",
@@ -48,10 +51,11 @@ $(document).ready(function() {
                 async: true,
                 type: "POST",
                 data: dataToSend,
+                dataType: 'json',
                 success: function(data) {
                     //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                    alert(data);
-
+                    alert("Ingreso el usuario: "+data);
+                    
                 },
                 error: function(x, y, z) {
                     alert("Error en webservice: " + x + y + z);

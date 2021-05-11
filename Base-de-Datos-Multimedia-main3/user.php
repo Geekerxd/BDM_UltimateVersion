@@ -72,6 +72,64 @@
             mysqli_close($mysqli);
         }
 
+        function getInfoUser(){
+
+            $db = new Connection;
+
+            $mysqli = $db->connect();
+
+            session_start();
+
+            $result = $mysqli->query("CALL sp_traeInfoUsuario('".$_SESSION["rol"]."','".$_SESSION["email"]."','".$_SESSION["contrasena"]."');");
+
+            if(!$result){
+                echo "Problema al hacer el query: " . $mysqli->error;
+            }
+            else{
+                // Recorremos los resultados devueltos        
+			    $rows = array();
+			    while( $r = $result->fetch_assoc()) {
+				    $rows[] = $r;
+			    }			
+			    // Codificamos los resultados a formato JSON y lo enviamos al HTML (Client-Side)
+			    echo json_encode($rows);
+            }
+
+            mysqli_close($mysqli);
+        }
+
+
+        function modificateUser(){
+            $this->nombre = $_POST["nombre"];
+            $this->apellidoPat = $_POST["apellidoPat"];
+            $this->apellidoMat = $_POST["apellidoMat"];
+            $this->contrasena = $_POST["contrasena"];
+            $this->email = $_POST["email"];
+            $this->telefono = $_POST["telefono"];
+
+            $db = new Connection;
+
+            $mysqli = $db->connect();
+
+            session_start();
+
+            $result = $mysqli->query("CALL sp_modificarUsuario('".$this->nombre."','".$this->apellidoPat."','".$this->apellidoMat."','".$this->contrasena."','".$this->email."','".$this->telefono."','".$_SESSION['rol']."','".$_SESSION['email']."','".$_SESSION['contrasena']."');");
+        
+            if(!$result){
+                echo "Problema al hacer el query: " . $mysqli->error;
+            }
+            else{
+                echo "Todo salio bien.";
+
+                session_start();
+                            
+                // Store data in session variables
+                $_SESSION["contrasena"] = $this->contrasena;
+                $_SESSION["email"] = $this->email; 
+            }
+
+            mysqli_close($mysqli);
+        }
 
     }
 
@@ -83,6 +141,12 @@
     }
     else if($action == "getUser"){
         $user->getUser();
+    }
+    else if($action == "getInfoUser"){
+        $user->getInfoUser();
+    }
+    else if($action == "modificateUser"){
+        $user->modificateUser();
     }
 
 ?>

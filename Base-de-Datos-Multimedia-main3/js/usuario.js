@@ -21,3 +21,12 @@ var UsuarioLogIn = function(rol, contrasena, email){
 	this.contrasena = contrasena;
 	this.email = email;
 };
+
+var ModificateUsuario = function(modNombre, modApellidoPat, modApellidoMat, modContrasena, modEmail, modTelefono){
+	this.modNombre = modNombre;
+	this.modApellidoPat = modApellidoPat;
+	this.modApellidoMat = modApellidoMat;
+	this.modContrasena = modContrasena;
+	this.modEmail = modEmail;
+	this.modTelefono = modTelefono;
+}

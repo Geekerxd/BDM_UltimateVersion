@@ -123,3 +123,7 @@ CALL `webstudy`.`sp_getCategorias`();
 CALL `webstudy`.`sp_createCurso`("css", "estilos", "lalalalalallalalalala", "2000", 1, "escuela", "123456B_", "javier@gmail.com");
 
 CALL `webstudy`.`sp_getCursos`();
+
+CALL `webstudy`.`sp_traeInfoUsuario`("estudiante", "dani_g.mazatan@hotmail.com", "123456A_");
+
+CALL `webstudy`.`sp_modificarUsuario`("Luis", "Lopez", "Montemayor", "123456L_", "Luis@gmail.com", "8126854889", "escuela", "Omar@gmail.com", "123456O_");
