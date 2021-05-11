@@ -149,7 +149,9 @@ body {
     color: #c4c4c4;
   }
   
-  
+  .btnInfoCurso{
+    border-radius: 10px;
+  }
   
   .container.row.A-center {
     
@@ -160,10 +162,6 @@ body {
   
     position: absolute;
     bottom: 10px;
-  }
-
-  .container {
-    margin-bottom: 150px;
   }
   
   a.linkColor {
