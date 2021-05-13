@@ -200,6 +200,7 @@ $(document).ready(function(){
 
                 for (let index = 0; index < objectLength; index++) {
                     
+                    $("#nombreDelUsuario").append("<h2 class='username'>"+ Object.values(data[index].nombre).join("") + " " + Object.values(data[index].apellidoPat).join("") +" "+ Object.values(data[index].apellidoMat).join("") + " <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='#F29849' width='24px' height='24px'><path d='M0 0h24v24H0z' fill='none' /><path d='M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z' /></svg></h2><br>");
                     $("#InfoNombre1").append("<input type='text' class='form-control' id='inputInfoNombre' placeholder=" + Object.values(data[index].nombre).join("") + " />");
                     $("#InfoApellidoPat1").append("<input type='text' class='form-control' id='inputInfoApellidoPat' placeholder=" + Object.values(data[index].apellidoPat).join("") + " />");
                     $("#InfoApellidoMat1").append("<input type='text' class='form-control' id='inputInfoApellidoMat' placeholder=" + Object.values(data[index].apellidoMat).join("") + " />");

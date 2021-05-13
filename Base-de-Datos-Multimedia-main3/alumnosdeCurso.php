@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historial</title>
+    <title>Progreso de alumnos</title>
     <!-- Bootstrap CSS 
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -22,7 +22,7 @@
     <!--bootstrap-->
     <link rel="stylesheet" href="bootstrap/bootstrap.css" />
     <!-- CSS -->
-    <link rel="stylesheet" href="CSS/historial.css">
+    <link rel="stylesheet" href="CSS/progresoAlumnos.css">
 </head>
 
 <body>
@@ -114,25 +114,24 @@
 
     <div class="container" style="margin-top: 50px">
         <div id="main-news">
-            <h2 class="Subtitles">Historial</h2>
+            <h2 class="Subtitles">Progreso de alumnos</h2>
             <div class="historial">
                 <!-- Tamaño PC-->
 
                 <!-- aqui comienza el curso -->
                 <div id="list-item-1" class="card-curso text-left">
                     <div class="card-header">
-                        PHP
+                        <input type="text" name="datosalumno" id="inputNombre" class="form-control" placeholder="Juanito">
                     </div>
                     <img src="https://seeklogo.com/images/E/ElePHPant_-_Mascot_PHP-logo-4C78D1AC4E-seeklogo.com.jpg" class="card-img" alt="php">
                     <div class="card-body">
                         <!-- <h5 class="card-title">Special title treatment</h5> -->
-                        <p class="card-text">Felicidades, has concluido tu curso de programacion web con php.</p>
-                        <a href="curso.php" class="btn btn-primary">Mas informacion</a>
-                        <a href="diploma.php" class="btn btn-primary">Ver diploma</a>
-                    </div>
-                    <div class="card-footer">
-                        <div class="categoria">Programacion web</div>
-                        <div class="fecha">10/Oct/2021</div>
+                        <label class="labelDatos" for="inputEmail">Correo: </label>
+                        <input type="text" name="datosalumno" id="inputEmail" class="form-control" placeholder="juan@gmail.com"><br>
+                        <label class="labelDatos" for="inputTelefono">Telefono: </label>
+                        <input type="text" name="datosalumno" id="inputTelefono" class="form-control" placeholder="162738294"><br>
+                        <label class="labelDatos" for="inputProgreso">Progreso en el curso: </label>
+                        <input type="text" name="datosalumno" id="inputProgreso" class="form-control" placeholder="45%"><br>
                     </div>
                 </div>
                 <!-- aqui termina el curso -->

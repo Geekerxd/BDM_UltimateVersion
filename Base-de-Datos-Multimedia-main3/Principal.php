@@ -29,8 +29,34 @@ session_start();
     <script type="text/javascript" src="principal.js"></script>
 
     <script type="text/javascript">
-        function buscaCurso(valor){
-            alert(valor);
+        function buscaCurso(idCurso1, idCreador1){
+
+            // Objeto en formato JSON el cual le enviaremos al webservice (PHP)
+        var dataToSend = {
+            action: "setCursoActual",
+            idCurso: idCurso1,
+            idCreador: idCreador1,
+        };
+
+        //var objetoEnJSON = JSON.stringify(sendProduct);
+
+        //var objetoDesdeJSON = JSON.parse(objetoEnJSON);
+
+        $.ajax({
+            //url: "https://miwebservices.000webhostapp.com/webservice/webservice.php",
+            url: "cursos.php",
+            async: true,
+            type: "POST",
+            data: dataToSend,
+            success: function(data) {
+                //obtenemos el mensaje enviado desde el servidor SIN formato JSON
+                alert("yendo a "+valor);
+
+            },
+            error: function(x, y, z) {
+                alert("Error en webservice: " + x + y + z);
+            },
+        });
         }
     </script>
 </head>
@@ -40,7 +66,7 @@ session_start();
 
     <?php
     if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-        echo "Tipo: " . $_SESSION['rol'] . " Contrasena: " . $_SESSION['contrasena'] . " correo: " . $_SESSION['email'];
+        echo "Tipo: " . $_SESSION['rol'] . " Contrasena: " . $_SESSION['contrasena'] . " correo: " . $_SESSION['email'] . " idCurso: " . $_SESSION['idCursoActual'];
     }
 
     ?>

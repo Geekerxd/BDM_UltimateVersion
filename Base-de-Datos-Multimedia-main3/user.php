@@ -59,7 +59,7 @@
                 $_SESSION["loggedin"] = true;
                 $_SESSION["rol"] = $this->tipo_usuario;
                 $_SESSION["contrasena"] = $this->contrasena;
-                $_SESSION["email"] = $this->email; 
+                $_SESSION["email"] = $this->email;
             
 			$rows = array();
 			while( $r = $result->fetch_assoc()) {
@@ -131,6 +131,27 @@
             mysqli_close($mysqli);
         }
 
+        function inscribirAlumno(){
+
+            $db = new Connection;
+
+            $mysqli = $db->connect();
+            
+            session_start();
+
+            $result = $mysqli->query("CALL sp_inscribeUsuario('".$_SESSION["email"]."','".$_SESSION["contrasena"]."','".$_SESSION["idCursoActual"]."');");
+        
+            if(!$result){
+                echo "Problema al hacer el query: " . $mysqli->error;
+            }
+            else{
+                echo "Todo salio bien.";
+            }
+
+            mysqli_close($mysqli);
+        }
+
+
     }
 
     $user = new User;
@@ -147,6 +168,9 @@
     }
     else if($action == "modificateUser"){
         $user->modificateUser();
+    }
+    else if($action == "inscribirAlumno"){
+        $user->inscribirAlumno();
     }
 
 ?>

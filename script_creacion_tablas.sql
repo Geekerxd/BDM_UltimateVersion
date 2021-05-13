@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS usuario (
 );
 
 DROP TABLE usuario;
+DELETE FROM usuario WHERE usuario.id = 6;
 
 INSERT INTO usuario(rol, nombre, apellidoPat, apellidoMat, contrasena, email, telefono) VALUES ("escuela", "Javier", "Lopez", "Gonzalez", "123456B_", "javier@gmail.com", "8123432981");
 
@@ -53,33 +54,37 @@ DELETE FROM curso WHERE curso.id = 14;
 SELECT* FROM curso;
 
 CREATE TABLE IF NOT EXISTS nivel (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(80) NOT NULL,
-    descripcion VARCHAR(1000),
-    foto VARCHAR(2000),
-    video VARCHAR(2000) NOT NULL,
-    archivo VARCHAR(2000) NOT NULL,
-    idCurso INT NOT NULL,
-    FOREIGN KEY (idCurso) REFERENCES curso (id)
+	idNivel INT AUTO_INCREMENT PRIMARY KEY,
+    nombreNivel VARCHAR(80) NOT NULL,
+    descripcionNivel VARCHAR(1000),
+    fotoNivel VARCHAR(2000),
+    videoNivel VARCHAR(2000) NOT NULL,
+    archivoNivel VARCHAR(2000) NOT NULL,
+    idCursoNivel INT NOT NULL,
+    FOREIGN KEY (idCursoNivel) REFERENCES curso (idCurso)
 );
 
 DROP TABLE nivel;
+DELETE FROM nivel WHERE nivel.idNivel = 2;
+SELECT* FROM nivel;
 
 CREATE TABLE IF NOT EXISTS estudiantesCursando (
 	idEstudiante INT NOT NULL,
-    idCurso INT NOT NULL,
+    idCursoCursado INT NOT NULL,
     idMaestro INT NOT NULL,
     FOREIGN KEY (idEstudiante) REFERENCES usuario (id),
-    FOREIGN KEY (idCurso) REFERENCES curso (id),
+    FOREIGN KEY (idCursoCursado) REFERENCES curso (idCurso),
     FOREIGN KEY (idMaestro) REFERENCES curso (idUsuarioCreador),
-    PRIMARY KEY(idEstudiante, idCurso),
+    PRIMARY KEY(idEstudiante, idCursoCursado),
     nivelCursado INT DEFAULT 1,
     cursoFinalizado BIT DEFAULT 0,
-    fechaInicio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    fechaFinal TIMESTAMP DEFAULT NULL,
+    fechaInicioCurso TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fechaFinalCurso TIMESTAMP DEFAULT NULL,
     ultimoNivel BIT DEFAULT 0,
     progreso FLOAT DEFAULT 0
 );
+
+SELECT* FROM estudiantesCursando;
 
 DROP TABLE estudiantesCursando;
 
@@ -126,4 +131,14 @@ CALL `webstudy`.`sp_getCursos`();
 
 CALL `webstudy`.`sp_traeInfoUsuario`("estudiante", "dani_g.mazatan@hotmail.com", "123456A_");
 
-CALL `webstudy`.`sp_modificarUsuario`("Luis", "Lopez", "Montemayor", "123456L_", "Luis@gmail.com", "8126854889", "escuela", "Omar@gmail.com", "123456O_");
+CALL `webstudy`.`sp_modificarUsuario`("Aron", "Almaraz", "Caballero", "123456A_", "Aron@gmail.com", "8126854888", "escuela", "Luis@gmail.com", "123456L_");
+
+CALL `webstudy`.`sp_traeInfoCurso`(4);
+
+CALL `webstudy`.`sp_createNivel`("drop table mysql", "aqui veras drop table de mysql", 4);
+
+CALL `webstudy`.`sp_verificaIdUsuarioCreador`("escuela", "javier@gmail.com", "123456B_", 1);
+
+CALL `webstudy`.`sp_inscribeUsuario`("dani_g.mazatan@hotmail.com", "123456A_", 4);
+
+CALL `webstudy`.`sp_traeDatosCurso`(2);

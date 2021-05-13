@@ -279,7 +279,7 @@ div.contenidoCurso{
     margin-top: 30px;
 }
 
-div.contenidoCurso div.nombreCurso{
+div.contenidoCurso div.tituloCurso{
     text-align: center;
     background-color: #275d8c59;
     border-style: inset;
@@ -295,20 +295,7 @@ div.contenidoCurso div.nombreCurso{
     color: #204c73;
 }
 
-div.contenidoCurso div.imgCurso{
-    margin-top: 40px;
-    margin-bottom: 40px;
-    width: 597px;
-    margin-left: auto;
-    margin-right: auto;
-    border-style: outset;
-    border-width: 5px;
-    border-left-color: #204c73;
-    border-top-color: #204c73;
-    border-right-color: #F29849;
-    border-bottom-color: #F29849;
-    border-radius: 5px;
-}
+
 
 div.contenidoCurso div.descCurso{
     text-align: justify;
@@ -319,12 +306,29 @@ div.contenidoCurso div.descCurso{
 div.contenidoCurso div.nivelesCurso{
     margin-top: 40px;
     border-bottom: #204c73 solid 3px;
+    
 }
 
 div.contenidoCurso div.nivelesCurso div.nivelCurso{
     border-bottom: #204c73 solid 3px;
     font-family: 'Roboto',sans-serif;
     color: #204c73;
+}
+
+div.contenidoCurso div.nivelesCurso div.crearCurso button.btnCrearNivel{
+  background-color: #204c73;
+  margin: 10px;
+  border: darkgray inset 3px;
+  border-radius: 10px;
+  width: 200px;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: larger;
+}
+
+div.contenidoCurso div.nivelesCurso div.crearCurso button.btnCrearNivel:hover{
+  background-color: #193b58;
 }
 
 div.contenidoCurso div.nivelesCurso div.losNiveles{
@@ -391,6 +395,11 @@ div.contenidoCurso div.inscripcionCurso button.btnInscripcion a{
 div.contenidoCurso div.inscripcionCurso button.btnInscripcion:hover{
     background-color: #f0ab6f;
     
+}
+
+div.contenerdorInfoCursos{
+  width: 100%;
+  display: block;
 }
 
 div.contenidoCurso div.niveldeCurso{

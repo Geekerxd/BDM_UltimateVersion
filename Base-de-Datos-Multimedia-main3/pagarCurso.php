@@ -1,3 +1,10 @@
+<?php
+// Initialize the session
+session_start();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,9 +16,20 @@
   <link rel="stylesheet" href="bootstrap/bootstrap.css" />
 
   <link rel="stylesheet" href="CSS/pagarCurso.css" />
+
+  <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="pagarCurso.js"></script>
 </head>
 
 <body>
+
+<?php
+    if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+        echo "Tipo: " . $_SESSION['rol'] . " Contrasena: " . $_SESSION['contrasena'] . " correo: " . $_SESSION['email'] . " idCurso: " . $_SESSION['idCursoActual'];
+    }
+
+    ?>
+
   <div class="container">
     <!--Letras -->
     <h1 class="Subtitles">Inscripción</h1>
@@ -28,14 +46,22 @@
     <form class="form-signin">
 
       <div class="form-label-group">
-        <label id="primerLabel" for="">Nombre del curso: php</label><br><br>
-        <label for="">Cantidad de niveles: 6</label><br><br>
+        <div id="nombreCurso">
+          
+        </div>
+        <div id="cantidadNiveles">
+           
+        </div>
+       
 
-        <p>Este curso cuenta con los primeros 3 niveles completamente gratis. No pierdas tiempo y aprende
+        <!--<p>Este curso cuenta con los primeros 3 niveles completamente gratis. No pierdas tiempo y aprende
           desarrollo web ahora mismo.
-        </p><br>
+        </p><br>-->
 
-        <label for="">Costo del curso: $5,000</label><br><br>
+        <div id="costoCurso">
+          
+        </div>
+        
 
         <div class="metodosPago">
           <label>Método de pago</label><br>
@@ -55,7 +81,7 @@
 
       </div>
 
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Confirmar pago</button>
+      <button id="btnIncribirse" class="btn btn-lg btn-primary btn-block" type="submit">Confirmar pago</button>
 
       <p class="mt-5 mb-3 text-muted text-center">&copy;Hiromi 2017-2021</p>
     </form>

@@ -54,7 +54,13 @@ $(document).ready(function() {
                 dataType: 'json',
                 success: function(data) {
                     //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                    alert("Ingreso el usuario: "+data);
+                    if (data != null){
+                        alert("Ingreso el usuario: "+data);
+                    }
+                    else{
+                        alert("Hubo un error al iniciar sesion, cierre sesion y vuelva a ingresar.");
+                    }
+
                     
                 },
                 error: function(x, y, z) {

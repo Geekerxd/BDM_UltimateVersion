@@ -29,6 +29,7 @@ session_start();
     <link rel="stylesheet" href="bootstrap/bootstrap.css" />
     <!-- CSS -->
     <link rel="stylesheet" href="CSS/perfil.css">
+    <link rel="stylesheet" href="CSS/historial.css">
 
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="js/usuario.js"></script>
@@ -147,28 +148,22 @@ session_start();
 
 
             </div>
-
-            <h2 class="username">
-                José Manuel
-                <!-- si er registrado -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F29849" width="24px" height="24px">
-                    <path d="M0 0h24v24H0z" fill="none" />
-                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
-                </svg>
-                <!--          -->
-
-
-
-            </h2>
-
+            <div id="nombreDelUsuario">
+            
+            </div>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
+                
                 <li class="nav-item">
-                    <a class="nav-link active" id="inicio-tab" data-toggle="tab" href="#inicio" role="tab" aria-controls="inicio" aria-selected="true">Inicio</a>
+                    <a class="nav-link active" id="ajustes-tab" data-toggle="tab" href="#ajustes" role="tab" aria-controls="ajustes" aria-selected="false">Ajustes</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" id="inicio-tab" data-toggle="tab" href="#inicio" role="tab" aria-controls="inicio" aria-selected="true">Historial</a>
                 </li>
 
 
                 <li class="nav-item">
-                    <a class="nav-link" id="noticias-tab" data-toggle="tab" href="#noticias" role="tab" aria-controls="noticias" aria-selected="false">Mis Cursos</a>
+                    <a class="nav-link" id="cursos-tab" data-toggle="tab" href="#noticias" role="tab" aria-controls="noticias" aria-selected="false">Mis Cursos</a>
                 </li>
 
 
@@ -181,9 +176,7 @@ session_start();
                 <li class="nav-item">
                     <a class="nav-link" id="informacion-tab" data-toggle="tab" href="#informacion" role="tab" aria-controls="informacion" aria-selected="false">Información</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="ajustes-tab" data-toggle="tab" href="#ajustes" role="tab" aria-controls="ajustes" aria-selected="false">Ajustes</a>
-                </li>
+                
                 <li class="nav-item">
                     <a class="nav-link" id="LogOut-tab" data-toggle="tab" href="#LogOut" role="tab" aria-controls="LogOut" aria-selected="false">Salir</a>
                 </li>
@@ -193,17 +186,76 @@ session_start();
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="inicio" role="tabpanel" aria-labelledby="inicio-tab">
+                <div class="tab-pane fade" id="inicio" role="tabpanel" aria-labelledby="inicio-tab">
 
-                    <h3> Historial de cursos:</h3>
-
-                    <a href="historial.php">
-                        <button type="button" class="btn btn-primary" id="gotogestor" style="margin-right: auto; margin-left: auto">
-                            Ver historial
-                        </button>
+                
 
 
-                    </a>
+                    <div class="container" style="margin-top: 50px">
+                    <div id="main-news">
+                    <h2 class="Subtitles">Historial</h2>
+                    <div class="historial">
+                <!-- Tamaño PC-->
+
+                <!-- aqui comienza el curso -->
+                <div id="list-item-1" class="card-curso text-left">
+                    <div class="card-header">
+                        PHP
+                    </div>
+                    <img src="https://seeklogo.com/images/E/ElePHPant_-_Mascot_PHP-logo-4C78D1AC4E-seeklogo.com.jpg" class="card-img" alt="php">
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Special title treatment</h5> -->
+                        <p class="card-text">Felicidades, has concluido tu curso de programacion web con php.</p>
+                        <a href="curso.php" class="btn btn-primary">Mas informacion</a>
+                        <a href="diploma.php" class="btn btn-primary">Ver diploma</a>
+                    </div>
+                    <div class="card-footer">
+                        <div class="categoria">Programacion web</div>
+                        <div class="fecha">10/Oct/2021</div>
+                    </div>
+                </div>
+                <!-- aqui termina el curso -->
+
+                <!-- aqui comienza el curso -->
+                <div id="list-item-1" class="card-curso text-left">
+                    <div class="card-header">
+                        HTML
+                    </div>
+                    <img src="https://img.flaticon.com/icons/png/512/174/174854.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF" class="card-img" alt="html">
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Special title treatment</h5> -->
+                        <p class="card-text">Felicidades, has concluido tu curso de programacion web con html.</p>
+                        <a href="#" class="btn btn-primary">Mas informacion</a>
+                        <a href="#" class="btn btn-primary">Ver diploma</a>
+                    </div>
+                    <div class="card-footer">
+                        <div class="categoria">Programacion web</div>
+                        <div class="fecha">28/Ago/2021</div>
+                    </div>
+                </div>
+                <!-- aqui termina el curso -->
+
+                <!-- aqui comienza el curso -->
+                <div id="list-item-1" class="card-curso text-left">
+                    <div class="card-header">
+                        ORACLE MySQL
+                    </div>
+                    <img src="https://i1.wp.com/buconda.com/wp-content/uploads/2019/06/mysql-logo.png?fit=759%2C500&ssl=1" class="card-img" alt="MySQL">
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Special title treatment</h5> -->
+                        <p class="card-text">Felicidades, has concluido tu curso de base de datos tradicionales con MySQL.</p>
+                        <a href="#" class="btn btn-primary">Mas informacion</a>
+                        <a href="#" class="btn btn-primary">Ver diploma</a>
+                    </div>
+                    <div class="card-footer">
+                        <div class="categoria">Base de datos</div>
+                        <div class="fecha">01/Jul/2021</div>
+                    </div>
+                </div>
+                <!-- aqui termina el curso -->
+                </div>
+                </div>
+                </div>
 
                 </div>
 
@@ -212,6 +264,45 @@ session_start();
 
                     <h3>Los cursos que impartes</h3>
                     <div id="divGestorCursos" >
+
+                    <!-- aqui comienza el curso -->
+                <div id="list-item-1" class="card-curso text-left">
+                    <div class="card-header">
+                        HTML
+                    </div>
+                    <img src="https://img.flaticon.com/icons/png/512/174/174854.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF" class="card-img" alt="html">
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Special title treatment</h5> -->
+                        <p class="card-text">Felicidades, has concluido tu curso de programacion web con html.</p>
+                        <a href="#" class="btn btn-primary">Mas informacion</a>
+                        <a href="#" class="btn btn-primary">Ver alumnos</a>
+                    </div>
+                    <div class="card-footer">
+                        <div class="categoria">Programacion web</div>
+                        <div class="fecha">28/Ago/2021</div>
+                    </div>
+                </div>
+                <!-- aqui termina el curso -->
+
+                <!-- aqui comienza el curso -->
+                <div id="list-item-1" class="card-curso text-left">
+                    <div class="card-header">
+                        ORACLE MySQL
+                    </div>
+                    <img src="https://i1.wp.com/buconda.com/wp-content/uploads/2019/06/mysql-logo.png?fit=759%2C500&ssl=1" class="card-img" alt="MySQL">
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Special title treatment</h5> -->
+                        <p class="card-text">Felicidades, has concluido tu curso de base de datos tradicionales con MySQL.</p>
+                        <a href="#" class="btn btn-primary">Mas informacion</a>
+                        <a href="#" class="btn btn-primary">Ver alumnos</a>
+                    </div>
+                    <div class="card-footer">
+                        <div class="categoria">Base de datos</div>
+                        <div class="fecha">01/Jul/2021</div>
+                    </div>
+                </div>
+                <!-- aqui termina el curso -->
+                        <center>
                         <a href="crearCurso.php">
                             <button type="button" class="btn btn-primary" id="gotogestor" style="margin-right: auto; margin-left: auto">
                                 Gestor de Cursos
@@ -219,6 +310,7 @@ session_start();
 
 
                         </a>
+                        </center>
                     </div>
 
 
@@ -262,7 +354,7 @@ session_start();
 
 
 
-                <div class="tab-pane fade" id="ajustes" role="tabpanel" aria-labelledby="ajustes-tab">
+                <div class="tab-pane fade show active" id="ajustes" role="tabpanel" aria-labelledby="ajustes-tab">
                     <form class="ajustes">
                         
                         
@@ -328,7 +420,7 @@ session_start();
 
                 <div class="tab-pane fade" id="categoria" role="tabpanel" aria-labelledby="categoria-tab">
 
-                    <a href="crearCategoria.php">
+                    <a href="crearCategoria.php" id="abtncat">
                         <button type="button" class="btn btn-primary" id="gotogestor2" style="margin-right: auto; margin-left: auto">
                             Gestor de Categorias
                         </button>
@@ -345,7 +437,11 @@ session_start();
 
         if(tipo_usuarioLogin == "estudiante"){
             
-            document.getElementById("divGestorCursos").style.visibility = "hidden";
+            document.getElementById("cursos-tab").style.visibility = "hidden";
+            document.getElementById("categoria-tab").style.visibility = "hidden";
+        }
+        else{
+            document.getElementById("inicio-tab").style.visibility = "hidden";
         }
 
     </script>

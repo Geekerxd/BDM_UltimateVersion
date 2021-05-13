@@ -1,3 +1,10 @@
+<?php
+// Initialize the session
+session_start();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,6 +39,13 @@
 </head>
 
 <body>
+
+<?php
+    if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+        echo "Tipo: " . $_SESSION['rol'] . " Contrasena: " . $_SESSION['contrasena'] . " correo: " . $_SESSION['email'] . " idCurso: " . $_SESSION['idCursoActual'];
+    }
+
+    ?>
 
     <!-- Barra de navegacion -->
 
@@ -122,20 +136,23 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
     <div class="contenidoCurso">
-        <div class="nombreCurso">
-            <h1>PHP</h1>
-            <h6>Programación web</h6>
+        <div class="tituloCurso">
+            <div class="nombreCurso" id="nombreCurso">
+            
+            </div>
+            <div class="categoriaCurso" id="categoriaCurso">
+                
+            </div>
         </div>
         <!--imagen-->
-        <div class="imgCurso">
-            <img src="https://blogs.masterhacks.net/wp-content/uploads/2019/09/masterhacks_vulnerabilidades_abordadas_php.jpg" alt="php">
-        </div>
+        <center>
+            <div class="imgCurso" id="imgCurso">
+            
+            </div>
+        </center>
         <!--texto de descripcion-->
-        <div class="descCurso">
-            <p>PHP es un lenguaje de código abierto muy popular especialmente adecuado para el desarrollo
-                web y que puede ser incrustado en HTML. En lugar de usar muchos comandos para mostrar HTML
-                (como en C o en Perl), las páginas de PHP contienen HTML con código incrustado que hace "algo".
-            </p>
+        <div class="descCurso" id="descCurso">
+            
         </div>
         <!--cuadros/botones-->
         <div class="nivelesCurso">
@@ -152,6 +169,13 @@
                     <button class="btnNivel" id="btn6">Nivel 6</button>
                 </center>
             </div>
+            <div class="crearCurso">
+                <center>
+                    <div id="botonCrearNivel">
+                    
+                    </div>
+                </center>
+            </div>
         </div>
 
         <!--video-->
@@ -164,16 +188,21 @@
         <!--boton inscribirse-->
         <center>
             <div class="inscripcionCurso">
-                <button class="btnInscripcion" href="pagarCurso.php">
-                    <a href="pagarCurso.php">Inscribirse</a>
-                </button>
+                
+                <a href="pagarCurso.php">
+                    <button class="btnInscripcion">
+                        Inscribirse
+                    </button>
+                </a>
+                
             </div>
         </center>
 
         <!--///////////////////////////////////////////////////////////////////////////////////////////
             ////////////////////////Niveles del curso/////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////-->
-
+        
+        <div class="contenerdorInfoCursos">
         <div class="niveldeCurso">
 
             <h1 id="numNivel">Nivel 1</h1>
@@ -184,6 +213,7 @@
             </center>
             <a href="https://www.fdi.ucm.es/profesor/jpavon/web/33-PHP.pdf">Contenido del curso</a><br>
             <a href="https://www.fdi.ucm.es/profesor/jpavon/web/33-PHP.pdf">Contenido del curso</a><br>
+        </div>
         </div>
 
         <div class="comentariosCurso">
