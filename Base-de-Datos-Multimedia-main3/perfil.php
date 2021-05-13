@@ -433,7 +433,7 @@ session_start();
 
     <script type="text/javascript">
         var tipo_usuarioLogin = "<?php  echo $_SESSION['rol']; ?>";
-        alert (tipo_usuarioLogin);
+        //alert (tipo_usuarioLogin);
 
         if(tipo_usuarioLogin == "estudiante"){
             

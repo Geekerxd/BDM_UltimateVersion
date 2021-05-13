@@ -136,7 +136,7 @@
             $db = new Connection;
 
             $mysqli = $db->connect();
-            
+
             session_start();
 
             $result = $mysqli->query("CALL sp_inscribeUsuario('".$_SESSION["email"]."','".$_SESSION["contrasena"]."','".$_SESSION["idCursoActual"]."');");
@@ -146,6 +146,32 @@
             }
             else{
                 echo "Todo salio bien.";
+            }
+
+            mysqli_close($mysqli);
+        }
+
+        function verificaEstudianteEnCurso(){
+
+            $db = new Connection;
+
+            $mysqli = $db->connect();
+
+            session_start();
+
+            $result = $mysqli->query("CALL sp_verificaEstudianteEnCurso('".$_SESSION["email"]."','".$_SESSION["contrasena"]."','".$_SESSION["idCursoActual"]."');");
+        
+            if(!$result){
+                //echo "Problema al hacer el query: " . $mysqli->error;
+            }
+            else{
+                // Recorremos los resultados devueltos        
+			    $rows = array();
+			    while( $r = $result->fetch_assoc()) {
+				    $rows[] = $r;
+			    }			
+			    // Codificamos los resultados a formato JSON y lo enviamos al HTML (Client-Side)
+			    echo json_encode($rows);
             }
 
             mysqli_close($mysqli);
@@ -171,6 +197,9 @@
     }
     else if($action == "inscribirAlumno"){
         $user->inscribirAlumno();
+    }
+    else if($action == "verificaEstudianteEnCurso"){
+        $user->verificaEstudianteEnCurso();
     }
 
 ?>

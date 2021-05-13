@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS usuario (
 );
 
 DROP TABLE usuario;
-DELETE FROM usuario WHERE usuario.id = 6;
+DELETE FROM usuario WHERE usuario.id = 7;
 
 INSERT INTO usuario(rol, nombre, apellidoPat, apellidoMat, contrasena, email, telefono) VALUES ("escuela", "Javier", "Lopez", "Gonzalez", "123456B_", "javier@gmail.com", "8123432981");
 
@@ -89,14 +89,16 @@ SELECT* FROM estudiantesCursando;
 DROP TABLE estudiantesCursando;
 
 CREATE TABLE IF NOT EXISTS comentariosEnCursos (
-	idEstudiante INT NOT NULL,
-    idCurso INT NOT NULL,
-    FOREIGN KEY (idEstudiante) REFERENCES usuario (id),
-    FOREIGN KEY (idCurso) REFERENCES curso (id),
-    PRIMARY KEY(idEstudiante, idCurso),
-    comentario VARCHAR(300) NOT NULL,
-    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	idEstudianteComentCurso INT NOT NULL,
+    idCursoComent INT NOT NULL,
+    FOREIGN KEY (idEstudianteComentCurso) REFERENCES usuario (id),
+    FOREIGN KEY (idCursoComent) REFERENCES curso (idCurso),
+    PRIMARY KEY(idEstudianteComentCurso, idCursoComent),
+    comentarioEnCurso VARCHAR(300) NOT NULL,
+    fechaComentCurso TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    valoracionComent FLOAT DEFAULT 0.0
 );
+SELECT* FROM comentariosEnCursos;
 
 DROP TABLE comentariosEnCursos;
 
@@ -139,6 +141,8 @@ CALL `webstudy`.`sp_createNivel`("drop table mysql", "aqui veras drop table de m
 
 CALL `webstudy`.`sp_verificaIdUsuarioCreador`("escuela", "javier@gmail.com", "123456B_", 1);
 
-CALL `webstudy`.`sp_inscribeUsuario`("dani_g.mazatan@hotmail.com", "123456A_", 4);
+CALL `webstudy`.`sp_inscribeUsuario`("dani_g.mazatan@hotmail.com", "123456A_", 1);
 
 CALL `webstudy`.`sp_traeDatosCurso`(2);
+
+CALL `webstudy`.`sp_verificaEstudianteEnCurso`("dani_g.mazatan@hotmail.com", "123456A_", 2);

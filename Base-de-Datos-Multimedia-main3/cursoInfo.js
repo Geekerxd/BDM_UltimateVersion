@@ -2,8 +2,9 @@ $(document).ready(function(){
 
     cargaInfoCurso();
     verificaCreadorCurso();
+    
 
-    cargaNivelesCurso();
+   
 
     function cargaInfoCurso(){
         // Objeto en formato JSON el cual le enviaremos al webservice (PHP)
@@ -24,7 +25,7 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(data) {
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("Se cargao la info de curso");
+                //alert("Se cargao la info de curso");
 
                 console.log(Object.values(data));
                 var objectLength = Object.keys(data).length;
@@ -62,7 +63,7 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(data) {
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("Se cargo el boton de crear nivel");
+                //alert("Se cargo el boton de crear nivel");
 
                 console.log(Object.values(data));
                 var objectLength = Object.keys(data).length;

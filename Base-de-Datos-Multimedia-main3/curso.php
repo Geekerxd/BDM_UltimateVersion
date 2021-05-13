@@ -36,6 +36,7 @@ session_start();
 
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="cursoInfo.js"></script>
+    
 </head>
 
 <body>
@@ -187,7 +188,7 @@ session_start();
 
         <!--boton inscribirse-->
         <center>
-            <div class="inscripcionCurso">
+            <div id="inscripcionCurso" class="inscripcionCurso">
                 
                 <a href="pagarCurso.php">
                     <button class="btnInscripcion">
@@ -252,10 +253,52 @@ session_start();
 
     </div>
 
+    
 
+    <script type="text/javascript">
 
+        function verificaEstudianteCursando(){
+                var dataToSend = {
+                    action: "verificaEstudianteEnCurso",
+                };
 
+                 //var objetoEnJSON = JSON.stringify(sendProduct);
 
+                //var objetoDesdeJSON = JSON.parse(objetoEnJSON);
+
+                $.ajax({
+                    //url: "https://miwebservices.000webhostapp.com/webservice/webservice.php",
+                    url: "user.php",
+                    async: true,
+                    type: "POST",
+                    data: dataToSend,
+                    dataType: 'json',
+                    success: function(data) {
+                        //obtenemos el mensaje enviado desde el servidor SIN formato JSON
+                        //alert("Se cargo boton de inscribir");
+
+                        console.log(Object.values(data));
+                        
+                        if(data != ""){
+                            document.getElementById("inscripcionCurso").style.visibility = "hidden";
+                        }
+                            
+                        
+                    },
+                    error: function(x, y, z) {
+                        alert("Error en webservice: " + x + y + z);
+                    },
+                });
+            }
+        
+        
+        if("<?php echo $_SESSION['rol'] ?>" == "estudiante"){
+            //alert("si es estudiante");
+            verificaEstudianteCursando();
+        }
+
+        
+    </script>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
