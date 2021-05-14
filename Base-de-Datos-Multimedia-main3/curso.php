@@ -36,17 +36,47 @@ session_start();
 
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="cursoInfo.js"></script>
+    <script type="text/javascript">
+        function pasarNivel(){
+            var dataToSend = {
+                action: "pasarNivel",
+            };
+
+            //var objetoEnJSON = JSON.stringify(sendProduct);
+
+            //var objetoDesdeJSON = JSON.parse(objetoEnJSON);
+
+            $.ajax({
+                //url: "https://miwebservices.000webhostapp.com/webservice/webservice.php",
+                url: "user.php",
+                async: true,
+                type: "POST",
+                data: dataToSend,
+                
+                success: function(data) {
+                    //obtenemos el mensaje enviado desde el servidor SIN formato JSON
+                    alert("nivel superado");         
+                        
+                },
+                error: function(x, y, z) {
+                    alert("Error en webservice: " + x + y + z);
+                },
+            });
+        }
+    </script>
     
 </head>
 
 <body>
 
-<?php
+    <?php
     if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
         echo "Tipo: " . $_SESSION['rol'] . " Contrasena: " . $_SESSION['contrasena'] . " correo: " . $_SESSION['email'] . " idCurso: " . $_SESSION['idCursoActual'];
     }
 
     ?>
+
+
 
     <!-- Barra de navegacion -->
 
@@ -203,18 +233,8 @@ session_start();
             ////////////////////////Niveles del curso/////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////-->
         
-        <div class="contenerdorInfoCursos">
-        <div class="niveldeCurso">
-
-            <h1 id="numNivel">Nivel 1</h1>
-            <h1 id="nombreNivel">Introduccion a php</h1>
-            <p>En este nivel veremos las bases de php.</p>
-            <center>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/ykGRYEX0n60" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
-            </center>
-            <a href="https://www.fdi.ucm.es/profesor/jpavon/web/33-PHP.pdf">Contenido del curso</a><br>
-            <a href="https://www.fdi.ucm.es/profesor/jpavon/web/33-PHP.pdf">Contenido del curso</a><br>
-        </div>
+        <div class="contenerdorInfoNiveles" id="contenerdorInfoNiveles">
+        
         </div>
 
         <div class="comentariosCurso">
@@ -281,6 +301,30 @@ session_start();
                         
                         if(data != ""){
                             document.getElementById("inscripcionCurso").style.visibility = "hidden";
+
+                            console.log(Object.values(data));
+                            var objectLength = Object.keys(data).length;
+
+                            var numNivel = 1;
+
+                            for (let index = 0; index < Object.values(data[index].nivelCursado).join(""); index++) {
+                                
+                                if(numNivel == Object.values(data[index].nivelCursado)){
+                                    if(1 == Object.values(data[index].ultimoNivel)){
+                                        $("#contenerdorInfoNiveles").append("<div class='niveldeCurso'><h1 id='numNivel'>Nivel " + numNivel + "</h1><h1 id='nombreNivel'>"+ Object.values(data[index].nombreNivel).join("") +"</h1><p>"+ Object.values(data[index].descripcionNivel).join("") + "</p><center><iframe width='560' height='315' src="+ Object.values(data[index].videoNivel).join("") + " frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe><br></center><br><center><a href="+ Object.values(data[index].archivoNivel).join("") +" target='_blank' style='font-size: larger; color: darkblue; font-weight: bold;'>Contenido del curso</a></center><br><br><div><center><a href='evaluarCurso.php'><button class='finalizarNivel btn-primary' id='finalizarNivel' onclick='pasarNivel()'>Finalizar nivel</button></a></center></div><br></div>");
+                                    }
+                                    else{
+                                        $("#contenerdorInfoNiveles").append("<div class='niveldeCurso'><h1 id='numNivel'>Nivel " + numNivel + "</h1><h1 id='nombreNivel'>"+ Object.values(data[index].nombreNivel).join("") +"</h1><p>"+ Object.values(data[index].descripcionNivel).join("") + "</p><center><iframe width='560' height='315' src="+ Object.values(data[index].videoNivel).join("") + " frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe><br></center><br><center><a href="+ Object.values(data[index].archivoNivel).join("") +" target='_blank' style='font-size: larger; color: darkblue; font-weight: bold;'>Contenido del curso</a></center><br><br><div><center><a href='curso.php'><button class='finalizarNivel btn-primary' id='finalizarNivel' onclick='pasarNivel()'>Finalizar nivel</button></a></center></div><br></div>");
+                                    }
+                                }
+                                else{
+                                    $("#contenerdorInfoNiveles").append("<div class='niveldeCurso'><h1 id='numNivel'>Nivel " + numNivel + "</h1><h1 id='nombreNivel'>"+ Object.values(data[index].nombreNivel).join("") +"</h1><p>"+ Object.values(data[index].descripcionNivel).join("") + "</p><center><iframe width='560' height='315' src="+ Object.values(data[index].videoNivel).join("") + " frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe><br></center><br><center><a href="+ Object.values(data[index].archivoNivel).join("") +" target='_blank' style='font-size: larger; color: darkblue; font-weight: bold;'>Contenido del curso</a></center><br><br><br></div>");
+                                    
+                                }
+                                
+                    
+                                numNivel += 1;
+                            }
                         }
                             
                         
@@ -295,6 +339,9 @@ session_start();
         if("<?php echo $_SESSION['rol'] ?>" == "estudiante"){
             //alert("si es estudiante");
             verificaEstudianteCursando();
+        }
+        else{
+            document.getElementById("inscripcionCurso").style.visibility = "hidden";
         }
 
         

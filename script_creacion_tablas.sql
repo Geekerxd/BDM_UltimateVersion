@@ -86,6 +86,8 @@ CREATE TABLE IF NOT EXISTS estudiantesCursando (
 
 SELECT* FROM estudiantesCursando;
 
+DELETE FROM estudiantesCursando WHERE idEstudiante = 3;
+
 DROP TABLE estudiantesCursando;
 
 CREATE TABLE IF NOT EXISTS comentariosEnCursos (
@@ -94,11 +96,13 @@ CREATE TABLE IF NOT EXISTS comentariosEnCursos (
     FOREIGN KEY (idEstudianteComentCurso) REFERENCES usuario (id),
     FOREIGN KEY (idCursoComent) REFERENCES curso (idCurso),
     PRIMARY KEY(idEstudianteComentCurso, idCursoComent),
-    comentarioEnCurso VARCHAR(300) NOT NULL,
+    comentarioEnCurso VARCHAR(5000) NOT NULL,
     fechaComentCurso TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     valoracionComent FLOAT DEFAULT 0.0
 );
 SELECT* FROM comentariosEnCursos;
+
+DELETE FROM comentariosEnCursos WHERE idEstudianteComentCurso = 3;
 
 DROP TABLE comentariosEnCursos;
 
@@ -135,14 +139,20 @@ CALL `webstudy`.`sp_traeInfoUsuario`("estudiante", "dani_g.mazatan@hotmail.com",
 
 CALL `webstudy`.`sp_modificarUsuario`("Aron", "Almaraz", "Caballero", "123456A_", "Aron@gmail.com", "8126854888", "escuela", "Luis@gmail.com", "123456L_");
 
-CALL `webstudy`.`sp_traeInfoCurso`(4);
+CALL `webstudy`.`sp_traeInfoCurso`(1);
 
 CALL `webstudy`.`sp_createNivel`("drop table mysql", "aqui veras drop table de mysql", 4);
 
-CALL `webstudy`.`sp_verificaIdUsuarioCreador`("escuela", "javier@gmail.com", "123456B_", 1);
+CALL `webstudy`.`sp_verificaIdUsuarioCreador`("escuela", "javier@gmail.com", "123456B_", 4);
 
 CALL `webstudy`.`sp_inscribeUsuario`("dani_g.mazatan@hotmail.com", "123456A_", 1);
 
 CALL `webstudy`.`sp_traeDatosCurso`(2);
 
-CALL `webstudy`.`sp_verificaEstudianteEnCurso`("dani_g.mazatan@hotmail.com", "123456A_", 2);
+CALL `webstudy`.`sp_verificaEstudianteEnCurso`("dani_g.mazatan@hotmail.com", "123456A_", 1);
+
+CALL `webstudy`.`sp_pasarNivel`("dani_g.mazatan@hotmail.com", "123456A_", 1);
+
+CALL `webstudy`.`sp_cargaNombreCursoEvaluar`(4);
+
+CALL `webstudy`.`sp_createComentarioCurso`(45.01, "mucho contenido", "dani_g.mazatan@hotmail.com", "123456A_", 1);

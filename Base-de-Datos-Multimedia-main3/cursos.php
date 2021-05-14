@@ -146,6 +146,32 @@
 
             mysqli_close($mysqli);
         }
+
+        function cargaNombreCursoEvaluar(){
+
+            $db = new Connection;
+
+            $mysqli = $db->connect();
+
+            session_start();
+
+            $result = $mysqli->query("CALL sp_cargaNombreCursoEvaluar('".$_SESSION["idCursoActual"]."');");
+
+            if(!$result){
+                echo "Problema al hacer el query: " . $mysqli->error;
+            }
+            else{
+                // Recorremos los resultados devueltos        
+			    $rows = array();
+			    while( $r = $result->fetch_assoc()) {
+				    $rows[] = $r;
+			    }			
+			    // Codificamos los resultados a formato JSON y lo enviamos al HTML (Client-Side)
+			    echo json_encode($rows);
+            }
+
+            mysqli_close($mysqli);
+        }
         
 
     }
@@ -170,6 +196,9 @@
     }
     else if($action == "getDatosCurso"){
         $signature->getDatosCurso();
+    }
+    else if($action == "cargaNombreCursoEvaluar"){
+        $signature->cargaNombreCursoEvaluar();
     }
 
 ?>
