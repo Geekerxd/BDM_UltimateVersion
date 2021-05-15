@@ -34,6 +34,38 @@ session_start();
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="js/usuario.js"></script>
     <script type="text/javascript" src="perfil.js"></script>
+
+    <script type="text/javascript">
+        function buscaCurso(idCurso1, idCreador1){
+
+            // Objeto en formato JSON el cual le enviaremos al webservice (PHP)
+        var dataToSend = {
+            action: "setCursoActual",
+            idCurso: idCurso1,
+            idCreador: idCreador1,
+        };
+
+        //var objetoEnJSON = JSON.stringify(sendProduct);
+
+        //var objetoDesdeJSON = JSON.parse(objetoEnJSON);
+
+        $.ajax({
+            //url: "https://miwebservices.000webhostapp.com/webservice/webservice.php",
+            url: "cursos.php",
+            async: true,
+            type: "POST",
+            data: dataToSend,
+            success: function(data) {
+                //obtenemos el mensaje enviado desde el servidor SIN formato JSON
+                alert("yendo a "+valor);
+
+            },
+            error: function(x, y, z) {
+                alert("Error en webservice: " + x + y + z);
+            },
+        });
+        }
+    </script>
 </head>
 
 <body>
@@ -194,65 +226,10 @@ session_start();
                     <div class="container" style="margin-top: 50px">
                     <div id="main-news">
                     <h2 class="Subtitles">Historial</h2>
-                    <div class="historial">
+                    <div class="historial" id="seccion_historial">
                 <!-- Tamaño PC-->
 
-                <!-- aqui comienza el curso -->
-                <div id="list-item-1" class="card-curso text-left">
-                    <div class="card-header">
-                        PHP
-                    </div>
-                    <img src="https://seeklogo.com/images/E/ElePHPant_-_Mascot_PHP-logo-4C78D1AC4E-seeklogo.com.jpg" class="card-img" alt="php">
-                    <div class="card-body">
-                        <!-- <h5 class="card-title">Special title treatment</h5> -->
-                        <p class="card-text">Felicidades, has concluido tu curso de programacion web con php.</p>
-                        <a href="curso.php" class="btn btn-primary">Mas informacion</a>
-                        <a href="diploma.php" class="btn btn-primary">Ver diploma</a>
-                    </div>
-                    <div class="card-footer">
-                        <div class="categoria">Programacion web</div>
-                        <div class="fecha">10/Oct/2021</div>
-                    </div>
-                </div>
-                <!-- aqui termina el curso -->
-
-                <!-- aqui comienza el curso -->
-                <div id="list-item-1" class="card-curso text-left">
-                    <div class="card-header">
-                        HTML
-                    </div>
-                    <img src="https://img.flaticon.com/icons/png/512/174/174854.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF" class="card-img" alt="html">
-                    <div class="card-body">
-                        <!-- <h5 class="card-title">Special title treatment</h5> -->
-                        <p class="card-text">Felicidades, has concluido tu curso de programacion web con html.</p>
-                        <a href="#" class="btn btn-primary">Mas informacion</a>
-                        <a href="#" class="btn btn-primary">Ver diploma</a>
-                    </div>
-                    <div class="card-footer">
-                        <div class="categoria">Programacion web</div>
-                        <div class="fecha">28/Ago/2021</div>
-                    </div>
-                </div>
-                <!-- aqui termina el curso -->
-
-                <!-- aqui comienza el curso -->
-                <div id="list-item-1" class="card-curso text-left">
-                    <div class="card-header">
-                        ORACLE MySQL
-                    </div>
-                    <img src="https://i1.wp.com/buconda.com/wp-content/uploads/2019/06/mysql-logo.png?fit=759%2C500&ssl=1" class="card-img" alt="MySQL">
-                    <div class="card-body">
-                        <!-- <h5 class="card-title">Special title treatment</h5> -->
-                        <p class="card-text">Felicidades, has concluido tu curso de base de datos tradicionales con MySQL.</p>
-                        <a href="#" class="btn btn-primary">Mas informacion</a>
-                        <a href="#" class="btn btn-primary">Ver diploma</a>
-                    </div>
-                    <div class="card-footer">
-                        <div class="categoria">Base de datos</div>
-                        <div class="fecha">01/Jul/2021</div>
-                    </div>
-                </div>
-                <!-- aqui termina el curso -->
+               
                 </div>
                 </div>
                 </div>

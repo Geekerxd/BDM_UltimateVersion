@@ -237,36 +237,10 @@ session_start();
         
         </div>
 
-        <div class="comentariosCurso">
+        <div class="comentariosCurso" id="comentariosCurso">
             <h1 id="comentCurso">Comentarios</h1>
-            <!-- AQUI EMPIEZA EL COMENTARIO -->
-            <div id="list-item-1" class="card-comentarios text-left">
-                <div class="card-header">
-                    <img src="https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg" alt="foto">
-                    <label for="usuario">Martin Montemayor</label>
-                </div>
-                <div class="card-body">
-                    <input class="card-text" type="text" style="width:100%" value="Esta muy bueno"></input>
-                </div>
-                <div class="card-footer">
-                    <label for="fecha-hora" class="fecha-hora">10/10/2020 23:12</label>
-                </div>
-
-            </div>
-
-            <!-- AQUI EMPIEZA EL COMENTARIO -->
-            <div id="list-item-1" class="card-comentarios text-left">
-                <div class="card-header">
-                    <img src="https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg" alt="foto">
-                    <label for="usuario">Alejandra Quiroz</label>
-                </div>
-                <div class="card-body">
-                    <input class="card-text" type="text" style="width:100%" value="Recomendable"></input>
-                </div>
-                <div class="card-footer">
-                    <label for="fecha-hora" class="fecha-hora">10/10/2020 23:12</label>
-                </div>
-
+            <div class="comentariosEnCurso" id="comentariosEnCurso">
+            
             </div>
         </div>
 

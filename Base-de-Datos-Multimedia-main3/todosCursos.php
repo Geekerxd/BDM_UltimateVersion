@@ -147,7 +147,7 @@
         <div id="main-news">
             <h2 class="Subtitles">Todos los cursos</h2>
             <div class="noticias_row">
-                <div class="container-noticias">
+                <div class="container_noticias" id="container-noticias">
 
                 </div>
                 <!-- Tamaño PC-->

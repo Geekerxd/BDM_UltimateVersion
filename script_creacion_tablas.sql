@@ -145,7 +145,7 @@ CALL `webstudy`.`sp_createNivel`("drop table mysql", "aqui veras drop table de m
 
 CALL `webstudy`.`sp_verificaIdUsuarioCreador`("escuela", "javier@gmail.com", "123456B_", 4);
 
-CALL `webstudy`.`sp_inscribeUsuario`("dani_g.mazatan@hotmail.com", "123456A_", 1);
+CALL `webstudy`.`sp_inscribeUsuario`("dani_g.mazatan@hotmail.com", "123456A_", 4);
 
 CALL `webstudy`.`sp_traeDatosCurso`(2);
 
@@ -155,4 +155,12 @@ CALL `webstudy`.`sp_pasarNivel`("dani_g.mazatan@hotmail.com", "123456A_", 1);
 
 CALL `webstudy`.`sp_cargaNombreCursoEvaluar`(4);
 
-CALL `webstudy`.`sp_createComentarioCurso`(45.01, "mucho contenido", "dani_g.mazatan@hotmail.com", "123456A_", 1);
+CALL `webstudy`.`sp_createComentarioCurso`(80.0, "muuuuuuuuy bueno", "dani_g.mazatan@hotmail.com", "123456A_", 4);
+
+CALL `webstudy`.`sp_cargaComentariosCurso`(4);
+    
+CALL `webstudy`.`sp_calculaProgreso`("dani_g.mazatan@hotmail.com", "123456A_", 1);
+
+CALL `webstudy`.`sp_cargaHistorial`("estudiante", "dani_g.mazatan@hotmail.com", "123456A_");
+
+CALL `webstudy`.`sp_getDiploma`("dani_g.mazatan@hotmail.com", "123456A_", 4);

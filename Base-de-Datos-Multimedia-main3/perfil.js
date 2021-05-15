@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
     cargaInfoUsuario();
+    cargaHistorial();
 
     $("#btnModificar").click(function(){
         if($("#inputInfoNombre").val() != ""){
@@ -245,6 +246,47 @@ $(document).ready(function(){
             error: function(x,y,z){
                 alert("Error en webservice: " + x + y + z);
             }
+        });
+    }
+
+    function cargaHistorial(){
+
+        // Objeto en formato JSON el cual le enviaremos al webservice (PHP)
+        var dataToSend = {
+            action: "getHistorialUser",
+        };
+
+        //var objetoEnJSON = JSON.stringify(sendProduct);
+
+        //var objetoDesdeJSON = JSON.parse(objetoEnJSON);
+
+        $.ajax({
+            //url: "https://miwebservices.000webhostapp.com/webservice/webservice.php",
+            url: "user.php",
+            async: true,
+            type: "POST",
+            data: dataToSend,
+            dataType: 'json',
+            success: function(data) {
+                //obtenemos el mensaje enviado desde el servidor SIN formato JSON
+                alert("Se cargo el historial de usuario");
+
+                console.log(Object.values(data));
+                var objectLength = Object.keys(data).length;
+
+                for (let index = 0; index < objectLength; index++) {
+                    
+                    if(Object.values(data[index].cursoFinalizado).join("") == 1){
+                        $("#seccion_historial").append("<div id='list-item-1' class='card-curso text-left'><div class='card-header'>"+ Object.values(data[index].nombreCurso).join("") +"</div><img src="+ Object.values(data[index].fotoCurso).join("") +" class='card-img' alt="+ Object.values(data[index].nombreCurso).join("") +"><div class='card-body'><p class='card-text'>"+ Object.values(data[index].descCortaCurso).join("") +"</p><label class='progreso'>Progreso: "+ Object.values(data[index].progreso).join("") +"%</label><a href='curso.php' target='_blank'><button class='btnInfoCurso btn-primary' onclick='buscaCurso(this.value)' type='submit' value="+ Object.values(data[index].idCurso).join("") + " style='border-radius: 5px;'>Más información</button></a><br><a href='diploma.php' target='_blank'><button class='btnInfoCurso btn-primary' onclick='buscaCurso(this.value)' type='submit' value="+ Object.values(data[index].idCurso).join("") + " style='border-radius: 5px;'>Ver diploma</button></a></div><div class='card-footer'><div class='categoria'>"+ Object.values(data[index].nombreCat).join("") + "</div><div class='fecha'>"+ Object.values(data[index].fechaInicio).join("") +" - "+ Object.values(data[index].fechaFinal).join("") +"</div></div></div>");
+                    }
+                    else{
+                        $("#seccion_historial").append("<div id='list-item-1' class='card-curso text-left'><div class='card-header'>"+ Object.values(data[index].nombreCurso).join("") +"</div><img src="+ Object.values(data[index].fotoCurso).join("") +" class='card-img' alt="+ Object.values(data[index].nombreCurso).join("") +"><div class='card-body'><p class='card-text'>"+ Object.values(data[index].descCortaCurso).join("") +"</p><label class='progreso'>Progreso: "+ Object.values(data[index].progreso).join("") +"%</label><a href='curso.php' target='_blank'><button class='btnInfoCurso btn-primary' onclick='buscaCurso(this.value)' type='submit' value="+ Object.values(data[index].idCurso).join("") + " style='border-radius: 5px;'>Más información</button></a><br></div><div class='card-footer'><div class='categoria'>"+ Object.values(data[index].nombreCat).join("") + "</div><div class='fecha'>"+ Object.values(data[index].fechaInicio).join("") +"</div></div></div>");
+                    }
+                }
+            },
+            error: function(x, y, z) {
+                alert("Error en webservice: " + x + y + z);
+            },
         });
     }
     

@@ -203,6 +203,59 @@
             mysqli_close($mysqli);
         }
 
+        function getHistorialUser(){
+
+            $db = new Connection;
+
+            $mysqli = $db->connect();
+
+            session_start();
+
+            $result = $mysqli->query("CALL sp_cargaHistorial('".$_SESSION["rol"]."','".$_SESSION["email"]."','".$_SESSION["contrasena"]."');");
+
+            if(!$result){
+                echo "Problema al hacer el query: " . $mysqli->error;
+            }
+            else{
+                // Recorremos los resultados devueltos        
+			    $rows = array();
+			    while( $r = $result->fetch_assoc()) {
+				    $rows[] = $r;
+			    }			
+			    // Codificamos los resultados a formato JSON y lo enviamos al HTML (Client-Side)
+			    echo json_encode($rows);
+            }
+
+            mysqli_close($mysqli);
+        }
+
+        function getDiploma(){
+
+            $db = new Connection;
+
+            $mysqli = $db->connect();
+
+            session_start();
+
+            $result = $mysqli->query("CALL sp_getDiploma('".$_SESSION["email"]."','".$_SESSION["contrasena"]."','".$_SESSION["idCursoActual"]."');");
+
+            if(!$result){
+                echo "Problema al hacer el query: " . $mysqli->error;
+            }
+            else{
+                // Recorremos los resultados devueltos        
+			    $rows = array();
+			    while( $r = $result->fetch_assoc()) {
+				    $rows[] = $r;
+			    }			
+			    // Codificamos los resultados a formato JSON y lo enviamos al HTML (Client-Side)
+			    echo json_encode($rows);
+            }
+
+            mysqli_close($mysqli);
+        }
+
+
     }
 
     $user = new User;
@@ -229,5 +282,12 @@
     else if($action == "pasarNivel"){
         $user->pasarNivel();
     }
+    else if($action == "getHistorialUser"){
+        $user->getHistorialUser();
+    }
+    else if($action == "getDiploma"){
+        $user->getDiploma();
+    }
+
 
 ?>

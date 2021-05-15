@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="bootstrap/bootstrap.css" />
     <!-- CSS -->
     <link rel="stylesheet" href="CSS/diploma.css">
+
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="diploma.js"></script>
 </head>
 <body>
     <center>
@@ -27,27 +30,36 @@
             Hirami otorga este diploma a
         </p>
 
-        <div class="nombre">
-            <input type="text" value="Usuario estudiante">
+        <div class="nombre" id="nombre">
+            
         </div><br>
 
         <p>
             por completar con exito el curso 
         </p>
 
-        <div class="curso">
-            <input type="text" value="PHP">
+        <div class="curso" id="curso">
+            
         </div>
         <br>
 
         <p>
-            16 de marzo de 2021
+            <div id="fecha">
+
+            </div>
+            
         </p>
 
         <div class="conjunto">
-            <input id="inputMestro" type="text" value="Usuario escuela">
-            <img src="medalla.png" alt="medalla">
-            <input id="inputEstudiante" type="text" value="Usuario estudiante">
+            <div class="nombreDirectivo" id="nombreDirectivo">
+                <img src="firmaDirectivo.png" alt="firma">
+                <label class="usuarioEscuela" for="">Lic. Daniel García Mazatán</label>
+            </div>
+            <img id="imgMedalla" src="medalla.png" alt="medalla">
+            <div class="nombreDocente" id="nombreProfe">
+                <img src="firmaDocente.png" alt="firma">
+
+            </div>
         </div>
 
     </center>

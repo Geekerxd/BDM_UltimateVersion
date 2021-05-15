@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     cargaInfoCurso();
     verificaCreadorCurso();
-    
+    cargaComentariosCurso();
 
    
 
@@ -80,6 +80,42 @@ $(document).ready(function(){
         });
     }
 
+    function cargaComentariosCurso(){
+        // Objeto en formato JSON el cual le enviaremos al webservice (PHP)
+        var dataToSend = {
+            action: "cargaComentariosCurso",
+        };
+
+        //var objetoEnJSON = JSON.stringify(sendProduct);
+
+        //var objetoDesdeJSON = JSON.parse(objetoEnJSON);
+
+        $.ajax({
+            //url: "https://miwebservices.000webhostapp.com/webservice/webservice.php",
+            url: "comentarioCurso.php",
+            async: true,
+            type: "POST",
+            data: dataToSend,
+            dataType: 'json',
+            success: function(data) {
+                //obtenemos el mensaje enviado desde el servidor SIN formato JSON
+                //alert("Se cargo el boton de crear nivel");
+
+                console.log(Object.values(data));
+                var objectLength = Object.keys(data).length;
+
+                for (let index = 0; index < objectLength; index++) {
+                    
+                    if(Object.values(data[index].comentarioEnCurso).join("") != ""){
+                        $("#comentariosEnCurso").append("<div id='list-item-1' class='card-comentarios text-left'><div class='card-header'><img src='https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg' alt='foto'><label for='usuario'>" + Object.values(data[index].nombre).join("") + " " + Object.values(data[index].apellidoPat).join("") + " " + Object.values(data[index].apellidoMat).join("") + "</label></div><div class='card-body'><label class='card-text' type='text' style='width:100%'>"+ Object.values(data[index].comentarioEnCurso).join("") + "</label></div><div class='card-footer'><label for='fecha-hora' class='fecha-hora'>"+ Object.values(data[index].fechaAmandar).join("") +"</label></div></div>");
+                    }
+                }
+            },
+            error: function(x, y, z) {
+                alert("Error en webservice: " + x + y + z);
+            },
+        });
+    }
     
 
 });

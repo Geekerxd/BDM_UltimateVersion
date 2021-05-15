@@ -69,7 +69,7 @@ session_start();
             <h4>¿Qué te pareció la integridad del curso?</h4><br>
             
             <div class="evaluacion" id="evaluacion">
-                <form action="curso.php">
+                <form action="">
 
                     <div class="calificacion" id="calificacion">
                         <input type="radio" id="Excelente" name="calificacion" value=100.0>

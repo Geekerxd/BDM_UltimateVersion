@@ -23,21 +23,25 @@ body{
 .nombre{
     width: 500px;
     border-bottom: #204c73 solid 3px;
+    color: black;
+    font-size: 20px;
+}
+
+
+
+.nombre label{
+    width: 500px;
+    text-align: center;
+    border: none;
     
 }
 
-.nombre input{
+.curso label{
     width: 500px;
     text-align: center;
-    background-color: #275d8c3b;
     border: none;
-}
-
-.curso input{
-    width: 500px;
-    text-align: center;
-    background-color: #275d8c3b;
-    border: none;
+    color: #204c73;
+    font-size: 40px;
 }
 
 .conjunto{
@@ -46,17 +50,41 @@ body{
     margin-bottom: 40px;
 }
 
+.nombreDirectivo{
+    width: 30%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 60px;
+}
+
+.nombreDirectivo img{
+    max-height: 200px;
+    max-width: 200px;
+}
+
+.nombreDocente{
+    width: 30%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 60px;
+}
+
+.nombreDocente img{
+    max-height: 200px;
+    max-width: 200px;
+}
+
 .conjunto img{
     width: 150px;
     margin-left: 100px;
     margin-right: 100px;
 }
 
-.conjunto input{
-    background-color: #275d8c3b;
+.conjunto label{
     border: none;
     width: 250px;
-    margin-top: 125px;
+    margin-top: 10px;
     border-top: #204c73 solid 3px;
     text-align: center;
+    color: black;
 }

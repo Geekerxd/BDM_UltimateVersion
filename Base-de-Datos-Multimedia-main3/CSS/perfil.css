@@ -187,3 +187,18 @@ btn.btn-primary.logout{
  }
 */ 
 
+button.btnInfoCurso{
+    background-color: #F29849;
+    margin: 5px;
+    width: 200px;
+    height: 50px;
+    border: darkgray outset 3px;
+    border-radius: 10px;
+    color: #204c73;
+    font-family: 'Roboto',sans-serif;
+    font-size: larger;
+}
+
+
+
+
