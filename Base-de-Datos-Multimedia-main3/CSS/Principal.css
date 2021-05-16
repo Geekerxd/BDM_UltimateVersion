@@ -74,6 +74,8 @@ body {
     border: solid 1px #275d8c3b;
   }
 
+  
+
   .card .card-img-top {
     object-fit: cover;
     object-position: 50% 0%;

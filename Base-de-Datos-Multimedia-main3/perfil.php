@@ -219,75 +219,33 @@ session_start();
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade" id="inicio" role="tabpanel" aria-labelledby="inicio-tab">
-
-                
-
-
                     <div class="container" style="margin-top: 50px">
-                    <div id="main-news">
-                    <h2 class="Subtitles">Historial</h2>
-                    <div class="historial" id="seccion_historial">
+                        <div id="main-news">
+                        <h2 class="Subtitles">Historial</h2>
+                            <div class="historial" id="seccion_historial">
                 <!-- Tamaño PC-->
 
-               
-                </div>
-                </div>
-                </div>
-
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="tab-pane fade" id="noticias" role="tabpanel" aria-labelledby="noticias-tab">
 
 
-                    <h3>Los cursos que impartes</h3>
-                    <div id="divGestorCursos" >
+                    <div class="totalVentas" id="totalVentas">
+                        
+                    </div>
+                    <div id="divGestorCursos" class="divGestorCursos" >
 
-                    <!-- aqui comienza el curso -->
-                <div id="list-item-1" class="card-curso text-left">
-                    <div class="card-header">
-                        HTML
-                    </div>
-                    <img src="https://img.flaticon.com/icons/png/512/174/174854.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF" class="card-img" alt="html">
-                    <div class="card-body">
-                        <!-- <h5 class="card-title">Special title treatment</h5> -->
-                        <p class="card-text">Felicidades, has concluido tu curso de programacion web con html.</p>
-                        <a href="#" class="btn btn-primary">Mas informacion</a>
-                        <a href="#" class="btn btn-primary">Ver alumnos</a>
-                    </div>
-                    <div class="card-footer">
-                        <div class="categoria">Programacion web</div>
-                        <div class="fecha">28/Ago/2021</div>
-                    </div>
-                </div>
-                <!-- aqui termina el curso -->
-
-                <!-- aqui comienza el curso -->
-                <div id="list-item-1" class="card-curso text-left">
-                    <div class="card-header">
-                        ORACLE MySQL
-                    </div>
-                    <img src="https://i1.wp.com/buconda.com/wp-content/uploads/2019/06/mysql-logo.png?fit=759%2C500&ssl=1" class="card-img" alt="MySQL">
-                    <div class="card-body">
-                        <!-- <h5 class="card-title">Special title treatment</h5> -->
-                        <p class="card-text">Felicidades, has concluido tu curso de base de datos tradicionales con MySQL.</p>
-                        <a href="#" class="btn btn-primary">Mas informacion</a>
-                        <a href="#" class="btn btn-primary">Ver alumnos</a>
-                    </div>
-                    <div class="card-footer">
-                        <div class="categoria">Base de datos</div>
-                        <div class="fecha">01/Jul/2021</div>
-                    </div>
-                </div>
-                <!-- aqui termina el curso -->
                         <center>
                         <a href="crearCurso.php">
-                            <button type="button" class="btn btn-primary" id="gotogestor" style="margin-right: auto; margin-left: auto">
+                            <button type="button" class="btnGestor btn-primary" id="gotogestor" style="margin-right: auto; margin-left: auto">
                                 Gestor de Cursos
                             </button>
-
-
                         </a>
                         </center>
+
                     </div>
 
 

@@ -236,24 +236,46 @@ body {
    div.seccion-completa{
        width: 90%;
        margin-top: 20px;
-       margin-left: auto;
-       margin-right: auto;
+       margin-left: 5%;
+       margin-right: 5%;
        display: inline-flex;
-       margin-bottom: 150px;
+       margin-bottom: 50px;
    }
 
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////Seccion contactos/////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////*/
 
-   div.chatsContactos{
+   .chatsContactos{
+      width: 30%;
+   }
+
+   .chatsContactos label.labelcontactos{
+     margin-left: 5%;
+     font-weight: bold;
+     margin-top: 20px;
+   }
+
+   div.contactosBuscados{
        border-right: #275D8C solid 1px;
-       height: 530px;
-       width: 30%;
+       height: 200px;
+       width: 100%;
        margin-left: 5%;
        font-family: 'Roboto',sans-serif;
        overflow-y: scroll;
+       overflow-x: scroll;
+       margin-bottom: 10px;
    }
+
+   div.contactosEstablecidos{
+    border-right: #275D8C solid 1px;
+    height: 250px;
+    width: 100%;
+    margin-left: 5%;
+    font-family: 'Roboto',sans-serif;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
 
    div.chatsContactos .buscarContacto{
         margin-bottom: 10px;
@@ -261,22 +283,54 @@ body {
     
    }
 
+  div.chatsContactos .usuarioContacto{
+      width: 100%;
+       border-top: #204c73 solid 1px;
+       margin-top: 10px;
+       display: inline-flex;
+   }
+
+   .datosUsuarioBuscado{
+     margin-left: 10px;
+   }
+
    div.chatsContactos .usuarioContacto img{
        width: 50px;
        height: 50px;
    }
 
-   div.chatsContactos .usuarioContacto{
-       border-top: #204c73 solid 1px;
-       margin-top: 10px;
+   button.comenzarChat{
+     border-radius: 15px;
+     margin-top: 20px;
+     margin-left: 35px;
+   }
+
+   .bi{
+     font-size: 20px;
+     color: #275d8c;
+    
    }
 
    div.chatActual{
         height: 530px;
-        margin-left: 20px;
+        width: 60%;
+        margin-left: 40px;
         font-family: 'Roboto',sans-serif;
         
    }
+
+   div.chatActual div.datosDelContacto{
+      margin-bottom: 10px;
+   }
+
+   div.chatActual img{
+    width: 50px;
+    height: 50px;
+  }
+
+  div.chatActual label.nombreDelContacto{
+    margin-left: 10px;
+  }
 
    div.chatActual div.mensajes{
        height: 500px;

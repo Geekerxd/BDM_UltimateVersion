@@ -47,6 +47,9 @@ CREATE TABLE IF NOT EXISTS curso (
     FOREIGN KEY (idCategoria) REFERENCES categoria (idCat)
 );
 
+ALTER TABLE curso 
+ADD ventasTotales FLOAT DEFAULT 0.0;
+
 DROP TABLE curso;
 
 DELETE FROM curso WHERE curso.id = 14;
@@ -114,15 +117,25 @@ CREATE TABLE IF NOT EXISTS chat (
     FOREIGN KEY (idUsuario2) REFERENCES usuario(id)
 );
 
+SELECT * FROM chat;
+
+INSERT INTO chat(idUsuario1, idUsuario2) VALUES(2,4);
+
 DROP TABLE chat;
 
 CREATE TABLE IF NOT EXISTS mensajeChat (
 	numMensaje BIGINT AUTO_INCREMENT PRIMARY KEY,
-    idChat INT NOT NULL,
-    FOREIGN KEY (idChat) REFERENCES chat(idChat),
-    mensaje VARCHAR(300) NOT NULL,
-    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    idChatMensajes INT NOT NULL,
+    FOREIGN KEY (idChatMensajes) REFERENCES chat(idChat),
+    esIdUsuario1 BIT DEFAULT 0,
+    esIdUsuario2 BIT DEFAULT 0,
+    mensaje VARCHAR(1000) NOT NULL,
+    fechaMensajeChat TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+SELECT * FROM mensajeChat;
+
+INSERT INTO mensajeChat(idChatMensajes, esIdUsuario1, esIdUsuario2, mensaje) VALUES(1,1,0,"hola soy Aron");
 
 DROP TABLE mensajeChat;
 
@@ -145,13 +158,13 @@ CALL `webstudy`.`sp_createNivel`("drop table mysql", "aqui veras drop table de m
 
 CALL `webstudy`.`sp_verificaIdUsuarioCreador`("escuela", "javier@gmail.com", "123456B_", 4);
 
-CALL `webstudy`.`sp_inscribeUsuario`("dani_g.mazatan@hotmail.com", "123456A_", 4);
+CALL `webstudy`.`sp_inscribeUsuario`("fer@gmail.com", "123456F_", 4);
 
 CALL `webstudy`.`sp_traeDatosCurso`(2);
 
 CALL `webstudy`.`sp_verificaEstudianteEnCurso`("dani_g.mazatan@hotmail.com", "123456A_", 1);
 
-CALL `webstudy`.`sp_pasarNivel`("dani_g.mazatan@hotmail.com", "123456A_", 1);
+CALL `webstudy`.`sp_pasarNivel`("dani_g.mazatan@hotmail.com", "123456A_", 4);
 
 CALL `webstudy`.`sp_cargaNombreCursoEvaluar`(4);
 
@@ -164,3 +177,15 @@ CALL `webstudy`.`sp_calculaProgreso`("dani_g.mazatan@hotmail.com", "123456A_", 1
 CALL `webstudy`.`sp_cargaHistorial`("estudiante", "dani_g.mazatan@hotmail.com", "123456A_");
 
 CALL `webstudy`.`sp_getDiploma`("dani_g.mazatan@hotmail.com", "123456A_", 4);
+
+SHOW TRIGGERS;
+
+CALL `webstudy`.`sp_cargaCursosProfesor`("javier@gmail.com", "123456B_");
+
+CALL `webstudy`.`sp_getAlumnosDeCurso`(4);
+
+CALL `webstudy`.`sp_buscadorUsuarios`("dan", "dani_g.mazatan@hotmail.com", "123456A_");
+
+CALL `webstudy`.`sp_cargaChats`("Aron@gmail.com", "123456A_");
+
+CALL `webstudy`.`sp_estableceChat`(1);

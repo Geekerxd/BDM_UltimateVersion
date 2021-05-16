@@ -64,6 +64,18 @@ body {
   }
 
 
+  div.card {
+    width: 24%;
+    margin: 5px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    /*border-bottom:  solid 1px red;*/
+  
+    border: solid 1px #275d8c3b;
+    display: inline-block;
+  }
+
+
   .card .card-img-top {
     object-fit: cover;
     object-position: 50% 0%;
@@ -81,17 +93,6 @@ body {
 
   .container_noticias{
     width: 100%;
-  }
-
-  .container .card {
-
-    display: inline-block;
-    padding-bottom: 20px;
-    padding-top: 20px;
-    /*border-bottom:  solid 1px red;*/
-    margin: 3px;
-  
-    border: solid 1px #275d8c3b;
   }
   
   .noticia  .texto  .title {
@@ -163,11 +164,6 @@ body {
   
     position: absolute;
     bottom: 10px;
-  }
-
-  div.container div.noticias_row{
-    align-items: center;  
-    width: 100%;
   }
   
   a.linkColor {

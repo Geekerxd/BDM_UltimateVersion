@@ -2,6 +2,7 @@ $(document).ready(function(){
 
     cargaInfoUsuario();
     cargaHistorial();
+    cargaCursosProfesor();
 
     $("#btnModificar").click(function(){
         if($("#inputInfoNombre").val() != ""){
@@ -194,7 +195,7 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(data) {
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("Se cargao la info de usuario");
+                //alert("Se cargao la info de usuario");
 
                 console.log(Object.values(data));
                 var objectLength = Object.keys(data).length;
@@ -269,7 +270,7 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(data) {
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("Se cargo el historial de usuario");
+                //alert("Se cargo el historial de usuario");
 
                 console.log(Object.values(data));
                 var objectLength = Object.keys(data).length;
@@ -277,11 +278,53 @@ $(document).ready(function(){
                 for (let index = 0; index < objectLength; index++) {
                     
                     if(Object.values(data[index].cursoFinalizado).join("") == 1){
-                        $("#seccion_historial").append("<div id='list-item-1' class='card-curso text-left'><div class='card-header'>"+ Object.values(data[index].nombreCurso).join("") +"</div><img src="+ Object.values(data[index].fotoCurso).join("") +" class='card-img' alt="+ Object.values(data[index].nombreCurso).join("") +"><div class='card-body'><p class='card-text'>"+ Object.values(data[index].descCortaCurso).join("") +"</p><label class='progreso'>Progreso: "+ Object.values(data[index].progreso).join("") +"%</label><a href='curso.php' target='_blank'><button class='btnInfoCurso btn-primary' onclick='buscaCurso(this.value)' type='submit' value="+ Object.values(data[index].idCurso).join("") + " style='border-radius: 5px;'>Más información</button></a><br><a href='diploma.php' target='_blank'><button class='btnInfoCurso btn-primary' onclick='buscaCurso(this.value)' type='submit' value="+ Object.values(data[index].idCurso).join("") + " style='border-radius: 5px;'>Ver diploma</button></a></div><div class='card-footer'><div class='categoria'>"+ Object.values(data[index].nombreCat).join("") + "</div><div class='fecha'>"+ Object.values(data[index].fechaInicio).join("") +" - "+ Object.values(data[index].fechaFinal).join("") +"</div></div></div>");
+                        $("#seccion_historial").append("<div id='list-item-1' class='card-curso text-left'><div class='card-header'>"+ Object.values(data[index].nombreCurso).join("") +"</div><img src="+ Object.values(data[index].fotoCurso).join("") +" class='card-img' alt="+ Object.values(data[index].nombreCurso).join("") +"><div class='card-body'><p class='card-text'>"+ Object.values(data[index].descCortaCurso).join("") +"</p><label class='progreso'>Progreso: "+ Object.values(data[index].progreso).join("") +"%</label><br><a href='curso.php' target='_blank'><button class='btnInfoCurso btn-primary' onclick='buscaCurso(this.value)' type='submit' value="+ Object.values(data[index].idCurso).join("") + " style='border-radius: 5px;'>Más información</button></a><br><a href='diploma.php' target='_blank'><button class='btnInfoCurso btn-primary' onclick='buscaCurso(this.value)' type='submit' value="+ Object.values(data[index].idCurso).join("") + " style='border-radius: 5px;'>Ver diploma</button></a></div><div class='card-footer'><div class='categoria'>"+ Object.values(data[index].nombreCat).join("") + "</div><div class='fecha'>"+ Object.values(data[index].fechaInicio).join("") +" - "+ Object.values(data[index].fechaFinal).join("") +"</div></div></div>");
                     }
                     else{
-                        $("#seccion_historial").append("<div id='list-item-1' class='card-curso text-left'><div class='card-header'>"+ Object.values(data[index].nombreCurso).join("") +"</div><img src="+ Object.values(data[index].fotoCurso).join("") +" class='card-img' alt="+ Object.values(data[index].nombreCurso).join("") +"><div class='card-body'><p class='card-text'>"+ Object.values(data[index].descCortaCurso).join("") +"</p><label class='progreso'>Progreso: "+ Object.values(data[index].progreso).join("") +"%</label><a href='curso.php' target='_blank'><button class='btnInfoCurso btn-primary' onclick='buscaCurso(this.value)' type='submit' value="+ Object.values(data[index].idCurso).join("") + " style='border-radius: 5px;'>Más información</button></a><br></div><div class='card-footer'><div class='categoria'>"+ Object.values(data[index].nombreCat).join("") + "</div><div class='fecha'>"+ Object.values(data[index].fechaInicio).join("") +"</div></div></div>");
+                        $("#seccion_historial").append("<div id='list-item-1' class='card-curso text-left'><div class='card-header'>"+ Object.values(data[index].nombreCurso).join("") +"</div><img src="+ Object.values(data[index].fotoCurso).join("") +" class='card-img' alt="+ Object.values(data[index].nombreCurso).join("") +"><div class='card-body'><p class='card-text'>"+ Object.values(data[index].descCortaCurso).join("") +"</p><label class='progreso'>Progreso: "+ Object.values(data[index].progreso).join("") +"%</label><br><a href='curso.php' target='_blank'><button class='btnInfoCurso btn-primary' onclick='buscaCurso(this.value)' type='submit' value="+ Object.values(data[index].idCurso).join("") + " style='border-radius: 5px;'>Más información</button></a><br></div><div class='card-footer'><div class='categoria'>"+ Object.values(data[index].nombreCat).join("") + "</div><div class='fecha'>"+ Object.values(data[index].fechaInicio).join("") +"</div></div></div>");
                     }
+                }
+            },
+            error: function(x, y, z) {
+                alert("Error en webservice: " + x + y + z);
+            },
+        });
+    }
+
+
+    function cargaCursosProfesor(){
+        // Objeto en formato JSON el cual le enviaremos al webservice (PHP)
+        var dataToSend = {
+            action: "getCursosProfesor",
+        };
+
+        //var objetoEnJSON = JSON.stringify(sendProduct);
+
+        //var objetoDesdeJSON = JSON.parse(objetoEnJSON);
+
+        $.ajax({
+            //url: "https://miwebservices.000webhostapp.com/webservice/webservice.php",
+            url: "cursos.php",
+            async: true,
+            type: "POST",
+            data: dataToSend,
+            dataType: 'json',
+            success: function(data) {
+                //obtenemos el mensaje enviado desde el servidor SIN formato JSON
+                alert("Se cargaron los cursos del profe");
+
+                console.log(Object.values(data));
+                var objectLength = Object.keys(data).length;
+                var totaltotal = false;
+
+                for (let index = 0; index < objectLength; index++) {
+                    
+                    if(totaltotal == false){
+                        $("#totalVentas").append("<label class='labelTotalVentas' for=''>Total de ventas: $"+ Object.values(data[index].ventaTotalTotal).join("") +"</label>");
+                        totaltotal = true;
+                    }
+                    $("#divGestorCursos").append("<div id='list-item-1' class='card-curso text-left'><div class='card-header'>"+ Object.values(data[index].nombreCurso).join("") +"</div><img src="+ Object.values(data[index].fotoCurso).join("") +" class='card-img' alt="+ Object.values(data[index].nombreCurso).join("") +"><div class='card-body'><p class='card-text'>"+ Object.values(data[index].descCortaCurso).join("") +"</p><label for='' id='costo'>Costo: $"+ Object.values(data[index].costo).join("") +"</label><br><label for='' id='valoracion'>Popularidad: "+ Object.values(data[index].valoracion).join("") +"%</label><br><label for='' id='ventasPorCurso'>Total de ventas: $"+ Object.values(data[index].ventasTotales).join("") +"</label><br><a href='curso.php' target='_blank'><button class='btnInfoCurso btn-primary' onclick='buscaCurso(this.value)' type='submit' value="+ Object.values(data[index].idCurso).join("") + " style='border-radius: 5px;'>Más información</button></a><br><a href='alumnosdeCurso.php' target='_blank'><button class='btnAlumnosCurso btn-primary' onclick='buscaCurso(this.value)' type='submit' value="+ Object.values(data[index].idCurso).join("") + " style='border-radius: 5px;'>Ver alumnos</button></a></div><div class='card-footer'><div class='categoria'>"+ Object.values(data[index].nombreCat).join("") +"</div></div></div>");
+                    
                 }
             },
             error: function(x, y, z) {

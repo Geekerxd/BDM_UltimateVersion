@@ -10,7 +10,7 @@
     <!--bootstrap-->
     <link rel="stylesheet" href="bootstrap/bootstrap.css" /> 
     <!--style css-->
-    <link rel="stylesheet" href="CSS/Principal.css">
+    <link rel="stylesheet" href="CSS/todosCursos.css">
 
     <!-- Iconos-->
     <script src="https://kit.fontawesome.com/8a399301fb.js" crossorigin="anonymous"></script>
@@ -26,6 +26,38 @@
 
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="todosLosCursos.js"></script>
+
+    <script type="text/javascript">
+        function buscaCurso(idCurso1, idCreador1){
+
+            // Objeto en formato JSON el cual le enviaremos al webservice (PHP)
+        var dataToSend = {
+            action: "setCursoActual",
+            idCurso: idCurso1,
+            idCreador: idCreador1,
+        };
+
+        //var objetoEnJSON = JSON.stringify(sendProduct);
+
+        //var objetoDesdeJSON = JSON.parse(objetoEnJSON);
+
+        $.ajax({
+            //url: "https://miwebservices.000webhostapp.com/webservice/webservice.php",
+            url: "cursos.php",
+            async: true,
+            type: "POST",
+            data: dataToSend,
+            success: function(data) {
+                //obtenemos el mensaje enviado desde el servidor SIN formato JSON
+                alert("yendo a "+valor);
+
+            },
+            error: function(x, y, z) {
+                alert("Error en webservice: " + x + y + z);
+            },
+        });
+        }
+    </script>
 </head>
 
 <body>
@@ -155,59 +187,9 @@
 
 
                 <!-- Tamaño celular-->
-                <div class="card mb-3 col-12 d-block d-sm-none">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <a  href="UnaNoticia.jsp" target="_blank">
-                                <img
-                                    src="https://img.cinemablend.com/filter:scale/quill/4/5/7/3/9/6/4573966e4d7705252c319697471a53bb20b3e1d9.png?mw=600"
-                                    class="card-img"
-                                    alt="..."
-                                    />
-                            </a>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    Looks Like The Batman Is Going To Start Filming In The
-                                    States
-                                </h5>
-                                <p class="card-text">Somebody light up the bat-Signal</p>
-                                <p class="card-text">
-                                    <small class="text-muted">Last updated 3 mins ago</small>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-3 col-12 d-block d-sm-none">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <a  href="UnaNoticia.jsp" target="_blank">
-                                <img
-                                    src="https://img.cinemablend.com/cdn-cgi/image/fit=cover,w=1500,h=1500//quill/2/8/d/5/b/1/28d5b1bea85d197f30133ddbe567c8cb30f3f230.png"
-                                    class="card-img"
-                                    alt="..."
-                                    />
-                            </a>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    One Matrix 4 Star Really Wants To Join Keanu Reeves In John
-                                    Wick
-                                </h5>
-                                <p class="card-text">
-                                    This trend will continue with Lana Wachowski's The Matrix 4,
-                                    which will feature the return of a group of actors
-                                </p>
-                                <p class="card-text">
-                                    <small class="text-muted">Last updated 3 mins ago</small>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
+                       
+                
             </div>
         </div>
     </div>

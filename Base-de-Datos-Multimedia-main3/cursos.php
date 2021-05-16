@@ -174,6 +174,58 @@
         }
         
 
+        function getCursosProfesor(){
+
+            $db = new Connection;
+
+            $mysqli = $db->connect();
+
+            session_start();
+
+            $result = $mysqli->query("CALL sp_cargaCursosProfesor('".$_SESSION["email"]."','".$_SESSION["contrasena"]."');");
+
+            if(!$result){
+                echo "Problema al hacer el query: " . $mysqli->error;
+            }
+            else{
+                // Recorremos los resultados devueltos        
+			    $rows = array();
+			    while( $r = $result->fetch_assoc()) {
+				    $rows[] = $r;
+			    }			
+			    // Codificamos los resultados a formato JSON y lo enviamos al HTML (Client-Side)
+			    echo json_encode($rows);
+            }
+
+            mysqli_close($mysqli);
+        }
+
+        function getAlumnosDeCurso(){
+
+            $db = new Connection;
+
+            $mysqli = $db->connect();
+
+            session_start();
+
+            $result = $mysqli->query("CALL sp_getAlumnosDeCurso('".$_SESSION["idCursoActual"]."');");
+
+            if(!$result){
+                echo "Problema al hacer el query: " . $mysqli->error;
+            }
+            else{
+                // Recorremos los resultados devueltos        
+			    $rows = array();
+			    while( $r = $result->fetch_assoc()) {
+				    $rows[] = $r;
+			    }			
+			    // Codificamos los resultados a formato JSON y lo enviamos al HTML (Client-Side)
+			    echo json_encode($rows);
+            }
+
+            mysqli_close($mysqli);
+        }
+
     }
 
     $signature = new Signature;
@@ -199,6 +251,12 @@
     }
     else if($action == "cargaNombreCursoEvaluar"){
         $signature->cargaNombreCursoEvaluar();
+    }
+    else if($action == "getCursosProfesor"){
+        $signature->getCursosProfesor();
+    }
+    else if($action == "getAlumnosDeCurso"){
+        $signature->getAlumnosDeCurso();
     }
 
 ?>

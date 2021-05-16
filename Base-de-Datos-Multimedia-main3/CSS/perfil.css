@@ -199,6 +199,100 @@ button.btnInfoCurso{
     font-size: larger;
 }
 
+button.btnAlumnosCurso{
+    background-color: #F29849;
+    margin: 5px;
+    width: 200px;
+    height: 50px;
+    border: darkgray outset 3px;
+    border-radius: 10px;
+    color: #204c73;
+    font-family: 'Roboto',sans-serif;
+    font-size: larger;
+}
 
+.totalVentas .labelTotalVentas{
 
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    color: #204c73;
+    margin-top: 20px;
+    margin-bottom: 20px;
 
+}
+
+div.card-curso{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    background-color: white;
+    color: black;
+    border:5px outset gray;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+/* titulo del curso */
+div.card-curso div.card-header{
+    font-size: 20px;
+    font-family: 'Roboto',sans-serif;
+    background-color: #275d8c59;
+}
+
+/* imagen del curso */
+div.card-curso img.card-img{
+    display: inline-block;
+    padding: 10px;
+    width: 50%;
+}
+
+/* resumen del curso */
+div.card-curso div.card-body{
+    display: inline-block;
+    font-size: 15px;
+    font-family: 'Roboto',sans-serif;
+    width: 40%;
+}
+
+/* tiempo de publicacion */
+div.card-curso div.card-footer{
+    display: inline-flex;
+    width: 100%;
+    font-size: 15px;
+    font-family: 'Roboto',sans-serif;
+    background-color: #275d8c59;
+} 
+
+div.card-curso div.card-footer div.fecha{
+    margin-left: auto;
+}
+
+.material-icons.md-xx { 
+    font-size: 18px; 
+    color: #275d8c;
+}
+
+div.card{
+    width: 100%;
+    display: inline-block;
+}
+
+div.divGestorCursos button.btnGestor{
+    background-color: #204c73;
+    color:white;
+    margin: 5px;
+    width: 200px;
+    height: 50px;
+    border: darkgray inset 3px;
+    border-radius: 10px;
+    font-family: 'Roboto',sans-serif;
+    font-size: larger;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+  
+div.divGestorCursos button.btnGestor:hover{
+    background-color: #F29849;
+    color: #204C73;
+}

@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="bootstrap/bootstrap.css" />
     <!-- CSS -->
     <link rel="stylesheet" href="CSS/progresoAlumnos.css">
+
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="alumnosdeCurso.js"></script>
 </head>
 
 <body>
@@ -115,64 +118,8 @@
     <div class="container" style="margin-top: 50px">
         <div id="main-news">
             <h2 class="Subtitles">Progreso de alumnos</h2>
-            <div class="historial">
+            <div class="progresoAlumnos" id="progresoAlumnos">
                 <!-- Tamaño PC-->
-
-                <!-- aqui comienza el curso -->
-                <div id="list-item-1" class="card-curso text-left">
-                    <div class="card-header">
-                        <input type="text" name="datosalumno" id="inputNombre" class="form-control" placeholder="Juanito">
-                    </div>
-                    <img src="https://seeklogo.com/images/E/ElePHPant_-_Mascot_PHP-logo-4C78D1AC4E-seeklogo.com.jpg" class="card-img" alt="php">
-                    <div class="card-body">
-                        <!-- <h5 class="card-title">Special title treatment</h5> -->
-                        <label class="labelDatos" for="inputEmail">Correo: </label>
-                        <input type="text" name="datosalumno" id="inputEmail" class="form-control" placeholder="juan@gmail.com"><br>
-                        <label class="labelDatos" for="inputTelefono">Telefono: </label>
-                        <input type="text" name="datosalumno" id="inputTelefono" class="form-control" placeholder="162738294"><br>
-                        <label class="labelDatos" for="inputProgreso">Progreso en el curso: </label>
-                        <input type="text" name="datosalumno" id="inputProgreso" class="form-control" placeholder="45%"><br>
-                    </div>
-                </div>
-                <!-- aqui termina el curso -->
-
-                <!-- aqui comienza el curso -->
-                <div id="list-item-1" class="card-curso text-left">
-                    <div class="card-header">
-                        HTML
-                    </div>
-                    <img src="https://img.flaticon.com/icons/png/512/174/174854.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF" class="card-img" alt="html">
-                    <div class="card-body">
-                        <!-- <h5 class="card-title">Special title treatment</h5> -->
-                        <p class="card-text">Felicidades, has concluido tu curso de programacion web con html.</p>
-                        <a href="#" class="btn btn-primary">Mas informacion</a>
-                        <a href="#" class="btn btn-primary">Ver diploma</a>
-                    </div>
-                    <div class="card-footer">
-                        <div class="categoria">Programacion web</div>
-                        <div class="fecha">28/Ago/2021</div>
-                    </div>
-                </div>
-                <!-- aqui termina el curso -->
-
-                <!-- aqui comienza el curso -->
-                <div id="list-item-1" class="card-curso text-left">
-                    <div class="card-header">
-                        ORACLE MySQL
-                    </div>
-                    <img src="https://i1.wp.com/buconda.com/wp-content/uploads/2019/06/mysql-logo.png?fit=759%2C500&ssl=1" class="card-img" alt="MySQL">
-                    <div class="card-body">
-                        <!-- <h5 class="card-title">Special title treatment</h5> -->
-                        <p class="card-text">Felicidades, has concluido tu curso de base de datos tradicionales con MySQL.</p>
-                        <a href="#" class="btn btn-primary">Mas informacion</a>
-                        <a href="#" class="btn btn-primary">Ver diploma</a>
-                    </div>
-                    <div class="card-footer">
-                        <div class="categoria">Base de datos</div>
-                        <div class="fecha">01/Jul/2021</div>
-                    </div>
-                </div>
-                <!-- aqui termina el curso -->
 
             </div>
         </div>

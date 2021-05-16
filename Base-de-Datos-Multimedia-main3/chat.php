@@ -1,3 +1,9 @@
+<?php
+// Initialize the session
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +29,66 @@
     <link rel="stylesheet" href="bootstrap/bootstrap.css" />
     <!-- CSS -->
     <link rel="stylesheet" href="CSS/chat.css">
+
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="chat.js"></script>
+
+    <script type="text/javascript">
+
+        function crearChat(valor){
+            
+        }
+
+        function establecerChat(valor){
+            // Objeto en formato JSON el cual le enviaremos al webservice (PHP)
+        var dataToSend = {
+            action: "establecerChat",
+            idChat: valor,
+        };
+
+        //var objetoEnJSON = JSON.stringify(sendProduct);
+
+        //var objetoDesdeJSON = JSON.parse(objetoEnJSON);
+
+        $.ajax({
+            //url: "https://miwebservices.000webhostapp.com/webservice/webservice.php",
+            url: "chats.php",
+            async: true,
+            type: "POST",
+            data: dataToSend,
+            dataType: 'json',
+            success: function(data) {
+                //obtenemos el mensaje enviado desde el servidor SIN formato JSON
+                alert("Se cargaron los mensajes");
+
+                console.log(Object.values(data));
+                var objectLength = Object.keys(data).length;
+                $(".datosDelContacto div").remove();
+                $(".mensajes div").remove();
+                var yaestanombre = false;
+
+                for (let index = 0; index < objectLength; index++) {
+
+                    if(yaestanombre == false){
+                        $(".datosDelContacto").append("<div class='datosDelOtro'><img src='https://image.flaticon.com/icons/png/512/17/17004.png' alt='foto'><label class='nombreDelContacto' id='nombreDelContacto' for=''>" + Object.values(data[index].nombre1).join("") + " "+ Object.values(data[index].apellidoPat1).join("") + " "+ Object.values(data[index].apellidoMat1).join("") +"</label></div>");
+                        yaestanombre = true;
+                    }
+
+                    if(Object.values(data[index].email1).join("") == "<?php echo $_SESSION["email"] ?>" && Object.values(data[index].contra1).join("") == "<?php echo $_SESSION["contrasena"] ?>"){
+                        $(".mensajes").append("<div class='divmensaje' style='text-align: right;'><label class='contacto' for='' style='background-color: #6495ED;'>"+ Object.values(data[index].mensaje).join("") +"</label></div><br>");
+                    }
+                    else{
+                        $(".mensajes").append("<div class='divmensaje' style='text-align: left;'><label class='contacto' for='' style='background-color: #8FBC8F;'>"+ Object.values(data[index].mensaje).join("") +"</label></div><br>");
+                    }
+                }
+            },
+            error: function(x, y, z) {
+                alert("Error en webservice: " + x + y + z);
+            },
+        });
+        }
+
+    </script>
 </head>
 
 <body>
@@ -119,37 +185,41 @@
         <div class="chatsContactos">
             <div class="buscarContacto">
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar usuarios..." aria-label="search" />
+                    <input id="stringaBuscar" class="form-control mr-sm-2" type="search" placeholder="Buscar usuarios..." aria-label="search" />
 
-                    <button class="btn btn-primary uni" type="submit">
+                    <button id="btnBuscar" class="btn btn-primary uni">
                         <i class="fas fa-search uni"></i>
                     </button>
                 </form>
             </div>
-            <div class="usuarioContacto">
-                <img src="https://image.flaticon.com/icons/png/512/17/17004.png" alt="foto">
-                <label for="">Hernan Duarte</label>
+
+            <div class="contactosBuscados" id="contactosBuscados">
+                
             </div>
-            <div class="usuarioContacto">
-                <img src="https://image.flaticon.com/icons/png/512/17/17004.png" alt="foto">
-                <label for="">Laura Villarreal</label>
+
+            <label for="" class="labelcontactos">Contactos</label>
+
+            <div class="contactosEstablecidos" id="contactosEstablecidos">
+                
             </div>
-            <div class="usuarioContacto">
-                <img src="https://image.flaticon.com/icons/png/512/17/17004.png" alt="foto">
-                <label for="">Nancy Gutierrez</label>
-            </div>
+            
         </div>
 
         <div class="chatActual">
-            <div class="mensajes">
-                <label class="contacto" for="">Hola quien eres</label><br>
-                <label class="usuario" for="">Hola soy yo</label><br>
+            <div class="datosDelContacto" id="datosDelContacto">
+                
+            </div>
+            <div class="mensajes" id="mensajes">
+               
             </div>
             <div class="opcionesMensaje">
-                <input for="" placeholder="Mensaje a enviar..."></input>
-                <button class="btnEnviar">Enviar</button>
+                <input id="mensajeEnviar" for="" placeholder="Mensaje a enviar..."></input>
+                <button class="btnEnviar" id="btnEnviar">Enviar</button>
             </div>
         </div>
+
+
+        
     </div>
 
 
