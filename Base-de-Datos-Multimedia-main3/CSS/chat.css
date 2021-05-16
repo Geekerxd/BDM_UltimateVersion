@@ -335,6 +335,7 @@ body {
    div.chatActual div.mensajes{
        height: 500px;
        overflow-y: scroll;
+       
    }
 
    div.chatActual div.mensajes label{

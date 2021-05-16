@@ -91,6 +91,55 @@
             mysqli_close($mysqli);
         }
 
+        function creaChat(){
+            $this->usuario1 = $_POST["idDelOtro"];
+
+            $db = new Connection;
+
+            $mysqli = $db->connect();
+
+            session_start();
+
+            $result = $mysqli->query("CALL sp_creaChat('".$this->usuario1."','".$_SESSION["email"]."','".$_SESSION["contrasena"]."');");
+        
+            if(!$result){
+                echo "Problema al hacer el query: " . $mysqli->error;
+            }
+            else{
+                // Recorremos los resultados devueltos        
+			    $rows = array();
+			    while( $r = $result->fetch_assoc()) {
+				    $rows[] = $r;
+			    }			
+			    // Codificamos los resultados a formato JSON y lo enviamos al HTML (Client-Side)
+			    echo json_encode($rows);
+            }
+
+            mysqli_close($mysqli);
+        }
+
+        function mandaMensaje(){
+            $this->mensaje = $_POST["mensaje"];
+            $this->idChat = $_POST["idChat"];
+
+            $db = new Connection;
+
+            $mysqli = $db->connect();
+
+            session_start();
+
+            $result = $mysqli->query("CALL sp_creaMensaje('".$this->mensaje."','".$this->idChat."','".$_SESSION["email"]."','".$_SESSION["contrasena"]."');");
+        
+            if(!$result){
+                echo "Problema al hacer el query: " . $mysqli->error;
+            }
+            else{
+                echo "Todo bien";
+            }
+
+            mysqli_close($mysqli);
+        }
+
     }
 
     $mensajeChat = new Chat;
@@ -104,6 +153,12 @@
     }
     else if($action == "establecerChat"){
         $mensajeChat->establecerChat();
+    }
+    else if($action == "creaChat"){
+        $mensajeChat->creaChat();
+    }
+    else if($action == "mandaMensaje"){
+        $mensajeChat->mandaMensaje();
     }
 
 

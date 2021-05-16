@@ -184,7 +184,7 @@ CALL `webstudy`.`sp_cargaCursosProfesor`("javier@gmail.com", "123456B_");
 
 CALL `webstudy`.`sp_getAlumnosDeCurso`(4);
 
-CALL `webstudy`.`sp_buscadorUsuarios`("dan", "dani_g.mazatan@hotmail.com", "123456A_");
+CALL `webstudy`.`sp_buscadorUsuarios`("r", "dani_g.mazatan@hotmail.com", "123456A_");
 
 CALL `webstudy`.`sp_cargaChats`("Aron@gmail.com", "123456A_");
 
