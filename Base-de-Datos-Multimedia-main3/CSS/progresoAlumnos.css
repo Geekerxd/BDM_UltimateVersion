@@ -309,3 +309,14 @@ div.card{
 
   font-size: 20px;
 }
+
+img.fotoPerfil{
+  margin-left: 10px;
+  max-width: 40px;
+  max-height: auto;
+  border-radius: 40px;
+}
+
+div#categor{
+  margin-right: 100px;
+}

@@ -18,6 +18,7 @@ DROP TABLE usuario;
 DELETE FROM usuario WHERE usuario.id = 7;
 
 INSERT INTO usuario(rol, nombre, apellidoPat, apellidoMat, contrasena, email, telefono) VALUES ("escuela", "Javier", "Lopez", "Gonzalez", "123456B_", "javier@gmail.com", "8123432981");
+UPDATE usuario SET contrasena = "123456Q_" WHERE id=4;
 
 SELECT* FROM usuario;
 
@@ -119,6 +120,7 @@ CREATE TABLE IF NOT EXISTS chat (
 
 SELECT * FROM chat;
 
+delete FROM chat where idChat = 6;
 INSERT INTO chat(idUsuario1, idUsuario2) VALUES(2,4);
 
 DROP TABLE chat;
@@ -184,8 +186,17 @@ CALL `webstudy`.`sp_cargaCursosProfesor`("javier@gmail.com", "123456B_");
 
 CALL `webstudy`.`sp_getAlumnosDeCurso`(4);
 
-CALL `webstudy`.`sp_buscadorUsuarios`("r", "dani_g.mazatan@hotmail.com", "123456A_");
+CALL `webstudy`.`sp_buscadorUsuarios`("r", "Aron@gmail.com", "123456A_");
 
 CALL `webstudy`.`sp_cargaChats`("Aron@gmail.com", "123456A_");
 
 CALL `webstudy`.`sp_estableceChat`(1);
+
+CALL `webstudy`.`sp_creaChat`("3", "Aron@gmail.com", "123456A_");
+
+CALL `webstudy`.`sp_creaMensaje`("tambien bien",1, "Aron@gmail.com", "123456A_");
+CALL `webstudy`.`sp_creaMensaje`("bien y tu?",1, "dani_g.mazatan@hotmail.com", "123456A_");
+
+CALL `webstudy`.`sp_getDatosCat`(2);
+
+CALL `webstudy`.`sp_getCursosCat`(1);

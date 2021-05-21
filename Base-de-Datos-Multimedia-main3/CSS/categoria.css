@@ -62,6 +62,18 @@ body {
     width: 200px;
     height: 110px;
   }
+
+  div.card {
+    width: 24%;
+    margin: 5px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    /*border-bottom:  solid 1px red;*/
+  
+    border: solid 1px #275d8c3b;
+    display: inline-block;
+  }
+
   .card .card-img-top {
     object-fit: cover;
     object-position: 50% 0%;
@@ -69,6 +81,16 @@ body {
     height: 250px;
     border-radius: 3px;
     margin-left: 2px;
+  }
+  
+  .container{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .container_noticias{
+    width: 100%;
   }
   
   .container .noticia {
@@ -297,4 +319,21 @@ div.secDescripcion h6{
 .material-icons.md-xx { 
     font-size: 18px; 
     color: #275d8c;
+}
+
+.container_iconos{
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img.fotoPerfil{
+  margin-left: 10px;
+  max-width: 40px;
+  max-height: auto;
+  border-radius: 40px;
+}
+
+div#categor{
+  margin-right: 100px;
 }

@@ -23,13 +23,74 @@
     <link rel="stylesheet" href="bootstrap/bootstrap.css" />
     <!-- CSS -->
     <link rel="stylesheet" href="CSS/categoria.css">
+
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="categor.js"></script>
+
+    <script type="text/javascript">
+        function buscaCurso(idCurso1, idCreador1){
+
+            // Objeto en formato JSON el cual le enviaremos al webservice (PHP)
+            var dataToSend = {
+                action: "setCursoActual",
+                idCurso: idCurso1,
+            idCreador: idCreador1,
+            };
+
+                //var objetoEnJSON = JSON.stringify(sendProduct);
+
+                //var objetoDesdeJSON = JSON.parse(objetoEnJSON);
+
+            $.ajax({
+            //url: "https://miwebservices.000webhostapp.com/webservice/webservice.php",
+            url: "cursos.php",
+            async: true,
+            type: "POST",
+            data: dataToSend,
+            success: function(data) {
+                //obtenemos el mensaje enviado desde el servidor SIN formato JSON
+                alert("yendo a "+valor);
+
+            },
+            error: function(x, y, z) {
+                alert("Error en webservice: " + x + y + z);
+            },
+        });
+    }
+
+    function buscaCategor(valor){
+            // Objeto en formato JSON el cual le enviaremos al webservice (PHP)
+        var dataToSend = {
+            action: "setCatActual",
+            idCat: valor,
+        };
+
+        //var objetoEnJSON = JSON.stringify(sendProduct);
+
+        //var objetoDesdeJSON = JSON.parse(objetoEnJSON);
+
+        $.ajax({
+            //url: "https://miwebservices.000webhostapp.com/webservice/webservice.php",
+            url: "categoria.php",
+            async: true,
+            type: "POST",
+            data: dataToSend,
+            success: function(data) {
+                //obtenemos el mensaje enviado desde el servidor SIN formato JSON
+                alert("yendo a "+valor);
+
+            },
+            error: function(x, y, z) {
+                alert("Error en webservice: " + x + y + z);
+            },
+        });
+        }
+    </script>
 </head>
 
 <body>
 
     <!-- Barra de navegacion -->
-
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="border-bottom: solid 1px #275d8c7e">
         <a class="navbar-brand" id="azulado" href="Principal.php" :hover>
             Hiromi
@@ -38,60 +99,30 @@
           <img class="icon" src=" Assets/KineCineNaranja.png " alt="error-en-al-capa-8" /> 
       -->
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" style="color: #275d8c">Inicio <span
-                            class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#" style="color: #275d8c">Inicio <span class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #f29849">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #f29849">
                         Categorias
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="todosCursos.php">Todos los cursos</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Programación general</a>
+                        <div id="divirsorDropdown" class="dropdown-divider"></div>
+                        <div id="categor">
 
-                        <a class="dropdown-item" href="#">API</a>
-                        <a class="dropdown-item" href="#">Programación web</a>
-                        <a class="dropdown-item" href="#">Programación de apps</a>
-                        <a class="dropdown-item" href="#">Base de datos</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Clásicos</a>
-                        <a class="dropdown-item" href="#">Accion</a>
-                        <a class="dropdown-item" href="#">Aventura</a>
+                        </div>
+                        
+                        
                     </div>
                 </li>
-                <!-- 
-<li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-            style="color: #f29849"
-          >
-            Reviews
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Reciente Actividad</a>
-            <a class="dropdown-item" href="#">Listas Films</a>
-            <a class="dropdown-item" href="#">Top lo mejor de lo mejor</a>
-            <a class="dropdown-item" href="#">Top lo peor de lo peor</a>
-          </div>
-        </li> 
--->
 
             </ul>
 
@@ -103,14 +134,18 @@
                 </button>
             </form>
 
-            <a href="LogIn.jsp" class="LogIn-text " style="color: #F29849; margin-left: 20px; ">
+            <a id="btnlogin" href="Log-In.php" class="LogIn-text " style="color: #F29849; margin-left: 20px; ">
                 Log In
             </a>
 
-            <button type="button" class="btn btn-primary SignIn" style="margin-left: 15px; ">
-                <a href="SignIn.jsp" style="color: white;">Sign In</a>
+            <button id="btnsignin" type="button" class="btn btn-primary SignIn" style="margin-left: 15px; ">
+                <a href="Sign-Up.php" style="color: white;">Sign In</a>
 
             </button>
+
+            <a id="btnfotoperfil" href="perfil.php">
+                <img class="fotoPerfil" id="fotoPerfil" src="https://github.com/Geekerxd/recursos/blob/main/NoPhoto2.jpg?raw=true" alt="avatar">
+            </a>
         </div>
     </nav>
 
@@ -118,7 +153,7 @@
 
     <div class="secDescripcion">
         <div class="bienvenidoPrincipal">
-            <h3>Programación web</h3>
+            
         </div>
 
         
@@ -126,10 +161,10 @@
             <img src="https://indexdesarrollo.com/wp-content/uploads/2017/05/lenguajes-de-programacion-web.png"
                 alt="imagen01">
             </img>
-            <h6>
-                Esta categoria contempla todos los cursos de programacion orientada al desarrollo web. Aqui podras 
-                aprender php, html, css, javascript.
-            </h6>
+            <div class="descCat">
+
+            </div>
+            
         </div>
 
 
@@ -139,76 +174,10 @@
         <div id="main-news">
             <h2 class="Subtitles">Cursos de la categoria</h2>
             <div class="row">
-                <!-- Tamaño PC-->
-                <!-- Aqui empieza una carta de curso-->
-                <div class="card col-12 col-sm-6 col-md-3 d-none d-sm-block">
-                    <span class="badge badge-info etiqueta">Programacion web</span>
-                    <a href="curso.php" target="_blank">
-                        <img src="https://seeklogo.com/images/E/ElePHPant_-_Mascot_PHP-logo-4C78D1AC4E-seeklogo.com.jpg"
-                            class="card-img-top" alt="no se pudo cargar esta imagen" />
-                    </a>
-                    <div class="Tarjeta-texto">
-                        <p style="margin-top: 15px">
-                            <strong>
-                                php
-                            </strong>
-                        </p>
-                        <p class="lead" style="font-size: 15px">
-                            Aprende desarrollo web a traves de php.
-                            <a class="linkColor" href="Home.php">Más información</a>
-                        </p>
-                    </div>
-                    <!-- 
-                
-                <div class="card-body">
-                
-                    
-                </div>
-                -->
-                    <div class="row empty"></div>
-                    <div class="container row A-center">
-                        <span class="material-icons md-xx">
-                            thumb_up
-                        </span>
-                        <i class="fas" :hover>80%</i>
-                        <!--<i class="fas fa-hand-point-down" :hover>80%</i>-->
-                        <i class="fas fa-comment" :hover>138</i>
-                        <!--<i class="fas fa-ellipsis-h" :hover></i>-->
-                    </div>
-                </div>
-                <!-- Aqui termina una carta de curso-->
+            <div class="container_noticias" id="container-noticias">
 
-                <!-- Aqui empieza una carta de curso-->
-                <div class="card col-12 col-sm-6 col-md-3 d-none d-sm-block">
-                    <span class="badge badge-info etiqueta">Programacion web</span>
-                    <a href="UnaNoticia.jsp" target="_blank">
-                        <img src="https://img.flaticon.com/icons/png/512/174/174854.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF"
-                            class="card-img-top" alt="no se pudo cargar esta imagen" />
-                    </a>
-                    <div class="Tarjeta-texto">
-                        <p style="margin-top: 15px">
-                            <strong>
-                                html
-                            </strong>
-                        </p>
-                        <p class="lead" style="font-size: 15px">
-                            Aprende las bases del desarrollo web con html.
-                            <a class="linkColor" href="Home.php">Más información</a>
-                        </p>
-                    </div>
-
-                    <div class="row empty"></div>
-                    <div class="container row A-center">
-                        <span class="material-icons md-xx">
-                            thumb_up
-                        </span>
-                        <i class="fas" :hover>86%</i>
-                        <!--<i class="fas fa-hand-point-down" :hover>80%</i>-->
-                        <i class="fas fa-comment" :hover>138</i>
-                        <!--<i class="fas fa-ellipsis-h" :hover></i>-->
-                    </div>
-                </div>
-                <!-- Aqui termina una carta de curso-->
+            </div>
+                
 
 
                 <!-- Tamaño celular-->
@@ -264,6 +233,26 @@
     </div>
 
 
+    <script type="text/javascript">
+        
+        var haysesion = "<?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){echo $_SESSION['loggedin'];} else{echo "false";}?>";
+        //alert (tipo_usuarioLogin);
+
+        if(haysesion == true){
+            
+            document.getElementById("btnfotoperfil").style.visibility = "show";
+
+            document.getElementById("btnlogin").style.visibility = "hidden";
+            document.getElementById("btnsignin").style.visibility = "hidden";
+        }
+        else{
+            document.getElementById("btnfotoperfil").style.visibility = "hidden";
+
+            document.getElementById("btnlogin").style.visibility = "show";
+            document.getElementById("btnsignin").style.visibility = "show";
+        }
+
+    </script>
 
 
 

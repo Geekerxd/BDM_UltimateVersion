@@ -2,6 +2,7 @@
 // Initialize the session
 session_start();
 
+
 ?>
 
 <!DOCTYPE html>
@@ -65,6 +66,34 @@ session_start();
             },
         });
         }
+
+        function buscaCategor(valor){
+            // Objeto en formato JSON el cual le enviaremos al webservice (PHP)
+        var dataToSend = {
+            action: "setCatActual",
+            idCat: valor,
+        };
+
+        //var objetoEnJSON = JSON.stringify(sendProduct);
+
+        //var objetoDesdeJSON = JSON.parse(objetoEnJSON);
+
+        $.ajax({
+            //url: "https://miwebservices.000webhostapp.com/webservice/webservice.php",
+            url: "categoria.php",
+            async: true,
+            type: "POST",
+            data: dataToSend,
+            success: function(data) {
+                //obtenemos el mensaje enviado desde el servidor SIN formato JSON
+                alert("yendo a "+valor);
+
+            },
+            error: function(x, y, z) {
+                alert("Error en webservice: " + x + y + z);
+            },
+        });
+        }
     </script>
 </head>
 
@@ -102,41 +131,14 @@ session_start();
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="todosCursos.php">Todos los cursos</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Programación general</a>
+                        <div id="divirsorDropdown" class="dropdown-divider"></div>
+                        <div id="categor">
 
-                        <a class="dropdown-item" href="#">API</a>
-                        <a class="dropdown-item" href="#">Programación web</a>
-                        <a class="dropdown-item" href="#">Programación de apps</a>
-                        <a class="dropdown-item" href="#">Base de datos</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Clásicos</a>
-                        <a class="dropdown-item" href="#">Accion</a>
-                        <a class="dropdown-item" href="#">Aventura</a>
+                        </div>
+                        
+                        
                     </div>
                 </li>
-                <!-- 
-<li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-            style="color: #f29849"
-          >
-            Reviews
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Reciente Actividad</a>
-            <a class="dropdown-item" href="#">Listas Films</a>
-            <a class="dropdown-item" href="#">Top lo mejor de lo mejor</a>
-            <a class="dropdown-item" href="#">Top lo peor de lo peor</a>
-          </div>
-        </li> 
--->
 
             </ul>
 
@@ -148,14 +150,18 @@ session_start();
                 </button>
             </form>
 
-            <a href="LogIn.jsp" class="LogIn-text " style="color: #F29849; margin-left: 20px; ">
+            <a id="btnlogin" href="Log-In.php" class="LogIn-text " style="color: #F29849; margin-left: 20px; ">
                 Log In
             </a>
 
-            <button type="button" class="btn btn-primary SignIn" style="margin-left: 15px; ">
-                <a href="SignIn.jsp" style="color: white;">Sign In</a>
+            <button id="btnsignin" type="button" class="btn btn-primary SignIn" style="margin-left: 15px; ">
+                <a href="Sign-Up.php" style="color: white;">Sign In</a>
 
             </button>
+
+            <a id="btnfotoperfil" href="perfil.php">
+                <img class="fotoPerfil" id="fotoPerfil" src="https://github.com/Geekerxd/recursos/blob/main/NoPhoto2.jpg?raw=true" alt="avatar">
+            </a>
         </div>
     </nav>
 
@@ -377,6 +383,24 @@ session_start();
         }
         else{
             document.getElementById("inicio-tab").style.visibility = "hidden";
+        }
+
+        
+        var haysesion = "<?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){echo $_SESSION['loggedin'];} else{echo "false";}?>";
+        //alert (tipo_usuarioLogin);
+
+        if(haysesion == true){
+            
+            document.getElementById("btnfotoperfil").style.visibility = "show";
+
+            document.getElementById("btnlogin").style.visibility = "hidden";
+            document.getElementById("btnsignin").style.visibility = "hidden";
+        }
+        else{
+            document.getElementById("btnfotoperfil").style.visibility = "hidden";
+
+            document.getElementById("btnlogin").style.visibility = "show";
+            document.getElementById("btnsignin").style.visibility = "show";
         }
 
     </script>

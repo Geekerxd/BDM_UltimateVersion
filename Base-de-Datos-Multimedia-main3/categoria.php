@@ -49,6 +49,89 @@
             mysqli_close($mysqli);
         }
 
+        function getCategor(){
+
+            $db = new Connection;
+
+            $mysqli = $db->connect();
+
+            $result = $mysqli->query("CALL sp_traeTodasCategorias();");
+
+            if(!$result){
+                echo "Problema al hacer el query: " . $mysqli->error;
+            }
+            else{
+                // Recorremos los resultados devueltos        
+			    $rows = array();
+			    while( $r = $result->fetch_assoc()) {
+				    $rows[] = $r;
+			    }			
+			    // Codificamos los resultados a formato JSON y lo enviamos al HTML (Client-Side)
+			    echo json_encode($rows);
+            }
+
+            mysqli_close($mysqli);
+        }
+
+        function setCatActual(){
+            $this->categoria = $_POST["idCat"];
+
+            session_start();
+
+            $_SESSION["idCatActual"] = $this->categoria;
+        }
+
+        function getDatosCategor(){
+
+            $db = new Connection;
+
+            $mysqli = $db->connect();
+
+            session_start();
+
+            $result = $mysqli->query("CALL sp_getDatosCat('".$_SESSION["idCatActual"]."');");
+
+            if(!$result){
+                echo "Problema al hacer el query: " . $mysqli->error;
+            }
+            else{
+                // Recorremos los resultados devueltos        
+			    $rows = array();
+			    while( $r = $result->fetch_assoc()) {
+				    $rows[] = $r;
+			    }			
+			    // Codificamos los resultados a formato JSON y lo enviamos al HTML (Client-Side)
+			    echo json_encode($rows);
+            }
+
+            mysqli_close($mysqli);
+        }
+
+        function getCursosCategor(){
+
+            $db = new Connection;
+
+            $mysqli = $db->connect();
+            
+            session_start();
+
+            $result = $mysqli->query("CALL sp_getCursosCat('".$_SESSION["idCatActual"]."');");
+
+            if(!$result){
+                echo "Problema al hacer el query: " . $mysqli->error;
+            }
+            else{
+                // Recorremos los resultados devueltos        
+			    $rows = array();
+			    while( $r = $result->fetch_assoc()) {
+				    $rows[] = $r;
+			    }			
+			    // Codificamos los resultados a formato JSON y lo enviamos al HTML (Client-Side)
+			    echo json_encode($rows);
+            }
+
+            mysqli_close($mysqli);
+        }
 
     }
 
@@ -60,6 +143,18 @@
     }
     else if($action == "getCategorias"){
         $categoria->getCategorias();
+    }
+    else if($action == "getCategor"){
+        $categoria->getCategor();
+    }
+    else if($action == "setCatActual"){
+        $categoria->setCatActual();
+    }
+    else if($action == "getDatosCategor"){
+        $categoria->getDatosCategor();
+    }
+    else if($action == "getCursosCategor"){
+        $categoria->getCursosCategor();
     }
 
 ?>
