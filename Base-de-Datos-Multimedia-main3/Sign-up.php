@@ -34,7 +34,7 @@
   </div>
 
   <div class="container peque">
-    <form id="form-signin" class="form-signin" method="POST">
+    <form id="form-signin" class="form-signin" method="POST" enctype="multipart/form-data">
 
       <div class="tipo_usuario">
         <input type="radio" id="escuela" name="tipo_usuario" value="escuela">
@@ -88,7 +88,7 @@
 
 
       <div class="form-label-group">
-        <label for="inputNombreUsuario">nombre de usuario</label>
+        <label for="inputNombreUsuario">Nombre de usuario</label>
         <input type="text" id="inputNombreUsuario" class="form-control" placeholder="Nombre de usuario" required required>
 
       </div>

@@ -144,7 +144,7 @@
             </button>
 
             <a id="btnfotoperfil" href="perfil.php">
-                <img class="fotoPerfil" id="fotoPerfil" src="https://github.com/Geekerxd/recursos/blob/main/NoPhoto2.jpg?raw=true" alt="avatar">
+                
             </a>
         </div>
     </nav>

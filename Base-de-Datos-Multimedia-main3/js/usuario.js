@@ -6,7 +6,6 @@ var Usuario = function(rol, nombre, apellidoPat, apellidoMat, contrasena, email,
 	this.contrasena = contrasena;
 	this.email = email;
 	this.telefono = telefono;
-	//this.foto = foto;
 };
 
 Usuario.prototype = {	

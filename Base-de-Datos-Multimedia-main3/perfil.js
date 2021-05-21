@@ -1,9 +1,16 @@
 $(document).ready(function(){
 
+    cargaFotoUsuario();
     cargaCategor();
     cargaInfoUsuario();
     cargaHistorial();
     cargaCursosProfesor();
+
+    var file;
+
+    $("#image").change(function(e){
+        file = e.target.files[0].name;
+    });
 
     $("#btnModificar").click(function(){
         if($("#inputInfoNombre").val() != ""){
@@ -85,6 +92,38 @@ $(document).ready(function(){
         else{
             alert ("Debe llenar los campos requeridos.");
         }
+    });
+
+    $("#btnEnviarFoto").click(function(){
+
+
+        // Objeto en formato JSON el cual le enviaremos al webservice (PHP)
+        var dataToSend = {
+            action: "modificarFoto",
+            file: file,
+        };
+
+        //var objetoEnJSON = JSON.stringify(sendProduct);
+
+        //var objetoDesdeJSON = JSON.parse(objetoEnJSON);
+
+        $.ajax({
+            //url: "https://miwebservices.000webhostapp.com/webservice/webservice.php",
+            url: "user.php",
+            async: true,
+            type: "POST",
+            data: dataToSend,
+            success: function(data) {
+                //obtenemos el mensaje enviado desde el servidor SIN formato JSON
+                alert("Se subio imagen");
+
+                
+            },
+            error: function(x, y, z) {
+                alert("Error en webservice: " + x + y + z);
+            },
+        });
+
     });
 
     function validateAlfabeto(temp){
@@ -371,6 +410,46 @@ $(document).ready(function(){
             },
         });
     }
+
+
+    function cargaFotoUsuario(){
+
+        // Objeto en formato JSON el cual le enviaremos al webservice (PHP)
+        var dataToSend = {
+            action: "getFotoUsuario",
+        };
+
+        //var objetoEnJSON = JSON.stringify(sendProduct);
+
+        //var objetoDesdeJSON = JSON.parse(objetoEnJSON);
+
+        $.ajax({
+            //url: "https://miwebservices.000webhostapp.com/webservice/webservice.php",
+            url: "user.php",
+            async: true,
+            type: "POST",
+            data: dataToSend,
+            dataType: 'json',
+            success: function(data) {
+                //obtenemos el mensaje enviado desde el servidor SIN formato JSON
+                alert("Se cargo la foto");
+
+                console.log(Object.values(data));
+                var objectLength = Object.keys(data).length;
+
+                for (let index = 0; index < objectLength; index++) {
+                    
+                    $("#btnfotoperfil").append("<img class='fotoPerfil' id='fotoPerfil' src='uploads/"+ Object.values(data[index].foto).join("") +"' alt='avatar'>");
+                    $("#espacioFoto2").append("<img class='avatar' src='uploads/"+ Object.values(data[index].foto).join("") +"' alt='avatar'/>");
+                    
+                }
+            },
+            error: function(x, y, z) {
+                alert("Error en webservice: " + x + y + z);
+            },
+        });
+    }
+
 
 });
 

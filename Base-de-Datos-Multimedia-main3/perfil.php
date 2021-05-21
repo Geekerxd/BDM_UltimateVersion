@@ -101,7 +101,7 @@ session_start();
 
     <?php
     if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-        echo "Tipo: " . $_SESSION['rol'] . " Contrasena: " . $_SESSION['contrasena'] . " correo: " . $_SESSION['email'];
+        echo "Tipo: " . $_SESSION['rol'] . " Contrasena: " . $_SESSION['contrasena'] . " correo: " . $_SESSION['email'] . " foto: " . $_SESSION['fotoUser'];
     }
 
     ?>
@@ -160,7 +160,7 @@ session_start();
             </button>
 
             <a id="btnfotoperfil" href="perfil.php">
-                <img class="fotoPerfil" id="fotoPerfil" src="https://github.com/Geekerxd/recursos/blob/main/NoPhoto2.jpg?raw=true" alt="avatar">
+                
             </a>
         </div>
     </nav>
@@ -180,11 +180,9 @@ session_start();
 
 
 
-            <div>
+            <div id="espacioFoto2">
 
-                <img class="avatar" src="https://github.com/Geekerxd/recursos/blob/main/NoPhoto2.jpg?raw=true" alt="avatar" />
-
-
+    
             </div>
             <div id="nombreDelUsuario">
             
@@ -276,7 +274,7 @@ session_start();
                 </div>
                 <div class="tab-pane fade" id="informacion" role="tabpanel" aria-labelledby="informacion-tab">
 
-                    <form action="PerfilImagen" method="POST" enctype="multipart/form-data">
+                    <form action="upload.php" method="POST" enctype="multipart/form-data">
 
                         <div class="form-group">
                             <label for="image">Cambiar foto de perfil:</label>
@@ -286,7 +284,7 @@ session_start();
                         <input type="hidden" name="idUsuario" value="elId">
 
                         <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Actualizar imagen">
+                            <input id="btnEnviarFoto" type="submit" class="btn btn-primary" value="Actualizar imagen">
                             <!--<input type="submit" class="btn btn-primary" data-toggle="modal" data-target="#solicitudenviada" id="solicitar"value="Solicitar">-->
                         </div>
                     </form>

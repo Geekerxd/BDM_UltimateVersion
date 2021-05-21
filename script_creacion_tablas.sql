@@ -10,12 +10,12 @@ CREATE TABLE IF NOT EXISTS usuario (
     contrasena VARCHAR(16) NOT NULL,
     email VARCHAR(100) NOT NULL,
     telefono VARCHAR(10),
-    foto BLOB,
+    foto BLOB DEFAULT "foto_perfil_default.jpg",
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 DROP TABLE usuario;
-DELETE FROM usuario WHERE usuario.id = 7;
+DELETE FROM usuario WHERE usuario.id = 9;
 
 INSERT INTO usuario(rol, nombre, apellidoPat, apellidoMat, contrasena, email, telefono) VALUES ("escuela", "Javier", "Lopez", "Gonzalez", "123456B_", "javier@gmail.com", "8123432981");
 UPDATE usuario SET contrasena = "123456Q_" WHERE id=4;
@@ -200,3 +200,5 @@ CALL `webstudy`.`sp_creaMensaje`("bien y tu?",1, "dani_g.mazatan@hotmail.com", "
 CALL `webstudy`.`sp_getDatosCat`(2);
 
 CALL `webstudy`.`sp_getCursosCat`(1);
+
+CALL `webstudy`.`sp_traeFotoUsuario`("estudiante", "dani_g.mazatan@hotmail.com", "123456A_");

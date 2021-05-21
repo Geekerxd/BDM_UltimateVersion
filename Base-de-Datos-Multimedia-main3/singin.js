@@ -1,6 +1,17 @@
 
 $(document).ready(function () {
-   
+
+    /*$("#imageInput").on('change', function(){
+        var file = this.files[0], formData = new FormData(), formData.append('file',file);
+        alert (file);
+    });*/
+
+    //var file = new FormData();
+
+    /*$("#inputImagen").change(function(e){
+        file = e.target.files[0];
+    });*/
+
     function validateContra(contrasena){
         var hayMayuscula = false;
         var haySimbolo = false;
@@ -105,46 +116,56 @@ $(document).ready(function () {
                                 if($("#ElEmail").val() != ""){
                                     if($("#inputTel").val() != ""){
                                         if($("#inputNombreUsuario").val() != ""){
-                                            var tipo_usuario = $('input:radio[name=tipo_usuario]:checked').val();
-                                            var nombre = $("#inputNombre").val();
-                                            var apellidoP = $("#inputApellidoP").val();
-                                            var apellidoM = $("#inputApellidoM").val();
-                                            var correo = $("#ElEmail").val();
-                                            var contrasena = $("#inputPassword").val();
-                                            var contrasena2 = $("#inputPassword2").val();
-                                            var tel = $("#inputTel").val();
-                                            var nombreUsuario = $("#inputNombreUsuario").val();
+                                            
+                            
 
-                                            if(validateAlfabeto(nombre)){
-                                                if(validateAlfabeto(apellidoP)){
-                                                    if(validateAlfabeto(apellidoM)){
-                                                        if (validateContra(contrasena)) {
-                                                            if(validateContra2(contrasena,contrasena2)){
-                                                                if(validarTel(tel)){
-                                                                    alert("Bien, los datos han sido capturados correctamente")
+                                            
+                                            
+                                                var tipo_usuario = $('input:radio[name=tipo_usuario]:checked').val();
+                                                var nombre = $("#inputNombre").val();
+                                                var apellidoP = $("#inputApellidoP").val();
+                                                var apellidoM = $("#inputApellidoM").val();
+                                                var correo = $("#ElEmail").val();
+                                                var contrasena = $("#inputPassword").val();
+                                                var contrasena2 = $("#inputPassword2").val();
+                                                var tel = $("#inputTel").val();
+                                                var nombreUsuario = $("#inputNombreUsuario").val();
+                                                //var fileFoto = file;
 
-                                                                    var usuario = new Usuario(tipo_usuario, nombre, apellidoP, apellidoM, contrasena, correo, tel);	
+                                                if(validateAlfabeto(nombre)){
+                                                    if(validateAlfabeto(apellidoP)){
+                                                        if(validateAlfabeto(apellidoM)){
+                                                            if (validateContra(contrasena)) {
+                                                                if(validateContra2(contrasena,contrasena2)){
+                                                                    if(validarTel(tel)){
+                                                                        alert("Bien, los datos han sido capturados correctamente")
 
-                                                                    /*if (!usuario.isValid()) {
+                                                                        var usuario = new Usuario(tipo_usuario, nombre, apellidoP, apellidoM, contrasena, correo, tel);	
+
+                                                                        /*if (!usuario.isValid()) {
                                                                         alert("Faltan datos.");
                                                                         return;			
-                                                                    }*/	
+                                                                        }*/	
 					
-                                                                    sendUsuario(usuario);
+                                                                        sendUsuario(usuario);
 
-                                                                    //clearDataSignUp();
+                                                                        //clearDataSignUp();
 
+                                                                    }
+                                                                    else{
+                                                                        alert("El numero telefonico solamente acepta caracteres numéricos");
+                                                                    }
                                                                 }
                                                                 else{
-                                                                    alert("El numero telefonico solamente acepta caracteres numéricos");
+                                                                    alert("No coincide la contraseña de verificación.");
                                                                 }
                                                             }
                                                             else{
-                                                                alert("No coincide la contraseña de verificación.");
+                                                                alert("La contraseña no tiene el formato correcto.");
                                                             }
                                                         }
                                                         else{
-                                                            alert("La contraseña no tiene el formato correcto.");
+                                                            alert("Los apellidos no deben contener caracteres no alfabéticos.");
                                                         }
                                                     }
                                                     else{
@@ -152,12 +173,9 @@ $(document).ready(function () {
                                                     }
                                                 }
                                                 else{
-                                                    alert("Los apellidos no deben contener caracteres no alfabéticos.");
+                                                    alert("El nombre no debe contener caracteres no alfabéticos.");
                                                 }
-                                            }
-                                            else{
-                                                alert("El nombre no debe contener caracteres no alfabéticos.");
-                                            }
+                                            
                                         }
                                         else{
                                             alert("Debes llenar los campos requeridos.");
@@ -206,6 +224,7 @@ $(document).ready(function () {
                 contrasena: usuario.contrasena,
                 email: usuario.email,
                 telefono: usuario.telefono,
+                foto: usuario.foto,
             };
 
             //var objetoEnJSON = JSON.stringify(sendProduct);

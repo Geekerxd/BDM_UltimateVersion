@@ -10,6 +10,7 @@
         public $contrasena;
         public $email;
         public $telefono;
+        public $foto;
 
         function addUser(){
             $this->tipo_usuario = $_POST["rol"];
@@ -255,6 +256,57 @@
             mysqli_close($mysqli);
         }
 
+        function modificarFoto(){
+            $this->foto = $_POST["file"];
+
+            $db = new Connection;
+
+            $mysqli = $db->connect();
+
+            session_start();
+
+            $result = $mysqli->query("CALL sp_modificarFotoUsuario('".$this->foto."','".$_SESSION['rol']."','".$_SESSION['email']."','".$_SESSION['contrasena']."');");
+        
+            if(!$result){
+                echo "Problema al hacer el query: " . $mysqli->error;
+            }
+            else{
+                echo "Todo salio bien.";
+
+                session_start();
+                            
+                // Store data in session variables
+                $_SESSION["fotoUser"] = $this->foto;
+            }
+
+            mysqli_close($mysqli);
+        }
+
+        function getFotoUsuario(){
+
+            $db = new Connection;
+
+            $mysqli = $db->connect();
+
+            session_start();
+
+            $result = $mysqli->query("CALL sp_traeFotoUsuario('".$_SESSION['rol']."','".$_SESSION['email']."','".$_SESSION['contrasena']."');");
+        
+            if(!$result){
+                echo "Problema al hacer el query: " . $mysqli->error;
+            }
+            else{
+                // Recorremos los resultados devueltos        
+			    $rows = array();
+			    while( $r = $result->fetch_assoc()) {
+				    $rows[] = $r;
+			    }			
+			    // Codificamos los resultados a formato JSON y lo enviamos al HTML (Client-Side)
+			    echo json_encode($rows);
+            }
+
+            mysqli_close($mysqli);
+        }
 
     }
 
@@ -288,6 +340,13 @@
     else if($action == "getDiploma"){
         $user->getDiploma();
     }
+    else if($action == "modificarFoto"){
+        $user->modificarFoto();
+    }
+    else if($action == "getFotoUsuario"){
+        $user->getFotoUsuario();
+    }
+
 
 
 ?>

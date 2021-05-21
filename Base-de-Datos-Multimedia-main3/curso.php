@@ -160,7 +160,7 @@ session_start();
             </button>
 
             <a id="btnfotoperfil" href="perfil.php">
-                <img class="fotoPerfil" id="fotoPerfil" src="https://github.com/Geekerxd/recursos/blob/main/NoPhoto2.jpg?raw=true" alt="avatar">
+                
             </a>
         </div>
     </nav>
@@ -195,12 +195,8 @@ session_start();
             </div>
             <div class="losNiveles">
                 <center>
-                    <button class="btnNivel" id="btn1">Nivel 1</button>
-                    <button class="btnNivel" id="btn2">Nivel 2</button>
-                    <button class="btnNivel" id="btn3">Nivel 3</button>
-                    <button class="btnNivel" id="btn4">Nivel 4</button>
-                    <button class="btnNivel" id="btn5">Nivel 5</button>
-                    <button class="btnNivel" id="btn6">Nivel 6</button>
+                    <!-- <button class="btnNivel" id="btn1">Nivel 1</button> -->
+                    
                 </center>
             </div>
             <div class="crearCurso">
