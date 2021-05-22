@@ -5,16 +5,18 @@
     Class Category{
         public $nombre;
         public $descripcion;
+        public $foto;
 
         function addCategoria(){
             $this->nombre = $_POST["nombre"];
             $this->descripcion = $_POST["descripcion"];
+            $this->foto = $_POST["foto"];
 
             $db = new Connection;
 
             $mysqli = $db->connect();
 
-            $result = $mysqli->query("CALL sp_createCategory('".$this->nombre."','".$this->descripcion."');");
+            $result = $mysqli->query("CALL sp_createCategory('".$this->nombre."','".$this->descripcion."','".$this->foto."');");
         
             if(!$result){
                 echo "Problema al hacer el query: " . $mysqli->error;

@@ -158,9 +158,7 @@
 
         
         <div class="imgDescripcion">
-            <img src="https://indexdesarrollo.com/wp-content/uploads/2017/05/lenguajes-de-programacion-web.png"
-                alt="imagen01">
-            </img>
+            
             <div class="descCat">
 
             </div>

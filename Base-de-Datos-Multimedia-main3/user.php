@@ -31,7 +31,13 @@
                 echo "Problema al hacer el query: " . $mysqli->error;
             }
             else{
-                echo "Todo salio bien.";
+                session_start();
+                            
+                // Store data in session variables
+                $_SESSION["loggedin"] = true;
+                $_SESSION["rol"] = $this->tipo_usuario;
+                $_SESSION["contrasena"] = $this->contrasena;
+                $_SESSION["email"] = $this->email;
             }
 
             mysqli_close($mysqli);

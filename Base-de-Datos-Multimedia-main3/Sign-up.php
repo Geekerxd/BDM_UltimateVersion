@@ -34,7 +34,7 @@
   </div>
 
   <div class="container peque">
-    <form id="form-signin" class="form-signin" method="POST" enctype="multipart/form-data">
+    <form action="Principal.php" id="form-signin" class="form-signin" method="POST" enctype="multipart/form-data">
 
       <div class="tipo_usuario">
         <input type="radio" id="escuela" name="tipo_usuario" value="escuela">

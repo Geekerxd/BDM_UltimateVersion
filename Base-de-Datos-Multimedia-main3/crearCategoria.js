@@ -1,5 +1,11 @@
 $(document).ready(function () {
 
+    var file;
+
+    $("#image").change(function(e){
+        file = e.target.files[0].name;
+    });
+
     $("#btnCrear").click(function(){
 
         if($("#nombre").val() != ""){
@@ -7,12 +13,13 @@ $(document).ready(function () {
 
                 var nombre = $("#nombre").val();
                 var desc = $("#desc").val();
+                var file1 = file;
 
                 if(validateAlfabeto(nombre)){
 
                     alert("Los datos de categoria han sido capturados correctamente");
 
-                    var categoria = new Categoria(nombre, desc);
+                    var categoria = new Categoria(nombre, desc, file1);
 
                     sendCategoria(categoria);
 
@@ -61,7 +68,8 @@ $(document).ready(function () {
         var dataToSend = {
             action: "addCategoria",
             nombre: categoria.nombre,
-            descripcion: categoria.desc
+            descripcion: categoria.desc,
+            foto: categoria.foto
         };
 
         //var objetoEnJSON = JSON.stringify(sendProduct);

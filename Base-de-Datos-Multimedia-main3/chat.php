@@ -39,18 +39,20 @@ session_start();
             
         }
 
-        function crearMensaje(valor){
-            if($("#mensajeEnviar").val() != ""){
-                var mensaje1 = $("#mensajeEnviar").val();
-                var idChat1 = valor;
+        function crearMensaje(){
+            
+                if($("#mensajeEnviar").val() != ""){
+                    var mensaje1 = $("#mensajeEnviar").val();
 
-                mandaMensaje(mensaje1, idChat1);
+                    mandaMensaje(mensaje1);
 
                 
-            }
-            else{
-                alert ("No escribiste un mensaje.")
-            }
+                }
+                else{
+                    alert ("No escribiste un mensaje.")
+                }
+            
+            
         }
 
         function establecerChat(valor){
@@ -80,23 +82,18 @@ session_start();
                 
                 $(".datosDelContacto div").remove();
                 $(".mensajes div").remove();
-                $(".opcionesMensaje button").remove();
+                
                 var yaestanombre = false;
-                var yaestabtnenviar = false;
+                
 
                 for (let index = 0; index < objectLength; index++) {
 
                     if(yaestanombre == false && "<?php echo $_SESSION["email"] ?>" != Object.values(data[index].email1).join("") && "<?php echo $_SESSION["contrasena"] ?>" != Object.values(data[index].contra1).join("")){
-                        $(".datosDelContacto").append("<div class='datosDelOtro'><img src='https://image.flaticon.com/icons/png/512/17/17004.png' alt='foto'><label class='nombreDelContacto' id='nombreDelContacto' for=''>" + Object.values(data[index].nombre1).join("") + " "+ Object.values(data[index].apellidoPat1).join("") + " "+ Object.values(data[index].apellidoMat1).join("") +"</label></div>");
+                        $(".datosDelContacto").append("<div class='datosDelOtro'><img src='uploads/"+ Object.values(data[index].foto1).join("") +"' alt='foto'><label class='nombreDelContacto' id='nombreDelContacto' for=''>" + Object.values(data[index].nombre1).join("") + " "+ Object.values(data[index].apellidoPat1).join("") + " "+ Object.values(data[index].apellidoMat1).join("") +"</label></div>");
                         yaestanombre = true;
                     }
 
-                    if(yaestabtnenviar == false){
-                        $(".opcionesMensaje").append("<button class='btnEnviar' id='btnEnviar' onclick='crearMensaje(this.value)' value="+Object.values(data[index].idChat).join("")+">Enviar</button>");
-                        yaestabtnenviar = true;
-                    }
-
-                    if(Object.values(data[index].email1).join("") == "<?php echo $_SESSION["email"] ?>" && Object.values(data[index].contra1).join("") == "<?php echo $_SESSION["contrasena"] ?>"){
+                    if(Object.values(data[index].email1).join("") != "<?php echo $_SESSION["email"] ?>" && Object.values(data[index].contra1).join("") != "<?php echo $_SESSION["contrasena"] ?>"){
                         $(".mensajes").append("<div class='divmensaje' style='text-align: right;'><label class='contacto' for='' style='background-color: #6495ED;'>"+ Object.values(data[index].mensaje).join("") +"</label></div><br>");
                     }
                     else{
@@ -111,12 +108,11 @@ session_start();
         });
         }
 
-        function mandaMensaje(mensaje1, idChat1){
+        function mandaMensaje(mensaje1){
             // Objeto en formato JSON el cual le enviaremos al webservice (PHP)
         var dataToSend = {
             action: "mandaMensaje",
             mensaje: mensaje1,
-            idChat: idChat1,
         };
 
         //var objetoEnJSON = JSON.stringify(sendProduct);
@@ -266,7 +262,7 @@ session_start();
             </div>
             <div class="opcionesMensaje" id="opcionesMensaje">
                 <input id="mensajeEnviar" for="" placeholder="Mensaje a enviar..."></input>
-                
+                <button class='btnEnviar' id='btnEnviar' onclick="crearMensaje()">Enviar</button>
             </div>
         </div>
 

@@ -34,7 +34,7 @@
   </div>
 
   <div class="container peque">
-    <form class="form-signin">
+    <form action="upload2.php" method="POST" enctype="multipart/form-data">
 
       <div class="curso-categoria">
       
@@ -63,7 +63,7 @@
 
       <div class="form-label-group">
         <label for="inputEmail">Costo</label>
-        <input type="email" id="inputCosto" class="form-control" placeholder="$" required autofocus>
+        <input type="text" id="inputCosto" class="form-control" placeholder="$" required autofocus>
 
       </div>
 
@@ -83,7 +83,7 @@
         <label for="inputPassword">Video del curso</label>
         <div class="form-group">
 
-          <input type="file" name="image" id="image" class="form-control" required>
+          <input type="file" name="video" id="video" class="form-control" required>
           <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
         </div>
 

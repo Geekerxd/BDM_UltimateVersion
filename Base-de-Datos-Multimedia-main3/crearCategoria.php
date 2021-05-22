@@ -34,7 +34,7 @@
   </div>
 
   <div class="container peque">
-    <form class="form-signin">
+    <form class="form-signin" action="upload.php" method="POST" enctype="multipart/form-data">
 
       <div class="form-label-group">
         <label for="input">Nombre de la categoría</label>

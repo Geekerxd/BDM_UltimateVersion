@@ -29,7 +29,7 @@
   </div>
 
   <div class="container peque">
-    <form class="form-signin">
+    <form class="form-signin" action="upload3.php" method="POST" enctype="multipart/form-data">
 
       <div class="form-label-group">
         <label for="input">Nombre del nivel</label>
@@ -42,21 +42,21 @@
 
       </div>
 
-      <div class="form-label-group">
+      <!-- <div class="form-label-group">
         <label for="inputPassword">Imagen representativa</label>
-        <input type="text" id="inputimagen" class="form-control" placeholder="Ingrese aquí el link" required>
+        <input type="file" id="inputimagen" class="form-control" placeholder="Ingrese aquí el link" required>
 
-      </div>
+      </div> -->
 
       <div class="form-label-group">
         <label for="inputPassword">Video del nivel</label>
-        <input type="text" id="inputvideo" class="form-control" placeholder="Ingrese aqui el link" required required>
+        <input type="file" id="video" name="video" class="form-control" required>
 
       </div>
 
       <div class="form-label-group">
         <label for="inputPassword">Archivo</label>
-        <input type="text" id="inputarchivo" class="form-control" placeholder="Ingrese archivo" required required>
+        <input type="file" id="archivo" name="archivo" class="form-control" required>
 
       </div>
 

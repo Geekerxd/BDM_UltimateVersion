@@ -10,6 +10,8 @@
         public $costo;
         public $categoria;
         public $idCreador;
+        public $foto;
+        public $video;
 
         function addCurso(){
             $this->nombre = $_POST["nombre"];
@@ -17,6 +19,8 @@
             $this->descripcionCorta = $_POST["descripcionCorta"];
             $this->costo = $_POST["costo"];
             $this->categoria = $_POST["categoria"];
+            $this->foto = $_POST["foto"];
+            $this->video = $_POST["video"];
 
             $db = new Connection;
 
@@ -24,7 +28,7 @@
 
             session_start();
 
-            $result = $mysqli->query("CALL sp_createCurso('".$this->nombre."','".$this->descripcionCorta."','".$this->descripcion."','".$this->costo."','".$this->categoria."','".$_SESSION["rol"]."','".$_SESSION["contrasena"]."','".$_SESSION["email"]."');");
+            $result = $mysqli->query("CALL sp_createCurso('".$this->nombre."','".$this->descripcionCorta."','".$this->descripcion."','".$this->costo."','".$this->categoria."','".$_SESSION["rol"]."','".$_SESSION["contrasena"]."','".$_SESSION["email"]."','".$this->foto."','".$this->video."');");
         
             if(!$result){
                 echo "Problema al hacer el query: " . $mysqli->error;

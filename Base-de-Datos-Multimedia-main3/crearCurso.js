@@ -2,6 +2,17 @@ $(document).ready(function () {
 
     buscaCategorias();
 
+    var file;
+    var file2;
+
+    $("#image").change(function(e){
+        file = e.target.files[0].name;
+    });
+
+    $("#video").change(function(e){
+        file2 = e.target.files[0].name;
+    });
+
     $("#btnCrear").click(function(){
 
         if ($("input:radio[name=categoria]:checked").val() != "") {
@@ -15,10 +26,13 @@ $(document).ready(function () {
                             var desc = $("#inputDesc").val();
                             var descCorta = $("#inputDescCorta").val();
                             var costo = $("#inputCosto").val();
+
+                            var file_1 = file;
+                            var file_2 = file2;
                         
                             if(validarPrecio(costo)){
 
-                                var curso = new Curso(nombre, desc, descCorta, costo, categoria);
+                                var curso = new Curso(nombre, desc, descCorta, costo, categoria, file_1, file_2);
 
                                 crearCurso(curso);
 
@@ -119,7 +133,9 @@ $(document).ready(function () {
             nombre: curso.nombre,
             descripcion: curso.desc,
             descripcionCorta: curso.descCorta,
-            costo: curso.costo
+            costo: curso.costo,
+            foto: curso.foto,
+            video: curso.video
         };
 
         //var objetoEnJSON = JSON.stringify(sendProduct);

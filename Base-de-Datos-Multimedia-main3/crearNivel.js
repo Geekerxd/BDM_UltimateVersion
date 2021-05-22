@@ -1,13 +1,26 @@
 $(document).ready(function(){
 
+    var file;
+    var file2;
+
+    $("#video").change(function(e){
+        file = e.target.files[0].name;
+    });
+
+    $("#archivo").change(function(e){
+        file2 = e.target.files[0].name;
+    });
+
     $("#btnCrearNivel").click(function(){
         if($("#inputnombre").val() != ""){
             if($("#inputdesc").val() != ""){
 
                 var nombre = $("#inputnombre").val();
                 var desc = $("#inputdesc").val();
+                var file_1 = file;
+                var file_2 = file2;
 
-                var nivel = new Nivel(nombre, desc);
+                var nivel = new Nivel(nombre, desc, file_1, file_2);
 
                 sendNivel(nivel);
 
@@ -27,6 +40,8 @@ $(document).ready(function(){
                 action: "addNivel",
                 nombreNivel: nivel.nombre,
                 descNivel: nivel.desc,
+                video: nivel.video,
+                archivo: nivel.archivo,
             };
     
             //var objetoEnJSON = JSON.stringify(sendProduct);

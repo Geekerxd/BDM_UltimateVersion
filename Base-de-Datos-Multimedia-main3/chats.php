@@ -79,6 +79,9 @@
                 echo "Problema al hacer el query: " . $mysqli->error;
             }
             else{
+
+                $_SESSION["idChat"] = $this->idChat;
+
                 // Recorremos los resultados devueltos        
 			    $rows = array();
 			    while( $r = $result->fetch_assoc()) {
@@ -120,7 +123,6 @@
 
         function mandaMensaje(){
             $this->mensaje = $_POST["mensaje"];
-            $this->idChat = $_POST["idChat"];
 
             $db = new Connection;
 
@@ -128,7 +130,7 @@
 
             session_start();
 
-            $result = $mysqli->query("CALL sp_creaMensaje('".$this->mensaje."','".$this->idChat."','".$_SESSION["email"]."','".$_SESSION["contrasena"]."');");
+            $result = $mysqli->query("CALL sp_creaMensaje('".$this->mensaje."','".$_SESSION["idChat"]."','".$_SESSION["email"]."','".$_SESSION["contrasena"]."');");
         
             if(!$result){
                 echo "Problema al hacer el query: " . $mysqli->error;
