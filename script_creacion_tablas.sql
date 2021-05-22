@@ -10,14 +10,14 @@ CREATE TABLE IF NOT EXISTS usuario (
     contrasena VARCHAR(16) NOT NULL,
     email VARCHAR(100) NOT NULL,
     telefono VARCHAR(10),
-    foto BLOB DEFAULT "foto_perfil_default.jpg",
+    foto BLOB,
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 DROP TABLE usuario;
-DELETE FROM usuario WHERE usuario.id = 9;
+DELETE FROM usuario WHERE usuario.id = 1;
 
-INSERT INTO usuario(rol, nombre, apellidoPat, apellidoMat, contrasena, email, telefono) VALUES ("escuela", "Javier", "Lopez", "Gonzalez", "123456B_", "javier@gmail.com", "8123432981");
+INSERT INTO usuario(rol, nombre, apellidoPat, apellidoMat, contrasena, email, telefono) VALUES ("escuela", "Javier", "Lopez", "Gonzalez", "123456J_", "javier@gmail.com", "8123432981");
 UPDATE usuario SET contrasena = "123456Q_" WHERE id=4;
 
 SELECT* FROM usuario;
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS categoria (
 	idCat INT AUTO_INCREMENT PRIMARY KEY,
     nombreCat VARCHAR(80) NOT NULL,
     descripcionCat VARCHAR(1000),
-    fotoCat VARCHAR(2000)
+    fotoCat BLOB
 );
 
 DROP TABLE categoria;
@@ -39,21 +39,20 @@ CREATE TABLE IF NOT EXISTS curso (
     descripcionCurso VARCHAR(1000),
     descCortaCurso VARCHAR(200),
     costo FLOAT NOT NULL,
-    videoCurso VARCHAR(2000),
-    fotoCurso VARCHAR(2000),
+    videoCurso BLOB,
+    fotoCurso BLOB,
     valoracion FLOAT DEFAULT 0.0,
+    ventasTotales FLOAT DEFAULT 0.0,
     idUsuarioCreador INT NOT NULL,
     idCategoria INT NOT NULL,
     FOREIGN KEY (idUsuarioCreador) REFERENCES usuario(id),
     FOREIGN KEY (idCategoria) REFERENCES categoria (idCat)
 );
 
-ALTER TABLE curso 
-ADD ventasTotales FLOAT DEFAULT 0.0;
 
 DROP TABLE curso;
 
-DELETE FROM curso WHERE curso.id = 14;
+DELETE FROM curso WHERE curso.idCurso = 15;
 
 SELECT* FROM curso;
 
@@ -61,9 +60,9 @@ CREATE TABLE IF NOT EXISTS nivel (
 	idNivel INT AUTO_INCREMENT PRIMARY KEY,
     nombreNivel VARCHAR(80) NOT NULL,
     descripcionNivel VARCHAR(1000),
-    fotoNivel VARCHAR(2000),
-    videoNivel VARCHAR(2000) NOT NULL,
-    archivoNivel VARCHAR(2000) NOT NULL,
+    fotoNivel BLOB,
+    videoNivel BLOB,
+    archivoNivel BLOB,
     idCursoNivel INT NOT NULL,
     FOREIGN KEY (idCursoNivel) REFERENCES curso (idCurso)
 );
@@ -90,7 +89,7 @@ CREATE TABLE IF NOT EXISTS estudiantesCursando (
 
 SELECT* FROM estudiantesCursando;
 
-DELETE FROM estudiantesCursando WHERE idEstudiante = 3;
+DELETE FROM estudiantesCursando WHERE idEstudiante = 5;
 
 DROP TABLE estudiantesCursando;
 
@@ -112,6 +111,7 @@ DROP TABLE comentariosEnCursos;
 
 CREATE TABLE IF NOT EXISTS chat (
 	idChat INT AUTO_INCREMENT PRIMARY KEY,
+    inactivo BIT DEFAULT 0,
 	idUsuario1 INT NOT NULL,
     idUsuario2 INT NOT NULL,
     FOREIGN KEY (idUsuario1) REFERENCES usuario(id),
@@ -136,6 +136,8 @@ CREATE TABLE IF NOT EXISTS mensajeChat (
 );
 
 SELECT * FROM mensajeChat;
+
+delete FROM mensajeChat where numMensaje = 3;
 
 INSERT INTO mensajeChat(idChatMensajes, esIdUsuario1, esIdUsuario2, mensaje) VALUES(1,1,0,"hola soy Aron");
 
@@ -166,11 +168,16 @@ CALL `webstudy`.`sp_traeDatosCurso`(2);
 
 CALL `webstudy`.`sp_verificaEstudianteEnCurso`("dani_g.mazatan@hotmail.com", "123456A_", 1);
 
-CALL `webstudy`.`sp_pasarNivel`("dani_g.mazatan@hotmail.com", "123456A_", 4);
+CALL `webstudy`.`sp_pasarNivel`("karina@gmail.com", "123456K_", 16);
 
 CALL `webstudy`.`sp_cargaNombreCursoEvaluar`(4);
 
-CALL `webstudy`.`sp_createComentarioCurso`(80.0, "muuuuuuuuy bueno", "dani_g.mazatan@hotmail.com", "123456A_", 4);
+CALL `webstudy`.`sp_createComentarioCurso`(60.0, "hay mejores", "karina@gmail.com", "123456K_", 16);
+SELECT usuario.id 
+    FROM usuario
+    WHERE usuario.email = "karina@gmail.com" AND usuario.contrasena = "123456K_";
+
+
 
 CALL `webstudy`.`sp_cargaComentariosCurso`(4);
     
@@ -182,7 +189,7 @@ CALL `webstudy`.`sp_getDiploma`("dani_g.mazatan@hotmail.com", "123456A_", 4);
 
 SHOW TRIGGERS;
 
-CALL `webstudy`.`sp_cargaCursosProfesor`("javier@gmail.com", "123456B_");
+CALL `webstudy`.`sp_cargaCursosProfesor`("Omar@gmail.com", "123456O_");
 
 CALL `webstudy`.`sp_getAlumnosDeCurso`(4);
 
@@ -195,7 +202,7 @@ CALL `webstudy`.`sp_estableceChat`(1);
 CALL `webstudy`.`sp_creaChat`("3", "Aron@gmail.com", "123456A_");
 
 CALL `webstudy`.`sp_creaMensaje`("tambien bien",1, "Aron@gmail.com", "123456A_");
-CALL `webstudy`.`sp_creaMensaje`("bien y tu?",1, "dani_g.mazatan@hotmail.com", "123456A_");
+CALL `webstudy`.`sp_creaMensaje`("hola, yo Daniel",1, "dani_g.mazatan@hotmail.com", "123456A_");
 
 CALL `webstudy`.`sp_getDatosCat`(2);
 

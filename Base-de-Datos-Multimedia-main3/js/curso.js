@@ -1,11 +1,11 @@
-var Curso = function(nombre, desc, descCorta, costo, categoria) {
+var Curso = function(nombre, desc, descCorta, costo, categoria, foto, video) {
 	this.nombre = nombre;
 	this.desc = desc;
 	this.descCorta = descCorta;
     this.costo = costo;
     this.categoria = categoria;
-	//this.foto = foto;
-    //this.foto = video;
+	this.foto = foto;
+    this.video = video;
 };
 
 Curso.prototype = {	

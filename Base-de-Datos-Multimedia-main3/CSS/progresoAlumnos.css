@@ -259,11 +259,18 @@ div.card-curso div.card-header{
 /* imagen del curso */
 div.card-curso img.card-img{
     display: inline-block;
+
+    object-fit: cover;
+    object-position: 50% 0;
+    opacity: 1;
+    border: 3px solid #204C73;
+    border-radius: 50%;
     
     margin-bottom: 70px;
     margin-left: 10px;
     margin-right: 10px;
-    width: 30%;
+    width: 100px;
+    height: 100px;
 }
 
 

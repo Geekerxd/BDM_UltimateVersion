@@ -1,7 +1,7 @@
-var Categoria = function(nombre, desc) {
+var Categoria = function(nombre, desc, foto) {
 	this.nombre = nombre;
 	this.desc = desc;
-	//this.foto = foto;
+	this.foto = foto;
 };
 
 Categoria.prototype = {	

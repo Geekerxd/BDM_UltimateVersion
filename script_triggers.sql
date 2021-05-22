@@ -4,7 +4,9 @@ FOR EACH ROW
 BEGIN
 	DECLARE valor FLOAT;
     
-    SELECT DISTINCT(C.idCursoComent) AS esteCurso, fn_calculaValoracion(C.idCursoComent) INTO valor
+    DROP temporary table IF EXISTS temp1;
+	CREATE temporary table IF NOT EXISTS temp1
+    SELECT DISTINCT(C.idCursoComent) AS esteCurso, fn_calculaValoracion(C.idCursoComent) AS valor
     FROM comentariosencursos AS C;
 
 END// 
