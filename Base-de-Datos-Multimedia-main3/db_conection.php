@@ -1,10 +1,10 @@
 <?php
 
 Class Connection {
-    private $databasehost = "localhost:3306";
+    private $databasehost = "localhost";
 	private $databasename = "webstudy";
 	private $databaseuser = "root";
-	private $databasepass = "root";
+	private $databasepass = "";
 
     function connect(){
         $mysqli = new mysqli($this->databasehost, $this->databaseuser, $this->databasepass, $this->databasename);

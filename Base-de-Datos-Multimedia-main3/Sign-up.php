@@ -14,6 +14,7 @@
 
   <script type="text/javascript" src="js/usuario.js"></script>
   <script type="text/javascript" src="singin.js"></script>
+  <script type="text/javascript" src="js/mifacebook.js"></script>
 
   <link rel="shortcut icon" href="#">
 
@@ -21,6 +22,9 @@
 </head>
 
 <body>
+<div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=220548132908778&autoLogAppEvents=1" nonce="JBuTB7kC"></script>
+  
   <div class="container">
     <!--Letras -->
     <h1 class="Subtitles">Registro</h1>
@@ -31,6 +35,9 @@
     </div>
     <!-- form-->
 
+  </div>
+  <div class="container peque">
+  <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
   </div>
 
   <div class="container peque">
@@ -105,6 +112,14 @@
     </form>
 
   </div>
+
+
+  
+ <!--
+  <div class="container peque">
+    <button id="Iniciaface" class="btn btn-lg btn-primary btn-block">Registrarse con Facebook</button>
+  </div>
+-->
 
   <script src="bootstrap/bootstrap.min.js"></script>
 </body>

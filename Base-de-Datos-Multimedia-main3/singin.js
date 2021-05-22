@@ -1,6 +1,102 @@
 
 $(document).ready(function () {
 
+    var app_id = '220548132908778';
+    var scopes = 'email, user_friends, user_online_presence';
+
+    var btn_login = '<a href="#" id="login" class="btn btn-primary">Iniciar sesión</a>';
+
+    var div_session = "<div id='facebook-session'>" +
+        "<strong></strong>" +
+        "<img>" +
+        "<a href='#' id='logout' class='btn btn-danger'>Cerrar sesión</a>" +
+        "</div>";
+
+
+
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '220548132908778',
+            status: true,
+            cookie: true,
+            xfbml: true,
+            version: 'v2.9'
+        });
+        FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
+            statusChangeCallback(response);        // Returns the login status.
+        });
+    };
+
+ 
+
+    var statusChangeCallback = function (response, callback) {
+        console.log(response);
+
+        if (response.status === 'connected') {
+            getFacebookData();
+        } else {
+            callback(false);
+        }
+    }
+    var checkLoginState = function (callback) {
+        FB.getLoginStatus(function (response) {
+            callback(response);
+        });
+    }
+
+    var getFacebookData = function () {
+        FB.api('/me', function (response) {
+            $('#login').after(div_session);
+            $('#login').remove();
+            $('#facebook-session strong').text("Bienvenido: " + response.name);
+            $('#facebook-session img').attr('src', 'http://graph.facebook.com/' + response.id + '/picture?type=large');
+        });
+    }
+
+    function shareScore(score) {
+        FB.ui({
+            method: 'share',
+            href: 'https://google.com',
+            hashtag: "#RAILROADPLAY",
+            quote: "Mi puntuacion: " + score
+        }, function (response) { });
+    }
+
+    var facebookLogin = function () {
+        checkLoginState(function (data) {
+            if (data.status !== 'connected') {
+                FB.login(function (response) {
+                    if (response.status === 'connected')
+                        getFacebookData();
+                }, { scope: scopes });
+            }
+        })
+    }
+
+    var facebookLogout = function () {
+        checkLoginState(function (data) {
+            if (data.status === 'connected') {
+                FB.logout(function (response) {
+                    $('#facebook-session').before(btn_login);
+                    $('#facebook-session').remove();
+                })
+            }
+        })
+
+    }
+
+
+
+    function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me', function (response) {
+            console.log('Successful login for: ' + response.name);
+            document.getElementById('status').innerHTML =
+                'Thanks for logging in, ' + response.name + '!';
+        });
+    }
+    ///////////////// FCAEBOOK
     /*$("#imageInput").on('change', function(){
         var file = this.files[0], formData = new FormData(), formData.append('file',file);
         alert (file);
@@ -12,91 +108,90 @@ $(document).ready(function () {
         file = e.target.files[0];
     });*/
 
-    function validateContra(contrasena){
+    function validateContra(contrasena) {
         var hayMayuscula = false;
         var haySimbolo = false;
         var hayNumero = false;
-         
-        input=contrasena;
-        if (input.length >= 8){
+
+        input = contrasena;
+        if (input.length >= 8) {
             const pattern = new RegExp('^[A-Z]+$');
             const pattern2 = new RegExp('^[0-9]+$');
             //const pattern3 = new RegExp('^[¡”#$%&/=’?¡¿:;,.-_+*{}]+$');
 
-            for(var i = 0; i<input.length; i++){
+            for (var i = 0; i < input.length; i++) {
                 var ch = input.charAt(i);
-                if(pattern.test(ch)){ 
+                if (pattern.test(ch)) {
                     hayMayuscula = true;
                 }
-                if(pattern2.test(ch)){
+                if (pattern2.test(ch)) {
                     hayNumero = true;
                 }
-                if(ch == "¡" || ch == "#" || ch == "$" || ch == "%" || ch == "&" || ch == "/" || ch == "=" || 
-                    ch == "´" || ch == "?" || ch == "¿" || ch == "!" || ch == ":" || ch == ";" || ch == "," || 
-                    ch == "." || ch == "+" || ch == "-" || ch == "_" || ch == "{" || ch == "}" || ch == "[" || 
-                    ch == "]")
-                    {
+                if (ch == "¡" || ch == "#" || ch == "$" || ch == "%" || ch == "&" || ch == "/" || ch == "=" ||
+                    ch == "´" || ch == "?" || ch == "¿" || ch == "!" || ch == ":" || ch == ";" || ch == "," ||
+                    ch == "." || ch == "+" || ch == "-" || ch == "_" || ch == "{" || ch == "}" || ch == "[" ||
+                    ch == "]") {
                     haySimbolo = true;
                 }
             }
-            if(hayMayuscula != true || haySimbolo != true || hayNumero != true){
+            if (hayMayuscula != true || haySimbolo != true || hayNumero != true) {
                 alert("Por cuestiones de seguridad, la contraseña debe tener al menos una letra mayuscula, un número y uno de los siguientes simbolos ¡”#$%&/=’?¡¿:;,.-_+*{][}");
                 return false;
             }
-            else{
+            else {
                 return true;
-            }  
+            }
         }
         else {
             return false;
         }
     }
 
-    function validateContra2(contrasena1, contrasena2){
-         
-        if (contrasena2 != contrasena1){
+    function validateContra2(contrasena1, contrasena2) {
+
+        if (contrasena2 != contrasena1) {
             return false;
-        }else {
+        } else {
             return true;
         }
     }
 
-    function validateAlfabeto(temp){
+    function validateAlfabeto(temp) {
         var esAlfabeto = true;
-        for(var i = 0; i<temp.length; i++){
+        for (var i = 0; i < temp.length; i++) {
             var ch = temp.charAt(i);
             const pattern = new RegExp('^[A-Z]+$', 'i');
-            if(!pattern.test(ch)){ 
+            if (!pattern.test(ch)) {
                 // Si queremos agregar letras acentuadas y/o letra ñ debemos usar
                 // codigos de Unicode (ejemplo: Ñ: \u00D1  ñ: \u00F1)
                 esAlfabeto = false;
-            } 
+            }
         }
 
-        if(esAlfabeto == true){
+        if (esAlfabeto == true) {
             //alert("si son letras")
             return true;
         }
-        else{
+        else {
             //alert("no son letras")
             return false;
         }
     }
 
-    function validarTel(tel){
+    function validarTel(tel) {
         var esNumero = true;
-        for(var i = 0; i<tel.length; i++){
+        for (var i = 0; i < tel.length; i++) {
             var num = tel.charAt(i);
-            if(num != 0 && num != 1 && num != 2 && num != 3 && num != 4 && num != 5 && num != 6 && num != 7 
-                && num != 8 && num != 9){
+            if (num != 0 && num != 1 && num != 2 && num != 3 && num != 4 && num != 5 && num != 6 && num != 7
+                && num != 8 && num != 9) {
                 esNumero = false;
             }
         }
 
-        if(esNumero == true){
+        if (esNumero == true) {
             return true;
         }
-        else{
+        else {
             return false;
         }
     }
@@ -107,109 +202,109 @@ $(document).ready(function () {
 
 
         // obteniendo los valores
-        if($('input:radio[name=tipo_usuario]:checked').val() != ""){
-            if($("#inputNombre").val() != ""){
-                if($("#inputApellidoP").val() != ""){
-                    if($("#inputApellidoM").val() != ""){
-                        if($("#inputPassword").val() != ""){
-                            if($("#inputPassword2").val() != ""){
-                                if($("#ElEmail").val() != ""){
-                                    if($("#inputTel").val() != ""){
-                                        if($("#inputNombreUsuario").val() != ""){
-                                            
-                            
+        if ($('input:radio[name=tipo_usuario]:checked').val() != "") {
+            if ($("#inputNombre").val() != "") {
+                if ($("#inputApellidoP").val() != "") {
+                    if ($("#inputApellidoM").val() != "") {
+                        if ($("#inputPassword").val() != "") {
+                            if ($("#inputPassword2").val() != "") {
+                                if ($("#ElEmail").val() != "") {
+                                    if ($("#inputTel").val() != "") {
+                                        if ($("#inputNombreUsuario").val() != "") {
 
-                                            
-                                            
-                                                var tipo_usuario = $('input:radio[name=tipo_usuario]:checked').val();
-                                                var nombre = $("#inputNombre").val();
-                                                var apellidoP = $("#inputApellidoP").val();
-                                                var apellidoM = $("#inputApellidoM").val();
-                                                var correo = $("#ElEmail").val();
-                                                var contrasena = $("#inputPassword").val();
-                                                var contrasena2 = $("#inputPassword2").val();
-                                                var tel = $("#inputTel").val();
-                                                var nombreUsuario = $("#inputNombreUsuario").val();
-                                                //var fileFoto = file;
 
-                                                if(validateAlfabeto(nombre)){
-                                                    if(validateAlfabeto(apellidoP)){
-                                                        if(validateAlfabeto(apellidoM)){
-                                                            if (validateContra(contrasena)) {
-                                                                if(validateContra2(contrasena,contrasena2)){
-                                                                    if(validarTel(tel)){
-                                                                        alert("Bien, los datos han sido capturados correctamente")
 
-                                                                        var usuario = new Usuario(tipo_usuario, nombre, apellidoP, apellidoM, contrasena, correo, tel);	
 
-                                                                        /*if (!usuario.isValid()) {
-                                                                        alert("Faltan datos.");
-                                                                        return;			
-                                                                        }*/	
-					
-                                                                        sendUsuario(usuario);
 
-                                                                        //clearDataSignUp();
+                                            var tipo_usuario = $('input:radio[name=tipo_usuario]:checked').val();
+                                            var nombre = $("#inputNombre").val();
+                                            var apellidoP = $("#inputApellidoP").val();
+                                            var apellidoM = $("#inputApellidoM").val();
+                                            var correo = $("#ElEmail").val();
+                                            var contrasena = $("#inputPassword").val();
+                                            var contrasena2 = $("#inputPassword2").val();
+                                            var tel = $("#inputTel").val();
+                                            var nombreUsuario = $("#inputNombreUsuario").val();
+                                            //var fileFoto = file;
 
-                                                                    }
-                                                                    else{
-                                                                        alert("El numero telefonico solamente acepta caracteres numéricos");
-                                                                    }
+                                            if (validateAlfabeto(nombre)) {
+                                                if (validateAlfabeto(apellidoP)) {
+                                                    if (validateAlfabeto(apellidoM)) {
+                                                        if (validateContra(contrasena)) {
+                                                            if (validateContra2(contrasena, contrasena2)) {
+                                                                if (validarTel(tel)) {
+                                                                    alert("Bien, los datos han sido capturados correctamente")
+
+                                                                    var usuario = new Usuario(tipo_usuario, nombre, apellidoP, apellidoM, contrasena, correo, tel);
+
+                                                                    /*if (!usuario.isValid()) {
+                                                                    alert("Faltan datos.");
+                                                                    return;			
+                                                                    }*/
+
+                                                                    sendUsuario(usuario);
+
+                                                                    //clearDataSignUp();
+
                                                                 }
-                                                                else{
-                                                                    alert("No coincide la contraseña de verificación.");
+                                                                else {
+                                                                    alert("El numero telefonico solamente acepta caracteres numéricos");
                                                                 }
                                                             }
-                                                            else{
-                                                                alert("La contraseña no tiene el formato correcto.");
+                                                            else {
+                                                                alert("No coincide la contraseña de verificación.");
                                                             }
                                                         }
-                                                        else{
-                                                            alert("Los apellidos no deben contener caracteres no alfabéticos.");
+                                                        else {
+                                                            alert("La contraseña no tiene el formato correcto.");
                                                         }
                                                     }
-                                                    else{
+                                                    else {
                                                         alert("Los apellidos no deben contener caracteres no alfabéticos.");
                                                     }
                                                 }
-                                                else{
-                                                    alert("El nombre no debe contener caracteres no alfabéticos.");
+                                                else {
+                                                    alert("Los apellidos no deben contener caracteres no alfabéticos.");
                                                 }
-                                            
+                                            }
+                                            else {
+                                                alert("El nombre no debe contener caracteres no alfabéticos.");
+                                            }
+
                                         }
-                                        else{
+                                        else {
                                             alert("Debes llenar los campos requeridos.");
                                         }
                                     }
-                                    else{
+                                    else {
                                         alert("Debes llenar los campos requeridos.");
                                     }
                                 }
-                                else{
+                                else {
                                     alert("Debes llenar los campos requeridos.");
                                 }
                             }
-                            else{
+                            else {
                                 alert("Debes llenar los campos requeridos.");
                             }
                         }
-                        else{
+                        else {
                             alert("Debes llenar los campos requeridos.");
                         }
                     }
-                    else{
+                    else {
                         alert("Debes llenar los campos requeridos.");
                     }
                 }
-                else{
+                else {
                     alert("Debes llenar los campos requeridos.");
                 }
             }
-            else{
+            else {
                 alert("Debes llenar los campos requeridos.");
             }
         }
-        else{
+        else {
             alert("Es requisito seleccionar el tipo de usuario que eres.");
         }
 
@@ -237,17 +332,24 @@ $(document).ready(function () {
                 async: true,
                 type: 'POST',
                 data: dataToSend,
-                success: function (data){
+                success: function (data) {
                     //obtenemos el mensaje enviado desde el servidor SIN formato JSON
                     alert(data);
                 },
-                error: function(x,y,z){
+                error: function (x, y, z) {
                     alert("Error en webservice: " + x + y + z);
                 }
             });
         }
-        
+
     });
 
+    $("#Iniciaface").click(function () {
 
+
+        e.preventDefault();
+
+        facebookLogin();
+        alert("inicia con facebook");
+    });
 });
