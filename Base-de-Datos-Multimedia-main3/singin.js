@@ -1,102 +1,157 @@
 
 $(document).ready(function () {
 
-    var app_id = '220548132908778';
-    var scopes = 'email, user_friends, user_online_presence';
-
-    var btn_login = '<a href="#" id="login" class="btn btn-primary">Iniciar sesión</a>';
-
-    var div_session = "<div id='facebook-session'>" +
-        "<strong></strong>" +
-        "<img>" +
-        "<a href='#' id='logout' class='btn btn-danger'>Cerrar sesión</a>" +
-        "</div>";
-
-
-
-
-    window.fbAsyncInit = function () {
-        FB.init({
-            appId: '220548132908778',
-            status: true,
-            cookie: true,
-            xfbml: true,
-            version: 'v2.9'
-        });
-        FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
-            statusChangeCallback(response);        // Returns the login status.
-        });
-    };
-
- 
-
-    var statusChangeCallback = function (response, callback) {
-        console.log(response);
-
-        if (response.status === 'connected') {
-            getFacebookData();
-        } else {
-            callback(false);
+    /*
+    
+    
+        function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+            console.log('statusChangeCallback');
+            console.log(response);                   // The current login status of the person.
+            if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+                testAPI();
+            } else {                                 // Not logged into your webpage or we are unable to tell.
+                document.getElementById('status').innerHTML = 'Please log ' +
+                    'into this webpage.';
+            }
         }
-    }
-    var checkLoginState = function (callback) {
-        FB.getLoginStatus(function (response) {
-            callback(response);
-        });
-    }
-
-    var getFacebookData = function () {
-        FB.api('/me', function (response) {
-            $('#login').after(div_session);
-            $('#login').remove();
-            $('#facebook-session strong').text("Bienvenido: " + response.name);
-            $('#facebook-session img').attr('src', 'http://graph.facebook.com/' + response.id + '/picture?type=large');
-        });
-    }
-
-    function shareScore(score) {
-        FB.ui({
-            method: 'share',
-            href: 'https://google.com',
-            hashtag: "#RAILROADPLAY",
-            quote: "Mi puntuacion: " + score
-        }, function (response) { });
-    }
-
-    var facebookLogin = function () {
-        checkLoginState(function (data) {
-            if (data.status !== 'connected') {
-                FB.login(function (response) {
-                    if (response.status === 'connected')
-                        getFacebookData();
-                }, { scope: scopes });
+    
+    
+        function checkLoginState() { 
+            
+            
+            
+            
+            
+            // Called when a person is finished with the Login Button.
+            FB.getLoginStatus(function (response) {   // See the onlogin handler
+                statusChangeCallback(response);
+            });
+        }
+    
+    
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '220548132908778',
+                cookie: true,                     // Enable cookies to allow the server to access the session.
+                xfbml: true,                     // Parse social plugins on this webpage.
+                version: 'v2.9'           // Use this Graph API version for this call.
+            });
+    
+    
+            FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
+                statusChangeCallback(response);        // Returns the login status.
+            });
+        };
+    
+        function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me', function (response) {
+                console.log('Successful login for: ' + response.name);
+                document.getElementById('status').innerHTML =
+                    'Thanks for logging in, ' + response.name + '!';
+            });
+        }
+    
+    */
+        var app_id = '220548132908778';
+        var scopes = 'email, public_profile';
+    
+        var btn_login = '<a href="#" id="login" class="btn btn-primary">Iniciar sesión</a>';
+    
+        var div_session = "<div id='facebook-session'>"+
+                          "<strong></strong>"+
+                          "<img>"+
+                          "<a href='#' id='logout' class='btn btn-danger'>Cerrar sesión</a>"+
+                          "</div>";
+    
+        window.fbAsyncInit = function() {
+    
+              FB.init({
+                appId      : app_id,
+                status     : true,
+                cookie     : true, 
+                xfbml      : true, 
+                version    : 'v2.1'
+              });
+    
+    
+              FB.getLoginStatus(function(response) {
+                statusChangeCallback(response, function() {});
+              });
+          };
+    
+          var statusChangeCallback = function(response, callback) {
+              console.log(response);
+               
+            if (response.status === 'connected') {
+                  getFacebookData();
+            } else {
+                 callback(false);
             }
-        })
-    }
+          }
+    
+          var checkLoginState = function(callback) {
+            FB.getLoginStatus(function(response) {
+                  callback(response);
+            });
+          }
+    
+          var getFacebookData =  function() {
+              FB.api('/me', function(response) {
+                  $('#login').after(div_session);
+                  $('#login').remove();
+                 
+                  document.getElementById("inputNombre").value = response.name;
 
-    var facebookLogout = function () {
-        checkLoginState(function (data) {
-            if (data.status === 'connected') {
-                FB.logout(function (response) {
-                    $('#facebook-session').before(btn_login);
-                    $('#facebook-session').remove();
-                })
-            }
-        })
-
-    }
-
-
-
-    function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-        console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me', function (response) {
-            console.log('Successful login for: ' + response.name);
-            document.getElementById('status').innerHTML =
-                'Thanks for logging in, ' + response.name + '!';
-        });
-    }
+                  alert("tus datos:  "+response.first_name+" "+response.last_name+" "+response.middle_name+" "+response.name+" "+response.name_format+" "+response.picture+" "+response.short_name)
+                  //$('#facebook-session img').attr('src','http://graph.facebook.com/'+response.id+'/picture?type=large');
+              });
+          }
+    
+          var facebookLogin = function() {
+              checkLoginState(function(data) {
+                  if (data.status !== 'connected') {
+                      FB.login(function(response) {
+                          if (response.status === 'connected')
+                              getFacebookData();
+                      }, {scope: scopes});
+                  }
+              })
+          }
+    
+          var facebookLogout = function() {
+              checkLoginState(function(data) {
+                  if (data.status === 'connected') {
+                    FB.logout(function(response) {
+                        $('#facebook-session').before(btn_login);
+                        $('#facebook-session').remove();
+                    })
+                }
+              })
+    
+          }
+    
+    
+    
+          $(document).on('click', '#login', function(e) {
+              e.preventDefault();
+    
+              facebookLogin();
+          })
+    
+          $(document).on('click', '#logout', function(e) {
+              e.preventDefault();
+    
+              if (confirm("¿Está seguro?"))
+                  facebookLogout();
+              else 
+                  return false;
+          })
+    
     ///////////////// FCAEBOOK
+
+
+
     /*$("#imageInput").on('change', function(){
         var file = this.files[0], formData = new FormData(), formData.append('file',file);
         alert (file);
@@ -343,13 +398,31 @@ $(document).ready(function () {
         }
 
     });
-
-    $("#Iniciaface").click(function () {
-
+    /*
+        $("#Iniciaface").click(function () {
+    
+    
+            //  e.preventDefault();
+    
+            facebookLogin();
+            alert("inicia con facebook");
+        });
+    */
+    $(document).on('click', '#SalirFace', function (e) {
 
         e.preventDefault();
 
         facebookLogin();
         alert("inicia con facebook");
+
+    })
+
+    $("#logout").click(function () {
+
+
+        //  e.preventDefault();
+
+        facebookLogout();
+        alert("se sale de face");
     });
 });

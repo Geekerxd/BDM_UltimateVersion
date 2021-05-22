@@ -22,9 +22,12 @@
 </head>
 
 <body>
-<div id="fb-root"></div>
+
+
+
+  <div id="fb-root"></div>
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=220548132908778&autoLogAppEvents=1" nonce="JBuTB7kC"></script>
-  
+
   <div class="container">
     <!--Letras -->
     <h1 class="Subtitles">Registro</h1>
@@ -36,9 +39,7 @@
     <!-- form-->
 
   </div>
-  <div class="container peque">
-  <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
-  </div>
+
 
   <div class="container peque">
     <form action="Principal.php" id="form-signin" class="form-signin" method="POST" enctype="multipart/form-data">
@@ -50,7 +51,7 @@
         <label for="estudiante">Estudiante</label><br>
       </div>
 
-      <div class="form-label-group">
+      <div id="divNombre" class="form-label-group">
         <label for="input">Nombre(s)</label>
         <input type="text" id="inputNombre" class="form-control" placeholder="tu nombre" required required>
 
@@ -114,14 +115,48 @@
   </div>
 
 
-  
- <!--
-  <div class="container peque">
-    <button id="Iniciaface" class="btn btn-lg btn-primary btn-block">Registrarse con Facebook</button>
-  </div>
--->
 
+
+  <div class="container peque">
+
+    <a href="#" id="login" class="btn btn-lg btn-primary btn-block">Iniciar sesión con Facebook</a>
+
+  </div>
+
+  <div class="container peque">
+
+    <a href="#" id="logout" class="btn btn-lg btn-primary btn-block">Salir con Facebook</a>
+
+  </div>
+
+
+
+  <!-- The JS SDK Login Button -->
+  <!--
+  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+  </fb:login-button>
+
+  <div id="status">
+  </div>
+
+ 
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+  -->
   <script src="bootstrap/bootstrap.min.js"></script>
+
+
+  <script>
+    // Load the SDK asynchronously
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
 </body>
 
 </html>
