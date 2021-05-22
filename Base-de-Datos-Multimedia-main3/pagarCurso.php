@@ -23,12 +23,6 @@ session_start();
 
 <body>
 
-<?php
-    if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-        echo "Tipo: " . $_SESSION['rol'] . " Contrasena: " . $_SESSION['contrasena'] . " correo: " . $_SESSION['email'] . " idCurso: " . $_SESSION['idCursoActual'];
-    }
-
-    ?>
 
   <div class="container">
     <!--Letras -->

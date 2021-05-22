@@ -55,7 +55,7 @@ $(document).ready(function() {
                 success: function(data) {
                     //obtenemos el mensaje enviado desde el servidor SIN formato JSON
                     if (data != null){
-                        alert("Ingreso el usuario: "+data);
+                        alert("Ingreso el usuario.");
                     }
                     else{
                         alert("Hubo un error al iniciar sesion, cierre sesion y vuelva a ingresar.");

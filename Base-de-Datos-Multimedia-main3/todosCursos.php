@@ -49,7 +49,7 @@
             data: dataToSend,
             success: function(data) {
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("yendo a "+valor);
+                //alert("yendo a "+valor);
 
             },
             error: function(x, y, z) {
@@ -77,7 +77,7 @@
             data: dataToSend,
             success: function(data) {
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("yendo a "+valor);
+                //alert("yendo a "+valor);
 
             },
             error: function(x, y, z) {

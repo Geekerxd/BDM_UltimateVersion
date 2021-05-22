@@ -83,7 +83,7 @@ session_start();
             data: dataToSend,
             success: function(data) {
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("yendo a "+valor);
+                //alert("yendo a "+valor);
 
             },
             error: function(x, y, z) {
@@ -97,12 +97,6 @@ session_start();
 
 <body>
 
-    <?php
-    if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-        echo "Tipo: " . $_SESSION['rol'] . " Contrasena: " . $_SESSION['contrasena'] . " correo: " . $_SESSION['email'] . " idCurso: " . $_SESSION['idCursoActual'];
-    }
-
-    ?>
 
 
 

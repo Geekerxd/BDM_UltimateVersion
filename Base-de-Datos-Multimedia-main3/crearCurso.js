@@ -108,7 +108,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function(data) {
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("Se cargaron las categorias");
+                //alert("Se cargaron las categorias");
 
                 console.log(Object.values(data));
                 var objectLength = Object.keys(data).length;

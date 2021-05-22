@@ -41,7 +41,7 @@ $(document).ready(function(){
             dataType: 'json',
             success: function (data){
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("Se encontró");
+                //alert("Se encontró");
 
                 console.log(Object.values(data));
                 var objectLength = Object.keys(data).length;
@@ -76,7 +76,7 @@ $(document).ready(function(){
             dataType: 'json',
             success: function (data){
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("Se cargaron los chats");
+                //alert("Se cargaron los chats");
 
                 console.log(Object.values(data));
                 var objectLength = Object.keys(data).length;
@@ -111,7 +111,7 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(data) {
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("Se cargaron las categorias en dropdown");
+                //alert("Se cargaron las categorias en dropdown");
 
                 console.log(Object.values(data));
                 var objectLength = Object.keys(data).length;
@@ -150,7 +150,7 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(data) {
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("Se cargo la foto");
+                //alert("Se cargo la foto");
 
                 console.log(Object.values(data));
                 var objectLength = Object.keys(data).length;

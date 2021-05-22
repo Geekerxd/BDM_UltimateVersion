@@ -282,7 +282,7 @@ $(document).ready(function(){
             data: dataToSend,
             success: function (data){
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("Se modifico usuario: "+data);
+                alert("Se modifico usuario.");
             },
             error: function(x,y,z){
                 alert("Error en webservice: " + x + y + z);
@@ -351,7 +351,7 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(data) {
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("Se cargaron los cursos del profe");
+                //alert("Se cargaron los cursos del profe");
 
                 console.log(Object.values(data));
                 var objectLength = Object.keys(data).length;
@@ -392,7 +392,7 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(data) {
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("Se cargaron las categorias en dropdown");
+                //alert("Se cargaron las categorias en dropdown");
 
                 console.log(Object.values(data));
                 var objectLength = Object.keys(data).length;
@@ -432,7 +432,7 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(data) {
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("Se cargo la foto");
+                //alert("Se cargo la foto");
 
                 console.log(Object.values(data));
                 var objectLength = Object.keys(data).length;

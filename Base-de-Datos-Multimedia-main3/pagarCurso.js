@@ -25,7 +25,7 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(data) {
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("Se cargo los datos de curso a pagar");
+                //alert("Se cargo los datos de curso a pagar");
 
                 console.log(Object.values(data));
                 var objectLength = Object.keys(data).length;

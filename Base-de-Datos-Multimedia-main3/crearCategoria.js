@@ -84,7 +84,7 @@ $(document).ready(function () {
             data: dataToSend,
             success: function (data){
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert(data);
+                alert("Se creó categoría");
             },
             error: function(x,y,z){
                 alert("Error en webservice: " + x + y + z);

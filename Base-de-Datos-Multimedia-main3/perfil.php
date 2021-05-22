@@ -58,7 +58,7 @@ session_start();
             data: dataToSend,
             success: function(data) {
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("yendo a "+valor);
+                //alert("yendo a "+valor);
 
             },
             error: function(x, y, z) {
@@ -86,7 +86,7 @@ session_start();
             data: dataToSend,
             success: function(data) {
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("yendo a "+valor);
+                //alert("yendo a "+valor);
 
             },
             error: function(x, y, z) {
@@ -99,12 +99,6 @@ session_start();
 
 <body>
 
-    <?php
-    if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-        echo "Tipo: " . $_SESSION['rol'] . " Contrasena: " . $_SESSION['contrasena'] . " correo: " . $_SESSION['email'] . " foto: " . $_SESSION['fotoUser'];
-    }
-
-    ?>
 
     <!-- Barra de navegacion -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="border-bottom: solid 1px #275d8c7e">

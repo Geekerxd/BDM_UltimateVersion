@@ -38,7 +38,7 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(data) {
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("Se cargo nombre de curso");
+                //alert("Se cargo nombre de curso");
 
                 console.log(Object.values(data));
                 var objectLength = Object.keys(data).length;
@@ -77,7 +77,7 @@ $(document).ready(function(){
             data: dataToSend,
             success: function(data) {
                 //obtenemos el mensaje enviado desde el servidor SIN formato JSON
-                alert("Realizo el comentario: "+data);
+                alert("Realizo el comentario.");
    
             },
             error: function(x, y, z) {
