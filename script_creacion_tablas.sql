@@ -120,7 +120,10 @@ CREATE TABLE IF NOT EXISTS chat (
 
 SELECT * FROM chat;
 
-delete FROM chat where idChat = 6;
+UPDATE chat
+SET chat.inactivo = 0
+WHERE chat.idChat = 2;
+delete FROM chat where idChat = 2;
 INSERT INTO chat(idUsuario1, idUsuario2) VALUES(2,4);
 
 DROP TABLE chat;
@@ -173,11 +176,6 @@ CALL `webstudy`.`sp_pasarNivel`("karina@gmail.com", "123456K_", 16);
 CALL `webstudy`.`sp_cargaNombreCursoEvaluar`(4);
 
 CALL `webstudy`.`sp_createComentarioCurso`(60.0, "hay mejores", "karina@gmail.com", "123456K_", 16);
-SELECT usuario.id 
-    FROM usuario
-    WHERE usuario.email = "karina@gmail.com" AND usuario.contrasena = "123456K_";
-
-
 
 CALL `webstudy`.`sp_cargaComentariosCurso`(4);
     
@@ -209,3 +207,5 @@ CALL `webstudy`.`sp_getDatosCat`(2);
 CALL `webstudy`.`sp_getCursosCat`(1);
 
 CALL `webstudy`.`sp_traeFotoUsuario`("estudiante", "dani_g.mazatan@hotmail.com", "123456A_");
+
+CALL `webstudy`.`sp_eliminaChat`(3);

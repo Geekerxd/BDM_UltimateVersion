@@ -142,6 +142,28 @@
             mysqli_close($mysqli);
         }
 
+        function eliminaChat(){
+            $this->idChat = $_POST["idChat"];
+
+            $db = new Connection;
+
+            $mysqli = $db->connect();
+
+            session_start();
+
+            $result = $mysqli->query("CALL sp_eliminaChat('".$this->idChat."');");
+        
+            if(!$result){
+                echo "Problema al hacer el query: " . $mysqli->error;
+            }
+            else{
+
+               
+            }
+
+            mysqli_close($mysqli);
+        }
+
     }
 
     $mensajeChat = new Chat;
@@ -161,6 +183,9 @@
     }
     else if($action == "mandaMensaje"){
         $mensajeChat->mandaMensaje();
+    }
+    else if($action == "eliminaChat"){
+        $mensajeChat->eliminaChat();
     }
 
 

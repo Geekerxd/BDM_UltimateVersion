@@ -33,3 +33,25 @@ END//
 delimiter ;
 
 DROP TRIGGER tg_calculaVentasTotales;
+
+DELIMITER //
+CREATE TRIGGER tg_eliminaChat AFTER UPDATE ON chat
+FOR EACH ROW
+BEGIN
+	
+    DECLARE idChat1 INT;
+    
+	
+	SELECT C.idChat INTO idChat1
+	FROM chat AS C
+    WHERE C.inactivo = 1;
+    
+    
+    DELETE FROM mensajechat
+    WHERE mensajechat.idChatMensajes = idChat1;
+            
+
+END// 
+delimiter ;
+
+DROP TRIGGER tg_eliminaChat;
