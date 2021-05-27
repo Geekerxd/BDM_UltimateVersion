@@ -4,7 +4,7 @@ session_start();
 
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    header("location: Principal.php");
+    header("location: index.php");
     exit;
 }
 ?>
@@ -45,7 +45,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 
     <div class="container peque">
 
-        <form class="form-signin" action="Principal.php" method="POST">
+        <form class="form-signin" action="index.php" method="POST">
 
             <div class="tipo_usuario">
                 <input type="radio" id="escuela" name="tipo_usuario" value="escuela">

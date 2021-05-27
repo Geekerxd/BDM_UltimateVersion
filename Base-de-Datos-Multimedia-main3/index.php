@@ -95,7 +95,7 @@ session_start();
 
     <!-- Barra de navegacion -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="border-bottom: solid 1px #275d8c7e">
-        <a class="navbar-brand" id="azulado" href="Principal.php" :hover>
+        <a class="navbar-brand" id="azulado" href="index.php" :hover>
             Hiromi
             <img class="icon" src="recursos/HiramiSVG_02.svg" alt="error-en-al-capa-8">
             <!-- 

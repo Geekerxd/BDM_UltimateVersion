@@ -14,7 +14,7 @@
 
   <script type="text/javascript" src="js/usuario.js"></script>
   <script type="text/javascript" src="singin.js"></script>
-  <script type="text/javascript" src="js/mifacebook.js"></script>
+  
 
   <link rel="shortcut icon" href="#">
 
@@ -42,7 +42,7 @@
 
 
   <div class="container peque">
-    <form action="Principal.php" id="form-signin" class="form-signin" method="POST" enctype="multipart/form-data">
+    <form action="index.php" id="form-signin" class="form-signin" method="POST" enctype="multipart/form-data">
 
       <div class="tipo_usuario">
         <input type="radio" id="escuela" name="tipo_usuario" value="escuela">
